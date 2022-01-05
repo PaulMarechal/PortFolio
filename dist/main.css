@@ -1,0 +1,736 @@
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap);
+@font-face {
+    font-family: "SF Pro Display";
+    src: url(assets/fonts/01daf0999564ba0d.woff) format("woff");
+}
+* { 
+    margin: 0;
+    padding: 0;
+    font-family: "SF Pro Display", sans-serif;
+}
+
+
+
+h4, h5 {
+    font-family: 'Open Sans', "SF Pro Display" , sans-serif;
+    font-weight: bolder;
+}
+
+
+* { 
+    -webkit-user-select: none; 
+    -webkit-touch-callout: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;    
+} 
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+p{
+    text-align: justify;
+}
+
+.boutonInfo{
+    position: absolute;
+    right:1%;
+    top: 1%;
+    border-color: black;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-left-width: 5px;
+    border-bottom-width: 5px;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-bottom: 4px;
+    margin-top: 6px;
+
+    background: rgba( 255, 255, 255, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+
+
+}
+
+.modal-first{
+    width: 100%!important;
+
+}
+
+
+.modal-title-first{
+    margin-left: 15%!important;
+}
+
+.name-c{
+    font-size:7px!important;
+}
+
+.name-first-modal{
+    margin-left: 40%;
+}
+
+.modal-body-first{
+    margin-bottom: -4em!important;
+}
+
+.titre-premiere-modal{
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.webgl
+{
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.point
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.btn-secondary{
+    /* background: #00000077!important; */
+    /* border: 1px solid #ffffff77!important; */
+    cursor: help!important;
+    transform: scale(0, 0);
+    transition: transform 0.3s;
+
+    background: rgba( 255, 255, 255, 0.2 )!important;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.17 )!important;
+    backdrop-filter: blur( 1px )!important;
+    -webkit-backdrop-filter: blur( 1px )!important;
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.48 )!important;
+    color: #000000!important;
+}
+
+.boutonInfo{
+    background: #00000077!important;
+    border: 1px solid #ffffff77!important;
+    cursor: help!important;
+
+}
+
+.btn-secondary.visible{
+    transform: scale(1, 1);
+}
+
+.paddingLeger{
+    padding-left: 30px;
+}
+
+ul{
+    padding-left: 10px;
+}
+
+a{
+    /* margin-bottom: 3em; */
+    /* margin-top: 1em; */
+    margin: 2em, 0, 3em, 11em;
+    /* margin-left: 11em; */
+    border: 7px solid transparent;
+    padding: 7px;
+}
+
+a:link{
+    text-decoration: none!important;
+    color:black;
+    font-weight: bold;
+}
+
+a[href^="https://paulmarechal.000webhostapp.com"], 
+a[href^="tel:+33648357374"], 
+a[href^="https://www.linkedin.com/in/paul-marechal/"],
+a[href^="mailto:paulmarechal75@gmail.com"] {
+    font-weight: normal!important;
+}
+
+/* a::before{
+    margin-left: 0em!important;
+    border: none;
+} */
+
+a:hover{
+    color:black;
+}
+
+a:visited { color: #070707!important; }
+
+.modal-body{
+    overflow: scroll;
+    height: 35em;
+}
+
+.modal-body-aPropos{
+    padding: 15px;
+    overflow: scroll;
+    height: 25em;
+    overflow: hidden;
+}
+
+.modal-content{
+    background: linear-gradient(rgba(255, 255, 255, 0.7), white);
+    /* background: linear-gradient(45deg, red, blue); */
+}
+
+
+.modal-body::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.modal-body::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.contact-modal{
+    margin-bottom: -23em; 
+}
+
+.hobbies-modal{
+    margin-bottom: -20em; 
+}
+
+
+.modal-body::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    /* should match background, can't be transparent */
+    border: 2px solid white;  
+    /* background-color: rgba(0, 0, 0, .5); */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.h5, h5{
+    margin-top: 2em!important;
+}
+
+a[href^="https://paulmarechal.000webhostapp.com"]::before {
+    content: "🔗 ";
+    margin-left: -1em; 
+}
+  
+a[href^="mailto"]::before {
+    content: "📧 ";
+    margin-left: -1em; 
+
+}
+  
+a[href^="tel"]::before {
+    content: "📞 ";
+    margin-left: -1em; 
+}
+
+#linkdein{
+    width: 20px;
+    margin-left: -0.2em; 
+}
+
+#linkd{
+    margin-left: -0.6em;
+}
+
+#compétences{
+    margin-top: 2em;
+}
+
+.loading-bar{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    transform: scaleX(0);
+    transform-origin: top left;
+    transition: transform 0s;
+    will-change: transform;
+}
+
+.loading-bar.ended{
+    transform-origin: 100% 0;
+    transition: transform 1.5s ease-in-out;
+}
+
+.photoPaul{
+    width: 30%; 
+    height: 30%; 
+    margin-left: 38%; 
+    bottom:0%
+}
+
+/* .headerAPropos{
+    background-image: url("./img/madere.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+} */
+
+h4 {
+    font-size: 72px;
+    background: -webkit-linear-gradient(90deg, rgb(0, 153, 192) 0%, rgb(0, 192, 112) 100%, rgb(105, 220, 195) 200%, rgb(245, 219, 93) 300%, rgb(255, 136, 39) 400%, rgb(29, 29, 31) 500%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    font-weight: bold;
+    text-align: center;
+}
+
+i, b{
+    background: linear-gradient(90deg, rgb(30, 0, 255) 0%, rgb(112, 43, 252) 100%, rgb(242, 59, 255) 200%, rgb(255, 112, 118) 300%, rgb(29, 29, 31) 400%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    font-weight: bold;
+}
+
+.experience_liens{
+    /* background-image: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%); */
+    -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
+    /* -webkit-text-fill-color: transparent; */
+    font-weight: bold;
+    text-emphasis: right;
+    margin-left: 65%;
+
+    background: rgba( 255, 255, 255, 0.45 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 20px;
+    /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+    color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important;
+
+}
+
+a:hover{
+    color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important;
+}
+
+.titreLicenceSorbonne{
+    margin-left:2em; 
+    margin-top:1em
+}
+
+#imageSorbonne{
+    border-radius: 50%;
+    width: 12%;
+    z-index: 2;
+    margin-top: -6em;
+    margin-bottom: 2em;
+}
+
+.titreEsieeEcole{
+    margin-left: 2em;
+}
+
+#imageEsieeIt{
+    border-radius: 50%;
+    width: 12%;
+    z-index: 2;
+    margin-top: -6em;
+    margin-bottom: 2em;
+}
+
+a.experience_liens{
+    border-image: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%) 5;
+}
+
+h5{
+    background-image: linear-gradient(90deg, rgb(112, 43, 252) 0%, rgb(242, 59, 255) 100%, rgb(255, 112, 118) 200%, rgb(29, 29, 31) 300%);
+    -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+/* test modale */
+
+.masque {
+    /* background: rgba(255, 255, 255, 0.7); */
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 300vw;
+    height: 300vh;
+    z-index: 1000;
+    display: none;
+  }
+  .masque > div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  .message {
+    box-sizing: box-border;
+    width: 620px;
+    height: 200px;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #11ffee00;
+
+    background: rgba( 255, 255, 255, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+  }
+
+  .imageMadere{
+    background-repeat: no-repeat; 
+    width: 580px; 
+    margin: -20px;
+  }
+
+  /* Affichage de la modale sur mobile - version portrait */
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .message{
+        width: 90%;
+        height: 50%;
+        padding: 2%;
+    }
+
+    .message3{
+        width: 90%!important;
+        height: 80%!important;
+        padding: 2%;
+    }
+
+    .message3{
+        padding-top: -2em;
+    }
+
+    ul{
+        padding: 8%;
+    }
+
+    .close1{
+        padding: 2% 3% 2% 3%!important;
+        margin-left: 105%!important;
+    }
+
+    .close2{
+        padding: 2% 6% 2% 3%!important; 
+        left: 48%!important;
+    }
+
+    #contentPoint3{
+        width: 90%!important;
+        height: 80%!important;
+        padding: 1%!important;
+        /* padding-top:-10%!important; */
+    }
+
+    #imageSorbonne{
+        border-radius: 50%;
+        width: 30%;
+        z-index: 2;
+        margin-top: -22em;
+        margin-bottom: 4em;
+        margin-left: 35%;
+    }
+
+    .titreLicenceSorbonne, .titreEsieeEcole{
+        margin-top: 4em;
+        margin-left: 1%;
+        margin-right: 1%;
+        padding:2%!important;
+    }
+
+    #imageEsieeIt{
+        border-radius: 50%;
+        width: 32%;
+        z-index: 2;
+        margin-top: -30em;
+        margin-bottom: -1em;
+        margin-left: 35%;
+    }
+
+    .imageMadere{
+        background-repeat: no-repeat; 
+        width: 107%!important;
+    }
+
+    .photoPaul{
+        margin-bottom: -3em;
+    }
+
+    .experience_liens{
+        -webkit-background-clip: text;
+        -webkit-box-decoration-break: clone;
+        font-weight: bold;
+        text-emphasis: right;
+        margin-left: 38%;
+        background: rgba( 255, 255, 255, 0.45 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 1.5px );
+        -webkit-backdrop-filter: blur( 1.5px );
+        border-radius: 20px;
+        color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important;
+    
+    }
+
+}
+
+/* Affichage des modales sur mobile - version paysage */
+
+@media only screen 
+    and (min-width: 375px) 
+    and (max-width: 812px)
+    and (-webkit-device-pixel-ratio : 3) {
+    .message{
+        width: 90%;
+        height: 57%;
+        padding: 0% 2% 2% 2%;
+    }
+
+    #passions{
+        margin-top: -2em!important;
+    }
+
+    .message3{
+        width: 90%!important;
+        height: 80%!important;
+        padding: 2%;
+    }
+
+    .message3{
+        padding-top: -2em;
+    }
+
+    ul{
+        padding: 0% 8% 8% 8%!important;
+    }
+
+    .close1{
+        padding: 0.5% 1.6% 0.5% 1.5%!important; 
+        left: 3%!important;
+        margin-top: -3%!important;
+        color: black;
+    }
+
+    .close2{
+        padding: 0.5% 3% 0.5% 1.5%!important; 
+        margin-left: 50%!important;
+        margin-top: -3%!important;
+    }
+
+    #contentPoint3{
+        width: 90%!important;
+        height: 80%!important;
+        padding: 1%!important;
+        /* padding-top:-10%!important; */
+    }
+
+    #imageSorbonne{
+        border-radius: 50%;
+        width: 20%;
+        z-index: 2;
+        margin-top: -16em;
+        margin-bottom: 4em;
+        margin-left: 39%;
+    }
+
+    .titreLicenceSorbonne, .titreEsieeEcole{
+        margin-top: 4em;
+        margin-left: 1%;
+        margin-right: 1%;
+        padding:2%!important;
+    }
+
+    #imageEsieeIt{
+        border-radius: 50%;
+        width: 22%;
+        z-index: 2;
+        margin-top: -21em;
+        margin-bottom: -1em;
+        margin-left: 39%;
+    }
+
+    .imageMadere{
+        background-repeat: no-repeat; 
+        width: 107%!important;
+    }
+
+    .photoPaul{
+        margin-bottom: -3em;
+    }
+
+    .experience_liens{
+        -webkit-background-clip: text;
+        -webkit-box-decoration-break: clone;
+        font-weight: bold;
+        text-emphasis: right;
+        margin-left: 38%;
+        background: rgba( 255, 255, 255, 0.45 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 1.5px );
+        -webkit-backdrop-filter: blur( 1.5px );
+        border-radius: 20px;
+        color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important;
+    
+    }
+
+}
+
+/* fin de test  */
+
+
+  .message3{
+    box-sizing: box-border;
+    width: 620px;
+    height: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: rgba( 255, 255, 255, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+  }
+
+/* .close1{
+    border: none;
+    margin-left: 107%;
+    margin-top: -7.2%;
+    padding: 1% 2% 1% 2%;
+    background-color: #fff;
+    border-radius: 50%;
+    color: black;
+    box-shadow: 0 0 2em grey;
+
+} */
+
+.close1{
+    margin-left: 107%;
+    margin-top: -7.2%;
+    padding: 1% 2% 1% 2%;
+    border-radius: 50%;
+    z-index: 9;
+
+    background: rgba( 255, 255, 255, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 50%;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+
+
+}
+
+.close2{
+    border: none;
+    padding: 1% 2% 1% 2%;
+    border-radius: 50%;
+    color: black;
+    position: relative;
+    top: -5.5%; 
+    left: 50%; 
+    z-index: 7000;
+    margin-right: 47%;
+    margin-left: 47%;
+    margin-bottom: -25px;
+
+    background: rgba( 255, 255, 255, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 50%;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+}
+  
+#contentPoint3{
+    box-sizing: box-border;
+    width: 600px;
+    height: 600px;
+    padding: 0px 20px 20px 20px;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: scroll;
+    height: 35em;
+}
+
+#contentPoint4{
+    background-color: #fff;
+    box-sizing: box-border;
+    width: 600px;
+    height: 600px;
+    padding: 0px 20px 20px 20px;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: scroll;
+    height: 35em;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.imageMadere{
+    background-repeat: no-repeat; 
+    width: 660px; 
+    /* margin: -20px; */
+}
+
+#alertBox{
+    position:absolute;
+    top:40%;
+    border:solid 1px black;
+    text-align: justify;
+    /* background-color: #c9cfd8; */
+    background: rgba( 255, 255, 255, 0.45 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 10.5px );
+    -webkit-backdrop-filter: blur( 10.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    /* margin-top: -15em; */
+    padding: 50px;
+    visibility: hidden;
+    
+}
+
+#alertClose{
+    position: absolute;
+    right:0;
+    top: 0;
+    background: rgba( 255, 255, 255, 0.55 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 10.5px );
+    -webkit-backdrop-filter: blur( 10.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 1em;
+    text-align: center; 
+    cursor: pointer;
+}
+  
+  
+  
+
+/*# sourceMappingURL=main.css.map*/

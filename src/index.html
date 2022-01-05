@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Paul Marechal - Portfolio</title>
+        <meta http-equiv="content-language" content="fr">
+        <meta name='viewport' content='initial-scale=1, viewport-fit=cover'>
+        <meta name="keywords" content="Paul, Marechal, Maréchal, Sorbonne, Sorbonne Universite, Developpeur web, CFA, Sciences, Three.js, Three, JS, HTML, CSS, PHP, Java, Javascript, React-native, VR, XR">
+        <meta name="description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel.">
+        <meta itemprop="name" content="Paul Marechal - Developpeur full stack en reconversion">
+        <meta itemprop="description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel.">
+        <meta property="og:url" content="https://paulmarechal.xyz">
+        <meta property="og:title" content="Paul Marechal - Developpeur full stack en reconversion">
+        <meta property="og:description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel.">
+        <meta property="og:image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png">
+        <meta itemprop="image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png">
+        <meta name="apple-mobile-web-app-title" content="Paul Marechal">
+        <meta name="application-name" content="Paul Marechal">
+        <meta name="author" content="Paul Marechal">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://paulmarechal.xyz/test1/assets/images/icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://paulmarechal.xyz/test1/assets/images/icon.png">
+        <link rel="alternate" hreflang="fr" href ="https://paulmarechal.xyz/" />
+        <meta property="og:site_name" content="Paul Marechal - Developpeur full stack en reconversion">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://paulmarechal.xyz">
+        <meta property="og:title" content="Paul Marechal - Developpeur full stack en reconversion">
+        <meta property="og:description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel.">
+        <meta property="og:image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png">
+        <meta name="apple-mobile-web-app-title" content="Paul Marechal">
+        <meta name="application-name" content="Paul Marechal">
+
+    </head>
+    <body>
+        <!-- test video dans ordinateur -->
+        <video id="video" playsinline webkit-playsinline muted loop autoplay width="30" height="10" src="/src/video/rainingCode.mp4" style="display: none;"></video>
+
+        <canvas class="webgl"></canvas>
+        
+        <div class="loading-bar"></div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary boutonInfo" data-toggle="modal" data-target="#exampleModal">
+            À propos
+        </button>
+
+
+        <!-- test information modale -->
+
+        <div class="modal masque" data-backdrop="false" id="exampleModal">
+            <div>
+                <div class="message3">
+                    <button type="button" class="close2" data-dismiss="modal" aria-hidden="true">X</button>
+                    <div id="contentPoint3">
+                        <img class="imageMadere" src="./img/madere.jpg" alt="">
+                        <h1 class="modal-title"><img class="photoPaul" style="margin-top: -7em;" src="./img/photoPolo.jpeg" alt="photo portrait Paul Marechal "></h5>
+
+                        <h4 style="margin-top: -1em;">En quelques mots</h4>
+                        <p>Après presque 10 ans dans la restauration et avoir mûrement préparé ma reconversion, 
+                            j’ai donc décidé de me tourner vers un métier qui me passionne depuis longtemps à savoir 
+                            les nouvelles technologies et plus particulièrement le developpement web. Ce métier est pour moi 
+                            magnifique car les seules limites d'un bon développeur sont son imagination et sa créativité. 
+                        </p>
+                        <h4>Étudiant à La Sorbonne | CFA des Sciences</h4>
+                        <p>
+                            Grâce à ma double formation, à la fois dans la restauration, dans l’informatique et à une somme 
+                            d’expériences professionnelles performantes, j’ai acquis une certaine rigueur, un sens de l’organisation 
+                            et une capacité à m’adapter très facilement. Le travail en équipe et la rapidité d’exécution sont par 
+                            essence des valeurs essentielles dans la restauration, que je souhaite mettre au service du métier de 
+                            développeur web. Je ne souhaite plus être spectateur mais acteur dans ce monde en perpétuel changement 
+                            et renouvellement.
+                        <p>
+                        <!-- <p class="name-first-modal"><i>Paul Maréchal</i></p> -->
+                        <button type="button" class="name-first-modal btn btn-default" data-dismiss="modal"> <i>Paul Maréchal</i> </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fin de test information modale -->
+  
+        <!-- Information modale -->
+        <!-- <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="headerAPropos modal-header">
+                    <h5 class="modal-title"><img class="photoPaul" src="./img/photoPolo.jpeg" alt=""></h5>
+                    
+                    <button style="color: white;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body-aPropos">
+                    <h4>En quelques mots</h4>
+                    <p>Après presque 10 ans dans la restauration et avoir mûrement préparé ma reconversion, 
+                        j’ai donc décidé de me tourner vers un métier qui me passionne depuis longtemps à savoir 
+                        les nouvelles technologies et plus particulièrement le developpement web. Ce métier est pour moi 
+                        magnifique car les seules limites d'un bon développeur sont son imagination et sa créativité. 
+                    </p>
+                    <h4>Étudiant à La Sorbonne | CFA des Sciences</h4>
+                    <p>
+                        Grâce à ma double formation, à la fois dans la restauration, dans l’informatique et à une somme 
+                        d’expériences professionnelles performantes, j’ai acquis une certaine rigueur, un sens de l’organisation 
+                        et une capacité à m’adapter très facilement. Le travail en équipe et la rapidité d’exécution sont par 
+                        essence des valeurs essentielles dans la restauration, que je souhaite mettre au service du métier de 
+                        développeur web. Je ne souhaite plus être spectateur mais acteur dans ce monde en perpétuel changement 
+                        et renouvellement.
+                    <p>
+                     // <p class="name-first-modal"><i>Paul Maréchal</i></p> 
+                    <button type="button" class="name-first-modal btn btn-default" data-dismiss="modal"> <i>Paul Maréchal</i> </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default name-c" data-dismiss="modal">© Paul Maréchal 2021</button>
+                </div>
+            </div>
+            </div>
+        </div> -->
+
+
+        <div class="point">
+
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+                <script>
+                    $(window).on('load',function(){
+                    $('#informations').modal('show');
+                });
+                function closeAlertBox(){
+                    alertBox = document.getElementById("alertBox");
+                    alertClose = document.getElementById("alertClose");
+                    alertBox.style.visibility = "hidden";
+                    alertClose.style.visibility = "hidden";
+                }
+                window.alert = function(msg){
+                    var id = "alertBox", alertBox, closeId = "alertClose", alertClose;
+                    alertBox = document.createElement("div");
+                    document.body.appendChild(alertBox);
+                    alertBox.id = id;
+                    alertBox.innerHTML = msg;
+                    alertClose = document.createElement("div");
+                    alertClose.id = closeId;
+                    alertClose.innerHTML = "x";
+                    alertBox.appendChild(alertClose);
+                    alertBox.style.visibility = "visible";
+                    alertClose.style.visibility = "visible";
+                    alertClose.onclick = closeAlertBox;
+                };
+
+                if(window.innerHeight > window.innerWidth){
+                    alert("Pour aprécier pleinement mon portfolio, merci de tourner votre telephone en mode paysage");
+                } 
+                </script>
+            
+            
+            <!-- 
+                preimiere modale
+              <div class="modal fade" id="informations" role="dialog">
+                  <div class="modal-dialog">
+              
+                    
+                    <div class="modal-content modal-first">
+                        <div class="modal-header">
+                            <h4 class="modal-title-first"><i class="fa fa-exclamation-circle"></i>&nbsp;Bienvenue sur mon portfolio</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            
+                          <h4>En quelques mots</h4>
+                          <p>Après presque 10 ans dans la restauration et avoir mûrement préparé ma reconversion, 
+                              j’ai donc décidé de me tourner vers un métier qui me passionne depuis longtemps à savoir 
+                              les nouvelles technologies et plus particulièrement le developpement web. Ce métier est pour moi 
+                              magnifique car les seules limites d'un bon développeur sont son imagination et sa créativité. 
+                          </p>
+                          <h4>Étudiant à La Sorbonne | CFA des Sciences</h4>
+                          <p>
+                              Grâce à ma double formation, à la fois dans la restauration, dans l’informatique et à une somme 
+                              d’expériences professionnelles performantes, j’ai acquis une certaine rigueur, un sens de l’organisation 
+                              et une capacité à m’adapter très facilement. Le travail en équipe et la rapidité d’exécution sont par 
+                              essence des valeurs essentielles dans la restauration, que je souhaite mettre au service du métier de 
+                              développeur web. Je ne souhaite plus être spectateur mais acteur dans ce monde en perpétuel changement 
+                              et renouvellement.
+                          <p>
+                          <p>N'hésitez pas à déplacer la souris et à zoomer 😎</p>
+                          <p class="name-first-modal"><i>Paul Maréchal</i></p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default name-c" data-dismiss="modal">© Paul Maréchal 2021</button>
+                        </div>
+                      </div>
+                
+                    </div>
+                </div>
+
+             -->
+
+            <!-- Formations -->
+            <!-- <div class="modal fade" id="point3" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <i>2021-2022</i>
+                            <h4 class="titreLicenceSorbonne">Licence Projet Web et Mobile Sorbonne Université - CFA des Sciences</h4>
+                            <img id="imageSorbonne" src="./img/sorbonne.jpeg" alt="logo sorbonne">
+                            <br>
+                            <p>
+                                Création graphique et animations Web
+                                POO et Architecture Logicielle, conception de bases de données pour le Web Frameworks pour le développement Back Office
+                                Réseaux et Sécurité, Système d’exploitation et Serveur Web
+                                UX design et Ergonomie
+                                Développement Mobile
+                                Gestion de projet Web, Méthodes Agiles
+                            </p>
+                            <br><br>
+                            <b>2020-2021</b> 
+                            <h4 class="titreEsieeEcole">Analyste développeur d’applications informatiques ESIEE Paris Tech | Paris</h4>
+                            <img src="./img/esieeIt.jpeg" alt="logo esiee it" id="imageEsieeIt">
+                            <br>
+                            <p>
+                                Formation ayant pour but d’acquérir les techniques de codage, d’analyse de projet et d’intégration technique de nouvelles technologies numériques. 
+                                Les cours sont dispensés selon des méthodes SCRUM - Agiles autour de projets ( sprint ) en équipe sous la responsabilité d’un coach.
+                            </p>
+                            <br>
+                            <h4 id="compétences">Compétences clés</h4>
+                            <ul>
+                                <li>Webdesign</li>
+                                <li>Création de sites dynamiques pour restaurants</li>
+                                <li>Méthodes Agiles</li>
+                                <li>Planification et gestion de projet</li>
+                                <li>Langage de programmation orienté objet</li>
+                            </ul>
+                            <h4>Soft Skills</h4>
+                            <ul>
+                                <li>Fiable et rigoureux</li>
+                                <li>Réactif et toujours à la pointe des dernières technologies</li>
+                                <li>Enthousiaste et curieux</li>
+                                <li>Sens du relationnel</li>
+                                <li>Créatif et imaginatif</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- test modal formation -->
+
+            <div class="modal masque" data-backdrop="false" id="point3">
+                <div>
+                    <div class="message3">
+                        <button type="button" class="close2" data-dismiss="modal" aria-hidden="true">X</button>
+                        <div id="contentPoint3">
+
+                        <i>2021-2022</i>
+                        <br>
+                            <h4 class="titreLicenceSorbonne">Licence Projet Web et Mobile </br>Sorbonne Université | CFA des Sciences</h4>
+                            <img id="imageSorbonne" src="./img/sorbonne.jpeg" alt="logo sorbonne">
+                            <br>
+                            <p>
+                                Création graphique et animations Web
+                                POO et Architecture Logicielle, conception de bases de données pour le Web Frameworks pour le développement Back Office
+                                Réseaux et Sécurité, Système d’exploitation et Serveur Web
+                                UX design et Ergonomie
+                                Développement Mobile
+                                Gestion de projet Web, Méthodes Agiles
+                            </p>
+                            <br><br>
+                            <b>2020-2021</b> 
+                            <br><br>
+                            <h4 class="titreEsieeEcole">Analyste développeur d’applications informatiques ESIEE Paris Tech | Paris</h4>
+                            <img src="./img/esieeIt.jpeg" alt="logo esiee it" id="imageEsieeIt">
+                            <br>
+                            <p>
+                                Formation ayant pour but d’acquérir les techniques de codage, d’analyse de projet et d’intégration technique de nouvelles technologies numériques. 
+                                Les cours sont dispensés selon des méthodes SCRUM - Agiles autour de projets ( sprint ) en équipe sous la responsabilité d’un coach.
+                            </p>
+                            <br>
+                            <h4 id="compétences">Compétences clés</h4>
+                            <ul>
+                                <li>Webdesign</li>
+                                <li>Création de sites dynamiques pour restaurants</li>
+                                <li>Méthodes Agiles</li>
+                                <li>Planification et gestion de projet</li>
+                                <li>Langage de programmation orienté objet</li>
+                            </ul>
+                            <h4>Soft Skills</h4>
+                            <ul>
+                                <li>Fiable et rigoureux</li>
+                                <li>Réactif et toujours à la pointe des dernières technologies</li>
+                                <li>Enthousiaste et curieux</li>
+                                <li>Sens du relationnel</li>
+                                <li>Créatif et imaginatif</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- fin test modal formation -->
+            
+            <!-- Hobby -->
+            <!-- <div class="modal fade" id="point2" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body hobbies-modal">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4>Hobbies</h4>
+                            <ul>
+                                <li>Globe trotter amateur de découvertes </li>
+                                <ul>
+                                    <li>Voyage culinaire à vélo en Europe ( 12 pays - 8000km )</li>
+                                    <li>Nombreux sentiers de GR et voyages en backpack</li>
+                                </ul>
+                                <li>Passionné par les nouvelles technologies, la musique et la cinématographie</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- test modal hobby -->
+            <div class="modal masque" data-backdrop="false" id="point2">
+                <div>
+                    <div class="message">
+                        <button type="button" class="close1" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4>Hobbies</h4>
+                            <ul>
+                                <li>Globe trotter amateur de découvertes </li>
+                                <ul>
+                                    <li>Voyage culinaire à vélo en Europe ( 12 pays - 8000km )</li>
+                                    <li>Nombreux sentiers de GR et voyages en backpack</li>
+                                </ul>
+                                <li id="passions">Passionné par les nouvelles technologies, la musique et la cinématographie </br></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fin test modal hobby -->
+
+            <!-- Contact -->
+            <!-- <div class="modal fade" id="point1" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body contact-modal">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4>Vous pouvez me joindre par : </h4>
+                            <ul>
+                                <li><a href="mailto:paulmarechal75@gmail.com">Email</a></li>
+                                <li><a href="tel:+33648357374">Phone</a></li>
+                                <li><a href="https://paulmarechal.000webhostapp.com">Website</a></li>
+                                <li><img id="linkdein" src="https://img.icons8.com/color/48/000000/linkedin.png"/><a id="linkd" href="https://www.linkedin.com/in/paul-marechal/">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- TEST CONTACT -->
+
+            <div class="modal masque" data-backdrop="false" id="point1">
+                <div>
+                    <div class="message">
+                        <button type="button" class="close1" data-dismiss="modal" aria-hidden="true">X</button>
+                        <h4>Vous pouvez me joindre par : </h4>
+                        <ul>
+                            <li><a href="mailto:paulmarechal75@gmail.com">Email</a></li>
+                            <li><a href="tel:+33648357374">Phone</a></li>
+                            <li><a href="https://paulmarechal.000webhostapp.com">Website</a></li>
+                            <li><img alt="logo linkedin" id="linkdein" src="https://img.icons8.com/color/48/000000/linkedin.png"/><a id="linkd" href="https://www.linkedin.com/in/paul-marechal/">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+
+            <!-- FINN TEST CONTACT -->
+
+            <!-- test experience -->
+
+            <div class="modal masque" data-backdrop="false" id="point0">
+                <div>
+                    <div class="message3">
+                        <button type="button" class="close2" data-dismiss="modal" aria-hidden="true">X</button>
+                        <div id="contentPoint3">
+                        <!-- texte ici -->
+                        <b>2021</b><h4>Stage développeur full-stack - BBFT</h4> <br> 
+                        <ul>
+                            <li>Création d’une plate-forme web de vente de produits de fitness</li>
+                            <li>Vision globale des objectifs d’accessibilité, d’attractivité, de référencement, d’ergonomie et de légitimité ainsi qu’un module de
+                                    visualisation de la salle en 3D</li>
+                            <li>Création du site web en PHP / MySQL / JS / Three.js</li>
+                            <li>Veille et validation du code pour garantir la compatibilité et la sécurité
+                                    de la plate-forme de vente</li>
+                        </ul>
+                        <a class="experience_liens" href="https://simulation.colorfoot.fr/">Aller sur le site</a>
+                        <br><br>
+                        <b>2020</b><h4>Directeur de restaurant - Fosca</h4> <br> 
+                        <ul>
+                            <li>Création de la nouvelle carte - fiches techniques / formation de la cuisine</li>
+                            <li>Lancement du site internet du restaurant</li>
+                            <li>Changement de l’image de marque</li>
+                            <li>Réalisation de la nouvelle carte adapté à la vente à emporter</li>
+                            <li>Adaptation de plate-forme de vente à emporter</li>
+                            <li>Réalisation du plan de sortie de crise COVID - signalétique / formation de l'équipe</li>
+                        </ul>
+
+                        <tr></tr>
+                        <br><br>
+                        <h4>Réalisations</h4>
+                        <ul>
+                            <li><h5>SCHOOL & U - Application de carnet connecté </h5> Réalisation d'une application en React-Native pour faciliter la communication des parents et des professeurs. L'application est disponible pour iOS, Android et Web.
+                                <ul class="paddingLeger">
+                                    <li>Identification</li>
+                                    <li>Messagerie: chat commun et/ou entre deux parents de la classe</li>
+                                    <li>Blog: affichage des photos et messages de la maitresse concernant la classe</li>
+                                    <li>Carnet de liaison</li>
+                                    <li>Modification des informations et ajout d'un nouvel enfant</li>
+                                    <li>Base de données : Firebase & Firestore</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <a class="experience_liens" href="https://github.com/YPariset/School-U">Aller sur GitHub</a>
+                    <br>
+
+                        <ul>
+                            <li><h5>Feelin'Food mobile - Application de vente à emporter pour restaurant </h5> 
+                                Réalisation d'une application en React-Native de vente à emporter pour restaurants. 
+                                Projet réalisé en React-Native sur Snack. <br>
+                                <ul class="paddingLeger">
+                                    <li>Page de connexion</li>
+                                    <li>Page home : affichage des restaurants & cathégorie</li>
+                                    <li>Redirection vers le restaurants sélectionné</li>
+                                    <li>Panier & Validation du paiement</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <a class="experience_liens" href="https://snack.expo.io/@paulmarechal/feelinfood-mobile">Aller sur Snack</a>
+                        <br>
+
+
+                        <ul>
+                            <li><h5>Feelin'Food - site pour restaurant click & collect </h5> Réalisation d'un site dynamique pour restaurant souhaitant mettre en place de la vente à emporter Ce projet a été réalisé en: HTML5, CSS3, PHP, mySQL, Vanilla JS.
+                                <ul class="paddingLeger">
+                                    <li>Identification</li>
+                                    <li>Infos restaurant - possibilité de suivre sur une carte</li>
+                                    <li>Compte utilisateur</li>
+                                    <li>Suivi des fournisseurs, stocks, fiches techniques</li>
+                                    <li>Click & collect</li>
+                                </ul>
+                            </li>  
+                        </ul>
+                        <a class="experience_liens" href="https://feelinfoodfrance.000webhostapp.com/index.php?page=home">Aller sur le site</a>
+                        <br>
+
+                        
+                        <ul>
+                            <li><h5>Projet Vue.js </h5> HTML5, CSS3, VANILLA JS, VUE.JS - Projet regroupant différentes fonctionnalités Vue.js 
+                                <ul class="paddingLeger">
+                                    <li>Horloge (Vue-Clock2)</li>
+                                    <li>Horloge digitale (Date-fns)</li>
+                                    <li>Création d'un formulaire dynamique en drag & drop (FormBuilder)</li>
+                                    <li>Liste des différents Bitcoins et barre de recherche (Axios)</li>
+                                </ul>
+                            </li>  
+                        </ul>
+                        <a class="experience_liens" id="hover" href="https://github.com/PaulMarechal/ProjetVueJs">Aller sur GitHub</a>
+                        <br>
+
+
+                        <ul>
+                            <li><h5>Projet Vanilla JS </h5> Projet regroupant différentes fonctionnalités en JS Vanilla 
+                                <ul class="paddingLeger">
+                                    <li>ToDo List</li>
+                                    <li>Modifier le contenu du site avec l'espace Admin</li>
+                                    <li>Recherche d'utilisateurs GitHub</li>
+                                    <li>Quizz</li>
+                                    <li>App Météo</li>
+                                    <li>Lecteur MP3 avec barre d'oscillation 2D</li>
+                                    <li>Théme jour/nuit - custom</li>
+                                </ul>
+                            </li>  
+                        </ul>
+                        <a class="experience_liens" id="hover" href="https://projetjsvanilla.000webhostapp.com">Aller sur le site</a>
+                        <br>
+
+
+                        <ul>
+                            <li><h5>Projet E-Shop Java </h5>Application de magasin en ligne en Java (terminal & Swing) 
+                                <ul class="paddingLeger">
+                                    <li>Commandes</li>
+                                    <li>Visibilité des produits</li>
+                                    <li>Ajout dans le panier</li>
+                                    <li>Paiement</li>
+                                        <ul class="paddingLeger">
+                                            <li>Admin</li>
+                                        </ul>
+                                    <li>Visibilité des commabdes clients</li>
+                                    <li>Ajout des produits</li>
+                                    <li>Commandes clients</li>
+                                </ul>
+                            </li>  
+                        </ul>
+                        <a class="experience_liens" id="hover" href="https://github.com/lea78/My-supermarket.git">Aller sur GitHub</a>
+                        <br>
+
+
+                        <ul>
+                            <li><h5>Projet jeu de plates-formes java </h5>Projet jeu de plateformes en tour par tour 
+                                <ul class="paddingLeger">
+                                    <li>Ennemis différents en fonction des salles</li>
+                                    <li>Gestion de la vie</li>
+                                    <li>Gestion des armes</li>
+                                </ul>
+                            </li>  
+                        </ul>
+                        <a class="experience_liens" id="hover" href="https://github.com/arcreane/javaadventure-Just1bruidx.git"><script src="https://cdn.jsdelivr.net/npm/sketch-js@1.1.3/js/sketch.js"></script>Aller sur GitHub</a>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!--  fin de test experience -->
+
+            <!-- Experience -->
+            <!-- <div class="modal fade" id="point0" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <b>2021</b><h4>Stage développeur full-stack - BBFT</h4> <br> 
+                            <ul>
+                                <li>Création d’une plate-forme web de vente de produits de fitness</li>
+                                <li>Vision globale des objectifs d’accessibilité, d’attractivité, de référencement, d’ergonomie et de légitimité ainsi qu’un module de
+                                        visualisation de la salle en 3D</li>
+                                <li>Création du site web en PHP / MySQL / JS / Three.js</li>
+                                <li>Veille et validation du code pour garantir la compatibilité et la sécurité
+                                        de la plate-forme de vente</li>
+                            </ul>
+                            <a class="experience_liens" href="https://simulation.colorfoot.fr/">Aller sur le site</a>
+                            <br><br>
+                            <b>2020</b><h4>Directeur de restaurant - Fosca</h4> <br> 
+                            <ul>
+                                <li>Création de la nouvelle carte - fiches techniques / formation de la cuisine</li>
+                                <li>Lancement du site internet du restaurant</li>
+                                <li>Changement de l’image de marque</li>
+                                <li>Réalisation de la nouvelle carte adapté à la vente à emporter</li>
+                                <li>Adaptation de plate-forme de vente à emporter</li>
+                                <li>Réalisation du plan de sortie de crise COVID - signalétique / formation de l'équipe</li>
+                            </ul>
+
+                            <tr></tr>
+                            <br><br>
+                            <h4>Réalisations</h4>
+                            <ul>
+                                <li><h5>SCHOOL & U - Application de carnet connecté </h5> Réalisation d'une application en React-Native pour faciliter la communication des parents et des professeurs. L'application est disponible pour iOS, Android et Web.
+                                    <ul class="paddingLeger">
+                                        <li>Identification</li>
+                                        <li>Messagerie: chat commun et/ou entre deux parents de la classe</li>
+                                        <li>Blog: affichage des photos et messages de la maitresse concernant la classe</li>
+                                        <li>Carnet de liaison</li>
+                                        <li>Modification des informations et ajout d'un nouvel enfant</li>
+                                        <li>Base de données : Firebase & Firestore</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <a class="experience_liens" href="https://github.com/YPariset/School-U">Aller sur GitHub</a>
+                        <br>
+
+                            <ul>
+                                <li><h5>Feelin'Food mobile - Application de vente à emporter pour restaurant </h5> 
+                                    Réalisation d'une application en React-Native de vente à emporter pour restaurants. 
+                                    Projet réalisé en React-Native sur Snack. <br>
+                                    <ul class="paddingLeger">
+                                        <li>Page de connexion</li>
+                                        <li>Page home : affichage des restaurants & cathégorie</li>
+                                        <li>Redirection vers le restaurants sélectionné</li>
+                                        <li>Panier & Validation du paiement</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <a class="experience_liens" href="https://snack.expo.io/@paulmarechal/feelinfood-mobile">Aller sur Snack</a>
+                            <br>
+
+
+                            <ul>
+                                <li><h5>Feelin'Food - site pour restaurant click & collect </h5> Réalisation d'un site dynamique pour restaurant souhaitant mettre en place de la vente à emporter Ce projet a été réalisé en: HTML5, CSS3, PHP, mySQL, Vanilla JS.
+                                    <ul class="paddingLeger">
+                                        <li>Identification</li>
+                                        <li>Infos restaurant - possibilité de suivre sur une carte</li>
+                                        <li>Compte utilisateur</li>
+                                        <li>Suivi des fournisseurs, stocks, fiches techniques</li>
+                                        <li>Click & collect</li>
+                                    </ul>
+                                </li>  
+                            </ul>
+                            <a class="experience_liens" href="https://feelinfoodfrance.000webhostapp.com/index.php?page=home">Aller sur le site</a>
+                            <br>
+
+                            
+                            <ul>
+                                <li><h5>Projet Vue.js </h5> HTML5, CSS3, VANILLA JS, VUE.JS - Projet regroupant différentes fonctionnalités Vue.js 
+                                    <ul class="paddingLeger">
+                                        <li>Horloge (Vue-Clock2)</li>
+                                        <li>Horloge digitale (Date-fns)</li>
+                                        <li>Création d'un formulaire dynamique en drag & drop (FormBuilder)</li>
+                                        <li>Liste des différents Bitcoins et barre de recherche (Axios)</li>
+                                    </ul>
+                                </li>  
+                            </ul>
+                            <a class="experience_liens" id="hover" href="https://github.com/PaulMarechal/ProjetVueJs">Aller sur GitHub</a>
+                            <br>
+
+
+                            <ul>
+                                <li><h5>Projet Vanilla JS </h5> Projet regroupant différentes fonctionnalités en JS Vanilla 
+                                    <ul class="paddingLeger">
+                                        <li>ToDo List</li>
+                                        <li>Modifier le contenu du site avec l'espace Admin</li>
+                                        <li>Recherche d'utilisateurs GitHub</li>
+                                        <li>Quizz</li>
+                                        <li>App Météo</li>
+                                        <li>Lecteur MP3 avec barre d'oscillation 2D</li>
+                                        <li>Théme jour/nuit - custom</li>
+                                    </ul>
+                                </li>  
+                            </ul>
+                            <a class="experience_liens" id="hover" href="https://projetjsvanilla.000webhostapp.com">Aller sur le site</a>
+                            <br>
+
+
+                            <ul>
+                                <li><h5>Projet E-Shop Java </h5>Application de magasin en ligne en Java (terminal & Swing) 
+                                    <ul class="paddingLeger">
+                                        <li>Commandes</li>
+                                        <li>Visibilité des produits</li>
+                                        <li>Ajout dans le panier</li>
+                                        <li>Paiement</li>
+                                            <ul class="paddingLeger">
+                                                <li>Admin</li>
+                                            </ul>
+                                        <li>Visibilité des commabdes clients</li>
+                                        <li>Ajout des produits</li>
+                                        <li>Commandes clients</li>
+                                    </ul>
+                                </li>  
+                            </ul>
+                            <a class="experience_liens" id="hover" href="https://github.com/lea78/My-supermarket.git">Aller sur GitHub</a>
+                            <br>
+
+
+                            <ul>
+                                <li><h5>Projet jeu de plates-formes java </h5>Projet jeu de plateformes en tour par tour 
+                                    <ul class="paddingLeger">
+                                        <li>Ennemis différents en fonction des salles</li>
+                                        <li>Gestion de la vie</li>
+                                        <li>Gestion des armes</li>
+                                    </ul>
+                                </li>  
+                            </ul>
+                            <a class="experience_liens" id="hover" href="https://github.com/arcreane/javaadventure-Just1bruidx.git"><script src="https://cdn.jsdelivr.net/npm/sketch-js@1.1.3/js/sketch.js"></script>Aller sur GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <script src='https://unpkg.com/three-mesh-ui'></script>
+
+            <script>
+                $(document).ready(function() {
+                $('button.btn-view-details-3').on('click', function() {
+                    $('#point3').modal('show');
+                    })
+                })
+                
+                $(document).ready(function() {
+                $('button.btn-view-details-2').on('click', function() {
+                    $('#point0').modal('show');
+                    })
+                })
+                
+                $(document).ready(function() {
+                $('button.btn-view-details-1').on('click', function() {
+                    $('#point2').modal('show');
+                    })
+                })
+                
+                $(document).ready(function() {
+                $('button.btn-view-details-0').on('click', function() {
+                    $('#point1').modal('show');
+                    })
+                })
+
+                $(function () {
+                    $('#modal').modal('toggle');
+                });
+            </script>
+        <button type="button" class="btn btn-secondary btn-view-details-3 point-3" data-toggle="modal"> Formation</button>
+        <button type="button" class="btn btn-secondary btn-view-details-2 point-0" data-toggle="modal"> Experience</button>
+        <button type="button" class="btn btn-secondary btn-view-details-1 point-2" data-toggle="modal"> Hobbies</button>
+        <button type="button" class="btn btn-secondary btn-view-details-0 point-1" data-toggle="modal"> Contact</button>  
+             
+
+
+    </body>
+</html>
