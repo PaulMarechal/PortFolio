@@ -69,6 +69,21 @@ const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
 
 
+var clockMedia = new THREE.Clock();
+
+// custom global variables
+var android;
+
+// the following code is from
+//    http://catchvar.com/threejs-animating-blender-models
+var animOffset       = 0,   // starting frame of animation
+	walking         = false,
+	duration        = 1000, // milliseconds to complete animation
+	keyframes       = 20,   // total number of animation frames
+	interpolation   = duration / keyframes, // milliseconds per frame
+	lastKeyframe    = 0,    // previous keyframe
+	currentKeyframe = 0;
+
 /**
  * Base
  */
@@ -658,15 +673,42 @@ renderer.setClearColor(debugObject.clearColor)
 //     })
 
 // Soleil 
-const sunGeometry = new THREE.SphereGeometry( 1,32, 16 );
-const sunMaterial = new THREE.MeshBasicMaterial( { color: '#efd807' } );
-const sun = new THREE.Mesh( sunGeometry, sunMaterial );
-sun.radius = 3
-sun.position.y = 5.5
-sun.position.x = -15.7
-sun.position.z = 1.5
+// const sunGeometry = new THREE.SphereGeometry( 1,32, 16 );
+// const sunMaterial = new THREE.MeshBasicMaterial( { color: '#efd807' } );
+// const sun = new THREE.Mesh( sunGeometry, sunMaterial );
+// sun.radius = 3
+// sun.position.y = 5.5
+// sun.position.x = -15.7
+// sun.position.z = 1.5
 
-scene.add( sun );
+// scene.add( sun );
+
+// Nouveau test SUN plus realiste 
+
+var geometrySun = new THREE.SphereGeometry( 1, 32, 16 );
+var materialSun = new THREE.MeshLambertMaterial( { color: '#efd807' } );
+var meshSun; 
+
+meshSun = new THREE.Mesh( geometrySun, materialSun );
+meshSun.position.set(-9, 4.55, 1.5);
+meshSun.radius = 3
+scene.add(meshSun);
+//imageSun.crossOrigin = "Anonymous";
+// SUPER SIMPLE GLOW EFFECT
+	// use sprite because it appears the same from all angles
+    const sunTexture = new THREE.TextureLoader().load('https://paulmarechal.xyz/CV/glow.png');
+	var spriteMaterial = new THREE.SpriteMaterial({
+		map: sunTexture,
+		useScreenCoordinates: false, 
+		color: 0xFFCC00, 
+        transparent: false, 
+        blending: THREE.AdditiveBlending,
+	});
+	var sprite = new THREE.Sprite( spriteMaterial );
+	sprite.scale.set(2.5, 2.5, 1.0);
+	meshSun.add(sprite); // this centers the glow at the mesh
+
+// fin tets nouveau sun 
 
 // Image tableau noir 
 var loaderTab = new THREE.TextureLoader();
@@ -860,9 +902,98 @@ line.scale.z = 5;
 controllerHand1.add( line.clone() );
 controllerHand2.add( line.clone() );
 
-
-
 // fin test VR
+
+// Animer personnage 
+////////////
+	// CUSTOM //
+	////////////
+	
+	var jsonLoader = new THREE.JSONLoader();
+	jsonLoader.load( "models/android-animations.js", addModelToScene );
+	// addModelToScene function is called back after model has loaded
+	
+	//var ambientLight = new THREE.AmbientLight(0x111111);
+	
+
+function addModelToScene( geometry, materials ) 
+{
+	// for preparing animation
+	for (var i = 0; i < materials.length; i++)
+		materials[i].morphTargets = true;
+		
+	var material = new THREE.MeshFaceMaterial( materials );
+	android = new THREE.Mesh( geometry, material );
+	android.scale.set(10,10,10);
+	scene.add( android );
+}
+
+function animate() 
+{
+    requestAnimationFrame( animate );
+	render();		
+	update();
+}
+
+function update()
+{
+	// delta = change in time since last call (seconds)
+	delta = clock.getDelta(); 
+	var moveDistance = 100 * delta;
+	walking = false;
+
+	if (Gamepad.supported) 
+	{
+		var pads = Gamepad.getStates();
+        var pad = pads[0]; // assume only 1 player.
+        if (pad) 
+		{
+			
+			// adjust for deadzone.
+			if (Math.abs(pad.leftStickX + pad.rightStickX) > 0.3)
+			{
+				android.rotation.y -= delta * (pad.leftStickX + pad.rightStickX);
+				walking = true;
+			}
+			if (Math.abs(pad.leftStickY + pad.rightStickY) > 0.2)
+			{
+				android.translateZ( -moveDistance * (pad.leftStickY + pad.rightStickY) );
+				walking = true;
+			}
+			if ( pad.faceButton0 || pad.faceButton1 || pad.faceButton2 || pad.faceButton3 || pad.select || pad.start )
+			{ 
+			    android.position.set(0,0,0);
+				android.rotation.set(0,0,0);
+			}
+			
+        }
+	}
+	
+	// move forwards / backwards
+	if ( keyboard.pressed("down") )
+		android.translateZ( -moveDistance );
+	if ( keyboard.pressed("up") )
+		android.translateZ(  moveDistance );
+	// rotate left/right
+	if ( keyboard.pressed("left") )
+		android.rotation.y += delta;
+	if ( keyboard.pressed("right") )
+		android.rotation.y -= delta;
+	
+	
+	var walkingKeys = ["up", "down", "left", "right"];
+	for (var i = 0; i < walkingKeys.length; i++)
+	{
+		if ( keyboard.pressed(walkingKeys[i]) )
+			walking = true;
+	}
+	
+	controls.update();
+	stats.update();
+}
+
+// fin animer personnage 
+
 
 /**
  * Animate
@@ -924,12 +1055,28 @@ const tick = () => {
     //torus.rotation.y = 0.4 * elapsedTime
     //torus.rotation.z = 0.4 * elapsedTime
 
-    // test animation VR
 
-    
+    // test animer personnage 
 
-
-    // fin de test animation VR 
+        if ( android && walking ) // exists / is loaded 
+	{
+		// Alternate morph targets
+		time = new Date().getTime() % duration;
+		keyframe = Math.floor( time / interpolation ) + animOffset;
+		if ( keyframe != currentKeyframe ) 
+		{
+			android.morphTargetInfluences[ lastKeyframe ] = 0;
+			android.morphTargetInfluences[ currentKeyframe ] = 1;
+			android.morphTargetInfluences[ keyframe ] = 0;
+			lastKeyframe = currentKeyframe;
+			currentKeyframe = keyframe;
+		}
+		android.morphTargetInfluences[ keyframe ] = 
+			( time % interpolation ) / interpolation;
+		android.morphTargetInfluences[ lastKeyframe ] = 
+			1 - android.morphTargetInfluences[ keyframe ];
+	}
+    // fin test animer personnage 
     
 
 
@@ -956,9 +1103,9 @@ const tick = () => {
         renderer.xr.enabled = true;
         // test rendu avec Oculus 
         renderer.xr.setFramebufferScaleFactor( 2.0 );
-        // torus.rotation.z += 0.01
-        // cone.rotation.y += 0.01
-        // cube.rotation.x += 0.01
+         torus.rotation.z += 0.01
+         cone.rotation.y += 0.01
+         cube.rotation.x += 0.01
 
         renderer.setAnimationLoop( function () {
             renderer.render( scene, camera);
