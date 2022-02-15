@@ -61,6 +61,74 @@ p{
 
 }
 
+.boutonFrancais{
+    position: absolute;
+    left:1%;
+    top: 1%;
+    border-color: black;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-left-width: 5px;
+    border-bottom-width: 5px;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-bottom: 4px;
+    margin-top: 6px;
+
+    background: rgba( 255, 255, 255, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+
+}
+
+.boutonAnglais{
+    position: absolute;
+    left:5%;
+    top: 1%;
+    border-color: black;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-left-width: 5px;
+    border-bottom-width: 5px;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-bottom: 4px;
+    margin-top: 6px;
+
+    background: rgba( 255, 255, 255, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+
+}
+
+.changeLang{
+    position: absolute;
+    left:1%;
+    top: 1%;
+    border-color: black;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-left-width: 5px;
+    border-bottom-width: 5px;
+    margin-left: 80%;
+    background: rgba( 255, 255, 255, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+    background-color: transparent;
+
+}
+
 .modal-first{
     width: 100%!important;
 
@@ -252,7 +320,7 @@ a[href^="tel"]::before {
     position: absolute;
     top: 50%;
     width: 100%;
-    height: 2px;
+    height: 50px;
     background: #ffffff;
     transform: scaleX(0);
     transform-origin: top left;
@@ -263,6 +331,14 @@ a[href^="tel"]::before {
 .loading-bar.ended{
     transform-origin: 100% 0;
     transition: transform 1.5s ease-in-out;
+}
+
+.welcome-loading{
+    text-align: center;
+    font-weight: 800;
+    font-style: bold;
+    font-size: 30;
+    color: #000000;
 }
 
 .photoPaul{
@@ -729,6 +805,13 @@ h5{
     width: 1em;
     text-align: center; 
     cursor: pointer;
+}
+
+@supports(padding: max(0px)) {
+    .post {
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+    }
 }
   
   

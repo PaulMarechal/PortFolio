@@ -37,6 +37,7 @@ const loadingManager = new THREE.LoadingManager(
     // Loaded
     () =>{
         window.setTimeout(() =>{
+            
             gsap.to(overlayMaterial.uniforms.uAlpha, { duration: 4, value: 0, delay: 1 })
 
             loadingBarElement.classList.add('ended')
@@ -71,11 +72,7 @@ gltfLoader.setDRACOLoader(dracoLoader)
 
 var clockMedia = new THREE.Clock();
 
-// custom global variables
-var android;
 
-// the following code is from
-//    http://catchvar.com/threejs-animating-blender-models
 var animOffset       = 0,   // starting frame of animation
 	walking         = false,
 	duration        = 1000, // milliseconds to complete animation
@@ -264,8 +261,8 @@ gltfLoader.load(
         stay.play()
 
         gltf.scene.scale.set(0.007, 0.007, 0.007) // for the Fox
-        gltf.scene.position.z = -3
-        gltf.scene.position.x = -4.8
+        gltf.scene.position.z = -2.8
+        gltf.scene.position.x = -3.8
         gltf.scene.position.y = -0.15
 
         // test 
@@ -277,7 +274,7 @@ gltfLoader.load(
             case 37:
                 action.play()
                 //gltf.scene.position.x += 0.02;
-                //camera.position.x += 0.01
+                camera.position.x += 0.02
                 //gltf.scene.position.z += 0.01;
                 //camera.position.z += 0.01
                 gltf.scene.rotation.y += 0.06;
@@ -294,9 +291,9 @@ gltfLoader.load(
                 camera.position.y = gltf.scene.position.y - 2;
                 camera.position.z = gltf.scene.position.z - 1;
 
-                camera.rotation.x = gltf.scene.rotation.x;
-                camera.rotation.y = gltf.scene.rotation.y;
-                camera.rotation.z = gltf.scene.rotation.z;
+                // camera.rotation.x = gltf.scene.rotation.x;
+                // camera.rotation.y = gltf.scene.rotation.y;
+                // camera.rotation.z = gltf.scene.rotation.z;
 
                 //camera.position.z += 0.01
                 break;
@@ -304,8 +301,8 @@ gltfLoader.load(
             case 39:
                 action.play()
                 //gltf.scene.position.x -= 0.02;
-                //camera.position.x += 0.01
-                //gltf.scene.position.z += 0.01;
+                camera.position.x += 0.02;
+                // gltf.scene.position.z += 0.01;
                 //camera.position.z += 0.01
                 gltf.scene.rotation.y -= 0.06;
                 //camera.rotation.y += 0.02
@@ -706,20 +703,19 @@ meshSun = new THREE.Mesh( geometrySun, materialSun );
 meshSun.position.set(-9, 4.55, 1.5);
 meshSun.radius = 3
 scene.add(meshSun);
-//imageSun.crossOrigin = "Anonymous";
+// imageSun.crossOrigin = "Anonymous";
 
-// 	// use sprite because it appears the same from all angles
-//     const sunTexture = new THREE.TextureLoader().load('https://paulmarechal.xyz/CV/glow.png');
-// 	var spriteMaterial = new THREE.SpriteMaterial({
-// 		map: sunTexture,
-// 		useScreenCoordinates: false, 
-// 		color: 0xFFCC00, 
-//         transparent: false, 
-//         blending: THREE.AdditiveBlending,
-// 	});
-// 	var sprite = new THREE.Sprite( spriteMaterial );
-// 	sprite.scale.set(2.5, 2.5, 1.0);
-// 	meshSun.add(sprite); // this centers the glow at the mesh
+    const sunTexture = new THREE.TextureLoader().load('https://paulmarechal.xyz/CV/glow.png');
+	var spriteMaterial = new THREE.SpriteMaterial({
+		map: sunTexture,
+		useScreenCoordinates: false, 
+		color: 0xFFCC00, 
+        transparent: false, 
+        blending: THREE.AdditiveBlending,
+	});
+	var sprite = new THREE.Sprite( spriteMaterial );
+	sprite.scale.set(2.5, 2.5, 1.0);
+	meshSun.add(sprite); 
 
 // // fin tets nouveau sun 
 
@@ -979,27 +975,6 @@ const tick = () => {
     //torus.rotation.z = 0.4 * elapsedTime
 
 
-    // test animer personnage 
-
-        if ( android && walking ) // exists / is loaded 
-	{
-		// Alternate morph targets
-		time = new Date().getTime() % duration;
-		keyframe = Math.floor( time / interpolation ) + animOffset;
-		if ( keyframe != currentKeyframe ) 
-		{
-			android.morphTargetInfluences[ lastKeyframe ] = 0;
-			android.morphTargetInfluences[ currentKeyframe ] = 1;
-			android.morphTargetInfluences[ keyframe ] = 0;
-			lastKeyframe = currentKeyframe;
-			currentKeyframe = keyframe;
-		}
-		android.morphTargetInfluences[ keyframe ] = 
-			( time % interpolation ) / interpolation;
-		android.morphTargetInfluences[ lastKeyframe ] = 
-			1 - android.morphTargetInfluences[ keyframe ];
-	}
-    // fin test animer personnage 
     
 
 
