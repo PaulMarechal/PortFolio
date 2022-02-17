@@ -716,36 +716,8 @@ circle2.rotation.y = -0.15;
 scene.add(circle2);
 material.opacity = 0;
 
-
-
-// test raycaster 
-
-// //   renderer.domElement.addEventListener("click", onclick, true);
-//   renderer.domElement.addEventListener("click", onclick, true);
-
-
-//   var selectedObject = circle;
-// //   var raycaster = new THREE.Raycaster();
-//  function onclick(event) {
-// //   alert("onclick")
-//     const darkmode =  new Darkmode();
-//     darkmode.toggle();
-
-//   var mouse = new THREE.Vector2();
-//   raycaster.setFromCamera(mouse, camera);
-//   var intersects = raycaster.intersectObjects(circle, true); //array
-//   console.log(intersects)
-//     if (intersects.length > 0) {
-//     selectedObject = intersects[0];
-//     alert(selectedObject);
-//     alert("lets go ! ")
-//  	}
-// }
-
-// test 2 
 window.addEventListener('click', onDocumentMouseDown, false);
 
-// var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
 function onDocumentMouseDown( event ) {
 event.preventDefault();
@@ -765,18 +737,10 @@ circle2.callback = function() { changeByPortal();}
 
 function changeByPortal(){
     var selectedObject = scene.getObjectByName("cercle"); 
-    // scene.remove( selectedObject );
     const darkmode =  new Darkmode();
     darkmode.toggle();
     console.log(selectedObject)
-    // var selectedObject = scene.getObjectByName("start");
-    // scene.remove( selectedObject );
-    // var selectedObject = scene.getObjectByName("menu");
-    // scene.remove( selectedObject );
 }
-// fin test raycaster 
-
-// fin test click portal 
 
 // Nouveau test SUN plus realiste 
 
