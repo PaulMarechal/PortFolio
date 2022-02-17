@@ -21,6 +21,7 @@ import { XRControllerModelFactory } from 'three/examples/jsm/webxr/XRControllerM
 import { XRHandModelFactory } from 'three/examples/jsm/webxr/XRHandModelFactory.js';
 import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.js';
 
+import Darkmode from 'darkmode-js';
 // import FontJSON from '/src/assets/Roboto-msdf.json';
 // import FontImage from '/src/assets/Roboto-msdf.png';
 // const ThreeMeshUI = require('three-mesh-ui');
@@ -221,6 +222,8 @@ const portalLightMaterial = new THREE.ShaderMaterial({
 function updateCamera() {
   camera.updateProjectionMatrix();
 }
+
+
 
 
 /**
@@ -692,6 +695,88 @@ renderer.setClearColor(debugObject.clearColor)
 // sun.position.z = 1.5
 
 // scene.add( sun );
+
+// test click portal 
+
+const geometry = new THREE.CircleGeometry( 1.1, 32 );
+const material = new THREE.MeshBasicMaterial( {side: THREE.DoubleSide, transparent: true } );
+const circle = new THREE.Mesh( geometry, material );
+const circle2 = new THREE.Mesh( geometry, material );
+circle.name = "cercle";
+circle.position.x = 1.0;
+circle.position.y = 1.2;
+circle.position.z = -5.8;
+circle.rotation.y = -0.15;
+scene.add( circle ); 
+
+circle2.position.x = 1;
+circle2.position.y = 1.2;
+circle2.position.z = -5.9;
+circle2.rotation.y = -0.15;
+scene.add(circle2);
+material.opacity = 0;
+
+
+
+// test raycaster 
+
+// //   renderer.domElement.addEventListener("click", onclick, true);
+//   renderer.domElement.addEventListener("click", onclick, true);
+
+
+//   var selectedObject = circle;
+// //   var raycaster = new THREE.Raycaster();
+//  function onclick(event) {
+// //   alert("onclick")
+//     const darkmode =  new Darkmode();
+//     darkmode.toggle();
+
+//   var mouse = new THREE.Vector2();
+//   raycaster.setFromCamera(mouse, camera);
+//   var intersects = raycaster.intersectObjects(circle, true); //array
+//   console.log(intersects)
+//     if (intersects.length > 0) {
+//     selectedObject = intersects[0];
+//     alert(selectedObject);
+//     alert("lets go ! ")
+//  	}
+// }
+
+// test 2 
+window.addEventListener('click', onDocumentMouseDown, false);
+
+// var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2();
+function onDocumentMouseDown( event ) {
+event.preventDefault();
+mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+raycaster.setFromCamera( mouse, camera );
+console.log(scene.children);
+var intersects = raycaster.intersectObjects( scene.children );
+console.log(intersects[1]);
+if ( intersects.length > 0 ) {
+    intersects[1].object.callback();
+}}
+
+circle.callback = function() { changeByPortal();}
+circle2.callback = function() { changeByPortal();}
+
+
+function changeByPortal(){
+    var selectedObject = scene.getObjectByName("cercle"); 
+    // scene.remove( selectedObject );
+    const darkmode =  new Darkmode();
+    darkmode.toggle();
+    console.log(selectedObject)
+    // var selectedObject = scene.getObjectByName("start");
+    // scene.remove( selectedObject );
+    // var selectedObject = scene.getObjectByName("menu");
+    // scene.remove( selectedObject );
+}
+// fin test raycaster 
+
+// fin test click portal 
 
 // Nouveau test SUN plus realiste 
 
