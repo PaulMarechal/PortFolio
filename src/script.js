@@ -674,10 +674,38 @@ camera.position.set( 12, 4, -5);
 controls.update();
 
 // Brouillard 
-scene.fog = new THREE.FogExp2( '#38c3fc', 0.04 );
+// scene.fog = new THREE.FogExp2( '#38c3fc', 0.04 );
 
-// couleur du ciel 
+// test changement couleur fog
+
+var now = new Date();
+const hourFog = now.getHours();
+
+if((hourFog >= 0 && hourFog <= 6) || (hourFog >= 22 && hourFog <=24)){
+    // meshSun.setColor(0xFFFFFF)
+    scene.fog = new THREE.FogExp2( '#191970' , 0.04 ); 
+} else {
+    // meshSun.setColor('#efd807')
+    scene.fog = new THREE.FogExp2( '#38c3fc', 0.04 );
+}
+
+// fin test changement couleur 
+
+
+
+// Color of the sky
 debugObject.clearColor = '#38c3fc'
+
+// Change color sky & sun depennding on the current time 
+var now = new Date();
+const heure = now.getHours();
+
+if((heure >= 0 && heure <= 6) || (heure >= 22 && heure <=24)){
+    debugObject.clearColor = '#191970'  
+} else {
+    debugObject.clearColor = '#38c3fc'
+}
+
 renderer.setClearColor(debugObject.clearColor)
 // gui
 //     .addColor(debugObject, 'clearColor')
@@ -712,7 +740,7 @@ scene.add( circle );
 circle2.position.x = 1;
 circle2.position.y = 1.2;
 circle2.position.z = -5.9;
-circle2.rotation.y = -0.15;
+circle2.rotation.y = 2.7;
 scene.add(circle2);
 material.opacity = 0;
 
@@ -742,16 +770,42 @@ function changeByPortal(){
     console.log(selectedObject)
 }
 
+
 // Nouveau test SUN plus realiste 
 
-var geometrySun = new THREE.SphereGeometry( 1, 32, 16 );
-var materialSun = new THREE.MeshLambertMaterial( { color: '#efd807' } );
-var meshSun; 
+// const moonColor = '#efd807'
+// var now = new Date();
+// const heureMoon = now.getHours();
+// console.log(heureMoon);
+// if((heureMoon >= 0 && heureMoon <= 6) || (heureMoon >= 22 && heureMoon <=24)){
+//     moonColor = "#ffffff"
 
-meshSun = new THREE.Mesh( geometrySun, materialSun );
+// } else {
+//     moonColor = '#ffffff'
+//     connsole.log("il passe ici")
+// }
+var geometrySun = new THREE.SphereGeometry( 1, 32, 16 );
+var materialSun = new THREE.MeshBasicMaterial( { color : '#efd807' } );
+var meshSun = new THREE.Mesh( geometrySun, materialSun );
+
+var now = new Date();
+const heureSun = now.getHours();
+
+meshSun.setColor = function(color){
+    materialSun.color.set( color );
+}
+
+if((heureSun >= 0 && heureSun <= 6) || (heure >= 22 && heure <=24)){
+    meshSun.setColor(0xFFFFFF)
+} else {
+    meshSun.setColor('#efd807')
+}
+
+scene.add(meshSun);
+
 meshSun.position.set(-9, 4.55, 1.5);
 meshSun.radius = 3
-scene.add(meshSun);
+
 // imageSun.crossOrigin = "Anonymous";
 
     const sunTexture = new THREE.TextureLoader().load('https://paulmarechal.xyz/CV/glow.png');
@@ -765,7 +819,6 @@ scene.add(meshSun);
 	var sprite = new THREE.Sprite( spriteMaterial );
 	sprite.scale.set(2.5, 2.5, 1.0);
 	meshSun.add(sprite); 
-
 // // fin tets nouveau sun 
 
 // Image tableau noir 
