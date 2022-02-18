@@ -57,6 +57,10 @@ const loadingManager = new THREE.LoadingManager(
     
 )
 
+// Heures
+var now = new Date();
+// const hour = now.getHours();
+const hour = 23;
 
 
 // Texture loader
@@ -436,6 +440,15 @@ const waterGeometry = new THREE.PlaneGeometry(100, 100, 512, 512)
 // Color
 debugObject.depthColor = '#11aced'
 debugObject.surfaceColor = '#00FFFF'
+
+if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
+    debugObject.depthColor = '#2626a6'  
+    debugObject.surfaceColor = '#0077ff'
+} else {
+    debugObject.depthColor = '#11aced'
+    debugObject.surfaceColor = '#0077ff'
+}
+
 // debugObject.depthColor = 'rgb(114 ,212 ,253, .7)'
 // debugObject.surfaceColor = 'rgb(134,218,253, .7)'
 
@@ -678,10 +691,9 @@ controls.update();
 
 // test changement couleur fog
 
-var now = new Date();
-const hourFog = now.getHours();
 
-if((hourFog >= 0 && hourFog <= 6) || (hourFog >= 22 && hourFog <=24)){
+
+if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     // meshSun.setColor(0xFFFFFF)
     scene.fog = new THREE.FogExp2( '#191970' , 0.04 ); 
 } else {
@@ -697,10 +709,8 @@ if((hourFog >= 0 && hourFog <= 6) || (hourFog >= 22 && hourFog <=24)){
 debugObject.clearColor = '#38c3fc'
 
 // Change color sky & sun depennding on the current time 
-var now = new Date();
-const heure = now.getHours();
 
-if((heure >= 0 && heure <= 6) || (heure >= 22 && heure <=24)){
+if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     debugObject.clearColor = '#191970'  
 } else {
     debugObject.clearColor = '#38c3fc'
@@ -788,14 +798,14 @@ var geometrySun = new THREE.SphereGeometry( 1, 32, 16 );
 var materialSun = new THREE.MeshBasicMaterial( { color : '#efd807' } );
 var meshSun = new THREE.Mesh( geometrySun, materialSun );
 
-var now = new Date();
-const heureSun = now.getHours();
+// var now = new Date();
+// const heureSun = now.getHours();
 
 meshSun.setColor = function(color){
     materialSun.color.set( color );
 }
 
-if((heureSun >= 0 && heureSun <= 6) || (heure >= 22 && heure <=24)){
+if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     meshSun.setColor(0xFFFFFF)
 } else {
     meshSun.setColor('#efd807')
