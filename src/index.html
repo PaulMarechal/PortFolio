@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8"/> 
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+        <meta name="viewport" content="initial-scale=1.0, viewport-fit=cover">
         <title>Paul Marechal - Portfolio</title>
         <meta http-equiv="content-language" content="fr"/>
-        <meta name='viewport' content='initial-scale=1, viewport-fit=cover'/>
+        <!-- <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'/>-->
         <meta name="keywords" content="Paul, Marechal, Maréchal, Sorbonne, Sorbonne Universite, Developpeur web, CFA, Sciences, Three.js, Three, JS, HTML, CSS, PHP, Java, Javascript, React-native, VR, XR"/>
         <meta name="description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel."/>
         <meta itemprop="name" content="Paul Marechal - Developpeur full stack en reconversion"/>
@@ -30,6 +32,7 @@
         <meta name="apple-mobile-web-app-title" content="Paul Marechal"/>
         <meta name="application-name" content="Paul Marechal"/>
         
+        
     </head>
     
     <body>
@@ -38,7 +41,7 @@
 
         <canvas class="webgl"></canvas>
         
-        <div class="loading-bar"><h1 class="welcome-loading">WELCOME TO MY PORTFOLIO</h1></div>
+        <div class="loading-bar"></div>
         
         <!-- Button trigger modal -->
         <button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal">
@@ -54,11 +57,12 @@
             🇬🇧
         </button>
         -->
+        <button id="change-background" class="btn boutonCouleur"> 🌗 </button>
+
+        
 
         <!-- test -->
         <script>
-            // test 
-
             const span = document.querySelector("#buttonLangue");
             const classes = span.classList;
 

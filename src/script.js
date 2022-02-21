@@ -59,9 +59,7 @@ const loadingManager = new THREE.LoadingManager(
 
 // Heures
 var now = new Date();
-// const hour = now.getHours();
-const hour = 23;
-
+const hour = now.getHours();
 
 // Texture loader
 const textureLoader = new THREE.TextureLoader()
@@ -453,9 +451,11 @@ if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
 // debugObject.surfaceColor = 'rgb(134,218,253, .7)'
 
 // Material
+
 const waterMaterial = new THREE.ShaderMaterial({
     vertexShader: waterVertexShader,
     fragmentShader: waterFragmentShader,
+    //uniformsNeedUpdate: true,
     uniforms: {
         uTime: { value: 0 },
 
@@ -471,7 +471,8 @@ const waterMaterial = new THREE.ShaderMaterial({
         uDepthColor: { value: new THREE.Color(debugObject.depthColor) },
         uSurfaceColor: { value: new THREE.Color(debugObject.surfaceColor) }, 
         uColorOffset: { value: 0.06 }, 
-        uColorMultiplier: { value: 3.68}
+        uColorMultiplier: { value: 3.68},
+        
     }
 })
 
@@ -710,6 +711,15 @@ debugObject.clearColor = '#38c3fc'
 
 // Change color sky & sun depennding on the current time 
 
+// <input type="button" id="button" value="Change Color" /> 
+// $('#button').click(onClick);
+// onClick = function() {
+//     //line.material.color = new THREE.Color(0xffffff * Math.random());
+//     // line.material.needsUpdate = true;
+//     debugObject.clearColor = '#191970'
+//     debugObject.material.needsUpdate = true;
+// };
+
 if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     debugObject.clearColor = '#191970'  
 } else {
@@ -743,14 +753,14 @@ const circle2 = new THREE.Mesh( geometry, material );
 circle.name = "cercle";
 circle.position.x = 1.0;
 circle.position.y = 1.2;
-circle.position.z = -5.8;
+circle.position.z = -5.7;
 circle.rotation.y = -0.15;
 scene.add( circle ); 
 
 circle2.position.x = 1;
 circle2.position.y = 1.2;
-circle2.position.z = -5.9;
-circle2.rotation.y = 2.7;
+circle2.position.z = -5.7;
+circle2.rotation.y = 2.9;
 scene.add(circle2);
 material.opacity = 0;
 
@@ -764,7 +774,7 @@ mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
 raycaster.setFromCamera( mouse, camera );
 console.log(scene.children);
 var intersects = raycaster.intersectObjects( scene.children );
-console.log(intersects[1]);
+// console.log(intersects[1]);
 if ( intersects.length > 0 ) {
     intersects[1].object.callback();
 }}
@@ -1024,6 +1034,50 @@ controllerHand1.add( line.clone() );
 controllerHand2.add( line.clone() );
 
 // fin test VR
+
+// test 2 
+var backgroundButton = document.querySelector('#change-background');
+const classess = backgroundButton.classList;
+
+backgroundButton.addEventListener('click', function(){
+    const result = classess.toggle("Night");
+
+    if (result) {
+        backgroundButton.textContent = `🌕`;
+
+        // Sky
+        scene.background = new THREE.Color( '#191970' );
+        // Fog
+        scene.fog = new THREE.FogExp2( '#191970' , 0.04 ); 
+        // Sun
+        materialSun.color.set('#ffffff')
+        // Texte 
+        let description = document.getElementById("apropos");
+        description.style.color = "#ffffff"
+        // Water
+        waterMaterial.uniforms.uDepthColor.value = new THREE.Color(0x2626a6)
+        waterMaterial.uniforms.uSurfaceColor.value = new THREE.Color(0x0077ff)
+
+    } else {
+        backgroundButton.textContent = `🌙`;
+
+        // Sky
+        scene.background = new THREE.Color( '#38c3fc' );
+        // Fog
+        scene.fog = new THREE.FogExp2( '#38c3fc', 0.04 );
+        // Sun
+        materialSun.color.set('#efd807')
+        // Texte 
+        let description = document.getElementById("apropos");
+        description.style.color = "#000000"
+        // Water
+        waterMaterial.uniforms.uDepthColor.value = new THREE.Color(0x11aced)
+        waterMaterial.uniforms.uSurfaceColor.value = new THREE.Color(0x0077ff)
+
+    }
+    
+});
+// fin test 
 
 
 /**
