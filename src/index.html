@@ -1,490 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
+
     <head>
-        <meta charset="UTF-8"/> 
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+        <meta charset="UTF-8" />
         <meta name="viewport" content="initial-scale=1.0, viewport-fit=cover">
         <title>Paul Marechal - Portfolio</title>
-        <meta http-equiv="content-language" content="fr"/>
-        <!-- <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'/>-->
-        <meta name="keywords" content="Paul, Marechal, Maréchal, Sorbonne, Sorbonne Universite, Developpeur web, CFA, Sciences, Three.js, Three, JS, HTML, CSS, PHP, Java, Javascript, React-native, VR, XR"/>
-        <meta name="description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel."/>
-        <meta itemprop="name" content="Paul Marechal - Developpeur full stack en reconversion"/>
-        <meta itemprop="description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel."/>
-        <meta property="og:url" content="https://paulmarechal.xyz"/>
-        <meta property="og:title" content="Paul Marechal - Developpeur full stack en reconversion"/>
-        <meta property="og:description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel."/>
-        <meta property="og:image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png"/>
-        <meta itemprop="image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png"/>
-        <meta name="apple-mobile-web-app-title" content="Paul Marechal"/>
-        <meta name="application-name" content="Paul Marechal"/>
-        <meta name="author" content="Paul Marechal"/>
-        <link rel="icon" type="image/png" sizes="16x16" href="https://paulmarechal.xyz/test1/assets/images/icon.png"/>
-        <link rel="icon" type="image/png" sizes="32x32" href="https://paulmarechal.xyz/test1/assets/images/icon.png"/>
-        <link rel="alternate" hreflang="fr" href ="https://paulmarechal.xyz/" />
-        <meta property="og:site_name" content="Paul Marechal - Developpeur full stack en reconversion"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:url" content="https://paulmarechal.xyz"/>
-        <meta property="og:title" content="Paul Marechal - Developpeur full stack en reconversion"/>
-        <meta property="og:description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel."/>
-        <meta property="og:image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png"/>
-        <meta name="apple-mobile-web-app-title" content="Paul Marechal"/>
-        <meta name="application-name" content="Paul Marechal"/>
-        
-        
+        <meta http-equiv="content-language" content="fr" />
+        <meta name="keywords" content="Paul, Marechal, Maréchal, Sorbonne, Sorbonne Universite, Developpeur web, CFA, Sciences, Three.js, Three, JS, HTML, CSS, PHP, Java, Javascript, React-native, VR, XR" />
+        <meta name="description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel." />
+        <meta itemprop="name" content="Paul Marechal - Developpeur full stack en reconversion" />
+        <meta itemprop="description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel." />
+        <meta property="og:url" content="https://paulmarechal.xyz" />
+        <meta property="og:title" content="Paul Marechal - Developpeur full stack en reconversion" />
+        <meta property="og:description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel." />
+        <meta property="og:image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png" />
+        <meta itemprop="image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png" />
+        <meta name="apple-mobile-web-app-title" content="Paul Marechal" />
+        <meta name="application-name" content="Paul Marechal" />
+        <meta name="author" content="Paul Marechal" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://paulmarechal.xyz/test1/assets/images/icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://paulmarechal.xyz/test1/assets/images/icon.png" />
+        <link rel="alternate" hreflang="fr" href="https://paulmarechal.xyz/" />
+        <meta property="og:site_name" content="Paul Marechal - Developpeur full stack en reconversion" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://paulmarechal.xyz" />
+        <meta property="og:title" content="Paul Marechal - Developpeur full stack en reconversion" />
+        <meta property="og:description" content="Développeur web à la Sorbonne | CFA des Sciences ultra motivé en reconversion professionnel." />
+        <meta property="og:image" content="https://paulmarechal.xyz/test/assets/images/1200x630_image_presentation.png" />
+        <meta name="apple-mobile-web-app-title" content="Paul Marechal" />
+        <meta name="application-name" content="Paul Marechal" />
     </head>
-    
+
     <body>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script src="modale.js"></script>
+        <script src='https://unpkg.com/three-mesh-ui'></script>
+
         <!-- test video dans ordinateur -->
-        <video id="video" playsinline webkit-playsinline muted loop autoplay width="30" height="10" src="https://paulmarechal.xyz/CV/rainingCode.mp4" style="display: none;"></video>
+        <video id="video" playsinline webkit-playsinline muted loop autoplay width="30" height="10"
+            src="https://paulmarechal.xyz/CV/rainingCode.mp4" style="display: none;"></video>
 
         <canvas class="webgl"></canvas>
-        
+
         <div class="loading-bar"></div>
-        
-        <!-- Button trigger modal -->
-        <button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal">
-            À propos
-        </button>
 
-        <button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">
-            ℹ️
-        </button>
+        <!-- Bouton ouverture modale 'A propos' -->
+        <button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal">À propos</button>
 
-        <!-- button change text test -->
-        <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">
-            🇬🇧
-        </button>
-        <!--
-        <button type="button" class="btn boutonAnglais" data-toggle="modal" onclick="toggleLanguage('English')">
-            🇬🇧
-        </button>
-        -->
+        <!-- Bouton ouverture modale 'Informations' -->
+        <button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">ℹ️</button>
+
+        <!-- Bouton changer langue 'Anglais' -->
+        <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">🇬🇧</button>
+
+        <!-- Bouton changer lumiere 'Day/Night' -->
         <button id="change-background" class="btn boutonCouleur"> 🌗 </button>
 
-        
-
-        <!-- test -->
-        <script>
-            const span = document.querySelector("#buttonLangue");
-            const classes = span.classList;
-
-            span.addEventListener('click', function() {
-            const result = classes.toggle("🇫🇷");
-
-            if (result) {
-                span.textContent = `🇫🇷`;
-                document.getElementById('buttonLangue').setAttribute('onclick', "toggleLanguage('English')");
-
-            } else {
-                span.textContent = `🇬🇧`;
-                document.getElementById('buttonLangue').setAttribute('onclick', "toggleLanguage('French')");
-
-            }
-            })
-
-            // fin test 
-
-
-            function toggleLanguage(language) {
-                let description = document.getElementById("apropos");
-                
-                let formationButton = document.getElementById("formationButton");
-                let experienceButton = document.getElementById("experienceButton");
-                let hobbiesButton = document.getElementById("hobbiesButton");
-                let contactButton = document.getElementById("contactButton");
-
-                let enQuelquesMots = document.getElementById("enQuelquesMots");
-                let enQuelquesMotsText1 = document.getElementById("enQuelquesMotsText1");
-                let enQuelquesMotsTitre2 = document.getElementById("enQuelquesMotsTitre2");
-                let enQuelquesMotsText2 = document.getElementById("enQuelquesMotsText2");
-
-                let formationTitre1 = document.getElementById("formationTitre1");
-                let formationText1 = document.getElementById("formationText1");
-                let formationTitre2 = document.getElementById("formationTitre2");
-                let formationText2 = document.getElementById("formationText2");
-
-                let competencesTitre = document.getElementById("competencesTitre");
-                let skills1 = document.getElementById("skills1");
-                let skills2 = document.getElementById("skills2");
-                let skills3 = document.getElementById("skills3");
-                let skills4 = document.getElementById("skills4");
-                let skills5 = document.getElementById("skills5");
-                let skills6 = document.getElementById("skills6");
-                let skills7 = document.getElementById("skills7");
-                let skills8 = document.getElementById("skills8");
-                let skills9 = document.getElementById("skills9");
-
-                let hobbiesTitre1 = document.getElementById("hobbiesTitre1");
-                let hobbiesTexte1 = document.getElementById("hobbiesTexte1");
-                let hobbiesTexte2 = document.getElementById("hobbiesTexte2");
-                let passions = document.getElementById("passions");
-
-                let contactTitre = document.getElementById("contactTitre");
-    
-                let expTitre1 = document.getElementById("expTitre1");
-                let expText11 = document.getElementById("expText11");
-                let expText12 = document.getElementById("expText12");
-                let expText13 = document.getElementById("expText13");
-                let expText14 = document.getElementById("expText14");
-
-                let expTitre2 = document.getElementById("expTitre2");
-                let expText21 = document.getElementById("expText21");
-                let expText22 = document.getElementById("expText22");
-                let expText23 = document.getElementById("expText23");
-                let expText24 = document.getElementById("expText24");
-                let expText25 = document.getElementById("expText25");
-
-                let realisationTitre = document.getElementById("realisationTitre");
-                let realisationTitre1 = document.getElementById("realisationTitre1");
-                let realisationTitre11 = document.getElementById("realisationTitre11");
-                let realisationText11 = document.getElementById("realisationText11");
-                let realisationText12 = document.getElementById("realisationText12");
-                let realisationText13 = document.getElementById("realisationText13");
-                let realisationText14 = document.getElementById("realisationText14");
-                let realisationText15 = document.getElementById("realisationText15");
-                let realisationText16 = document.getElementById("realisationText16");
-                let realisationText17 = document.getElementById("realisationText17");
-
-                let realisationTitre2 = document.getElementById("realisationTitre2");
-                let realisationTitre21 = document.getElementById("realisationTitre21");
-                let realisationText21 = document.getElementById("realisationText21");
-                let realisationText22 = document.getElementById("realisationText22");
-                let realisationText23 = document.getElementById("realisationText23");
-                let realisationText24 = document.getElementById("realisationText24");
-                let realisationText25 = document.getElementById("realisationText25");
-
-                let realisationTitre3 = document.getElementById("realisationTitre3");
-                let realisationTitre31 = document.getElementById("realisationTitre31");
-                let realisationText31 = document.getElementById("realisationText31");
-                let realisationText32 = document.getElementById("realisationText32");
-                let realisationText33 = document.getElementById("realisationText33");
-                let realisationText34 = document.getElementById("realisationText34");
-                let realisationText35 = document.getElementById("realisationText35");
-                let realisationText36 = document.getElementById("realisationText36");
-
-                let realisationTitre4 = document.getElementById("realisationTitre4");
-                let realisationTitre41 = document.getElementById("realisationTitre41");
-                let realisationText41 = document.getElementById("realisationText41");
-                let realisationText42 = document.getElementById("realisationText42");
-                let realisationText43 = document.getElementById("realisationText43");
-                let realisationText44 = document.getElementById("realisationText44");
-                let realisationText45 = document.getElementById("realisationText45");
-
-                let realisationTitre5 = document.getElementById("realisationTitre5");
-                let realisationTitre51 = document.getElementById("realisationTitre51");
-                let realisationText51 = document.getElementById("realisationText51");
-                let realisationText52 = document.getElementById("realisationText52");
-                let realisationText53 = document.getElementById("realisationText53");
-                let realisationText54 = document.getElementById("realisationText54");
-                let realisationText55 = document.getElementById("realisationText55");
-                let realisationText56 = document.getElementById("realisationText56");
-                let realisationText57 = document.getElementById("realisationText57");
-
-                let realisationTitre6 = document.getElementById("realisationTitre6");
-                let realisationTitre61 = document.getElementById("realisationTitre61");
-                let realisationText61 = document.getElementById("realisationText61");
-                let realisationText62 = document.getElementById("realisationText62");
-                let realisationText63 = document.getElementById("realisationText63");
-                let realisationText64 = document.getElementById("realisationText64");
-                let realisationText65 = document.getElementById("realisationText65");
-                let realisationText66 = document.getElementById("realisationText66");
-                let realisationText67 = document.getElementById("realisationText67");
-                let realisationText68 = document.getElementById("realisationText68");
-    
-                let realisationTitre7 = document.getElementById("realisationTitre7");
-                let realisationTitre71 = document.getElementById("realisationTitre71");
-                let realisationText71 = document.getElementById("realisationText71");
-                let realisationText72 = document.getElementById("realisationText72");
-                let realisationText73 = document.getElementById("realisationText73");
-
-                let info1 = document.getElementById("info1");
-                let info2 = document.getElementById("info2");
-                let info3 = document.getElementById("info3");
-                let info4 = document.getElementById("info4");
-                let info5 = document.getElementById("info5");
-                let info6 = document.getElementById("info6");
-
-                if (language === "French") {
-                    description.innerHTML = "A propos";
-                    formationButton.innerHTML = "Formation"
-                    experienceButton.innerHTML = "Experience"
-                    hobbiesButton.innerHTML = "Hobbies"
-                    contactButton.innerHTML = "Contact"
-
-                    enQuelquesMots.innerHTML = "En quelques mots"
-                    enQuelquesMotsText1.innerHTML = "Après presque 10 ans dans la restauration et avoir mûrement préparé ma reconversion, j’ai donc décidé de me tourner vers un métier qui me passionne depuis longtemps à savoir les nouvelles technologies et plus particulièrement le developpement web. Ce métier est pour moi magnifique car les seules limites d'un bon développeur sont son imagination et sa créativité. "
-                    enQuelquesMotsTitre2.innerHTML = "Étudiant à La Sorbonne | CFA des Sciences"
-                    enQuelquesMotsText2.innerHTML = "Grâce à ma double formation, à la fois dans la restauration, dans l’informatique et à une somme d’expériences professionnelles performantes, j’ai acquis une certaine rigueur, un sens de l’organisation et une capacité à m’adapter très facilement. Le travail en équipe et la rapidité d’exécution sont par essence des valeurs essentielles dans la restauration, que je souhaite mettre au service du métier de développeur web. Je ne souhaite plus être spectateur mais acteur dans ce monde en perpétuel changement et renouvellement."
-
-                    formationTitre1.innerHTML = "Licence Projet Web et Mobile Sorbonne Université | CFA des Sciences"
-                    formationText1.innerHTML = "Création graphique et animations Web </br>POO et Architecture Logicielle, conception de bases de données pour le Web Frameworks pour le développement Back Office</br>Réseaux et Sécurité, Système d’exploitation et Serveur Web</br>UX design et Ergonomie</br>Développement Mobile</br>Gestion de projet Web, Méthodes Agiles</br>"
-                    formationTitre2.innerHTML = "Analyste développeur d’applications informatiques ESIEE Paris Tech | Paris"
-                    formationText2.innerHTML = "Formation ayant pour but d’acquérir les techniques de codage, d’analyse de projet et d’intégration technique de nouvelles technologies numériques. Les cours sont dispensés selon des méthodes SCRUM - Agiles autour de projets ( sprint ) en équipe sous la responsabilité d’un coach."
-
-                    competencesTitre.innerHTML = "Compétences clés"
-                    skills1.innerHTML = "Création de sites dynamiques pour restaurants"
-                    skills2.innerHTML = "Méthodes Agiles"
-                    skills3.innerHTML = "Planification et gestion de projet"
-                    skills4.innerHTML = "Langage de programmation orienté objet"
-                    skills5.innerHTML = "Fiable et rigoureux"
-                    skills6.innerHTML = "Réactif et toujours à la pointe des dernières technologies"
-                    skills7.innerHTML = "Enthousiaste et curieux"
-                    skills8.innerHTML = "Sens du relationnel"
-                    skills9.innerHTML = "Créatif et imaginatif"
-
-                    hobbiesTitre1.innerHTML = "Globe trotter amateur de découvertes"
-                    hobbiesTexte1.innerHTML = "Voyage culinaire à vélo en Europe ( 12 pays - 8000km )"
-                    hobbiesTexte2.innerHTML = "Nombreux sentiers de GR et voyages en backpack"
-                    passions.innerHTML = "Passionné par les nouvelles technologies, la musique et la cinématographie"
-
-                    contactTitre.innerHTML = "Vous pouvez me joindre par : "
-
-                    expTitre1.innerHTML = "Stage développeur full-stack - BBFT"
-                    expText11.innerHTML = "Création d’une plate-forme web de vente de produits de fitness"
-                    expText12.innerHTML = "Vision globale des objectifs d’accessibilité, d’attractivité, de référencement, d’ergonomie et de légitimité ainsi qu’un module de visualisation de la salle en 3D"
-                    expText13.innerHTML = "Création du site web en PHP / MySQL / JS / Three.js"
-                    expText14.innerHTML = "Veille et validation du code pour garantir la compatibilité et la sécurité de la plate-forme de vente"
-
-                    expTitre2.innerHTML = "Développeur front-end - Aero-Bay"
-                    expText21.innerHTML = "Réalisation de la nouvelle identité visuelle"
-                    expText22.innerHTML = "Lancement de nouvelles fonctionnalités ( services )"
-                    expText23.innerHTML = "Utilisation de Figma / HTML5 / CSS3 / JS / Java"
-                    expText24.innerHTML = "Refonte de l'intranet (UI/UX)"
-                    expText25.innerHTML = "Réalisation du design des posts LinkedIn"
-
-                    realisationTitre.innerHTML = "Réalisations"
-                    realisationTitre1.innerHTML = "SCHOOL & U - Application de carnet connecté "
-                    realisationTitre11.innerHTML = "Réalisation d'une application en React-Native pour faciliter la communication des parents et des professeurs. L'application est disponible pour iOS, Android et Web."
-                    realisationText11.innerHTML = "Identification"
-                    realisationText12.innerHTML = "Messagerie: chat commun et/ou entre deux parents de la classe"
-                    realisationText13.innerHTML = "Blog: affichage des photos et messages de la maitresse concernant la classe"
-                    realisationText14.innerHTML = "Carnet de liaison"
-                    realisationText15.innerHTML = "Modification des informations et ajout d'un nouvel enfant"
-                    realisationText16.innerHTML = "Base de données : Firebase & Firestore"
-                    realisationText17.innerHTML = "Aller sur GitHub"
-
-                    realisationTitre2.innerHTML = "Feelin'Food mobile - Application de vente à emporter pour restaurant"
-                    realisationTitre21.innerHTML = "Réalisation d'une application en React-Native de vente à emporter pour restaurants. Projet réalisé en React-Native sur Snack. "
-                    realisationText21.innerHTML = "Page de connexion"
-                    realisationText22.innerHTML = "Page home : affichage des restaurants & cathégorie"
-                    realisationText23.innerHTML = "Redirection vers le restaurants sélectionné"
-                    realisationText24.innerHTML = "Panier & Validation du paiement"
-                    realisationText25.innerHTML = "Aller sur Snack"
-
-                    realisationTitre3.innerHTML = "Feelin'Food - site pour restaurant click & collect"
-                    realisationTitre31.innerHTML = "Réalisation d'un site dynamique pour restaurant souhaitant mettre en place de la vente à emporter Ce projet a été réalisé en: HTML5, CSS3, PHP, mySQL, Vanilla JS."
-                    realisationText31.innerHTML = "Identification"
-                    realisationText32.innerHTML = "Infos restaurant - possibilité de suivre sur une carte"
-                    realisationText33.innerHTML = "Compte utilisateur"
-                    realisationText34.innerHTML = "Suivi des fournisseurs, stocks, fiches techniques"
-                    realisationText35.innerHTML = "Click & collect"
-                    realisationText36.innerHTML = "Aller sur le site"
-
-                    realisationTitre4.innerHTML = "Projet Vue.js"
-                    realisationTitre41.innerHTML = "HTML5, CSS3, VANILLA JS, VUE.JS - Projet regroupant différentes fonctionnalités Vue.js"
-                    realisationText41.innerHTML = "Horloge (Vue-Clock2)"
-                    realisationText42.innerHTML = "Horloge digitale (Date-fns)"
-                    realisationText43.innerHTML = "Création d'un formulaire dynamique en drag & drop (FormBuilder)"
-                    realisationText44.innerHTML = "Liste des différents Bitcoins et barre de recherche (Axios)"
-                    realisationText45.innerHTML = "Aller sur GitHub"
-
-                    realisationTitre5.innerHTML = "Projet Vanilla JS"
-                    realisationTitre51.innerHTML = "Projet regroupant différentes fonctionnalités en JS Vanilla "
-                    realisationText51.innerHTML = "ToDo List"
-                    realisationText52.innerHTML = "Modifier le contenu du site avec l'espace Admin"
-                    realisationText53.innerHTML = "Recherche d'utilisateurs GitHub"
-                    realisationText54.innerHTML = "Quizz"
-                    realisationText55.innerHTML = "App Météo"
-                    realisationText56.innerHTML = "Lecteur MP3 avec barre d'oscillation 2D"
-                    realisationText51.innerHTML = "Théme jour/nuit - custom"
-
-                    realisationTitre6.innerHTML = "Projet E-Shop Java"
-                    realisationTitre61.innerHTML = "Application de magasin en ligne en Java (terminal & Swing) "
-                    realisationText61.innerHTML = "Commandes"
-                    realisationText62.innerHTML = "Visibilité des produits"
-                    realisationText63.innerHTML = "Ajout dans le panier"
-                    realisationText64.innerHTML = "Paiement"
-                    realisationText65.innerHTML = "Admin"
-                    realisationText66.innerHTML = "Visibilité des commabdes clients"
-                    realisationText67.innerHTML = "Ajout des produits"
-                    realisationText68.innerHTML = "Commandes clients"
-
-                    realisationTitre7.innerHTML = "Projet jeu de plates-formes java"
-                    realisationTitre71.innerHTML = "Projet jeu de plateformes en tour par tour "
-                    realisationText71.innerHTML = "Ennemis différents en fonction des salles"
-                    realisationText72.innerHTML = "Gestion de la vie"
-                    realisationText73.innerHTML = "Gestion des armes"
-
-                    info1.innerHTML = "Double click sur le portail pour entrer dans une autre dimension"
-                    info2.innerHTML = "Flèches directionnelles pour déplacer le renard"
-                    info3.innerHTML = "Possibilité de changer la langue ( FR / EN ) en cliquant sur '🇬🇧'"
-                    info4.innerHTML = "La scène change en fonction du jour et de la nuit. Possibilité de permuter en appuyant sur le bouton '🌗'"
-                    info5.innerHTML = "Possibilité de zoomer / déplacer sur les côtés "
-                    info6.innerHTML = "Possibilité de passer en VR ( Oculus Quest 2 ou autres )"
-                } 
-                
-                else {
-                    description.innerHTML = "Special Skills";
-                    formationButton.innerHTML = "Training"
-                    experienceButton.innerHTML = "Experience"
-                    hobbiesButton.innerHTML = "Hobbies"
-                    contactButton.innerHTML = "Contact"
-
-                    enQuelquesMots.innerHTML = "In a few words"
-                    enQuelquesMotsText1.innerHTML = "After almost 10 years in the restaurant business and having carefully prepared my conversion,I have therefore decided to turn to a profession that has fascinated me for a long time, namely new technologies and more particularly web development. This job is for me beautiful because the only limits of a good developer are his imagination and his creativity."
-                    enQuelquesMotsTitre2.innerHTML = "Student at Sorbonne University | CFA des Sciences"
-                    enQuelquesMotsText2.innerHTML = "Thanks to my dual training, both in catering, in IT and a sum successful professional experiences, I acquired a certain rigor, a sense of organization and an ability to adapt very easily. Teamwork and speed of execution are par essence of the essential values ​​in catering, which I wish to put at the service of the profession of Web developer. I no longer wish to be a spectator but an actor in this constantly changing world and renewal."
-
-                    formationTitre1.innerHTML = "Bachelor’s Degree Web and Mobile </br>Sorbonne University | CFA of Sciences"
-                    formationText1.innerHTML = "Graphic design and web animations</br> POO and Software Architecture, design of databases for Web Frameworks for Back Office development</br> Networks and Security, Operating System and Web Server</br> UX design and Ergonomics </br>Mobile Development Web project management, Agile Methods"
-                    formationTitre2.innerHTML = "IT application developer analyst ESIEE Paris Tech | Paris"
-                    formationText2.innerHTML = "Training aimed at acquiring coding techniques, project analysis and technical integration of new digital technologies. The courses are given according to SCRUM - Agile methods around projects (sprint) in teams under the responsibility of a coach."
-                    competencesTitre.innerHTML = "Skills"
-
-                    skills1.innerHTML = "Creation of dynamic sites for restaurants"
-                    skills2.innerHTML = "Agile methods"
-                    skills3.innerHTML = "Project planning and management"
-                    skills4.innerHTML = "Object-oriented programming language"
-                    skills5.innerHTML = "Reliable and rigorous"
-                    skills6.innerHTML = "Reactive and always at the forefront of the latest technologies"
-                    skills7.innerHTML = "Enthousiaste et curieux"
-                    skills8.innerHTML = "The meaning of relational"
-                    skills9.innerHTML = "Creative and imaginative"
-
-                    hobbiesTitre1.innerHTML = "Globe trotter lover of discoveries"
-                    hobbiesTexte1.innerHTML = "Culinary bike trip in Europe (12 countries - 8000km)"
-                    hobbiesTexte2.innerHTML = "Many GR trails and backpack trips"
-                    passions.innerHTML = "Passionate about new technologies, music and cinematography"
-                                        
-                    contactTitre.innerHTML = "You can reach me by : "
-
-                    expTitre1.innerHTML = "Full-stack developer internship - BBFT"
-                    expText11.innerHTML = "Creation of a web platform for the sale of fitness products"
-                    expText12.innerHTML = "Global vision of the objectives of accessibility, attractiveness, referencing, ergonomics and legitimacy as well as a module of visualization of the room in 3D"
-                    expText13.innerHTML = "Creation of the website in PHP / MySQL / JS / Three.js"
-                    expText14.innerHTML = "Code monitoring and validation to ensure compatibility and security of the sales platform"
-
-                    expTitre2.innerHTML = "Front-end developer apprenticeship - Aero-Bay"
-                    expText21.innerHTML = "Realization of the new visual identity"
-                    expText22.innerHTML = "Launch of new functionalities (services)"
-                    expText23.innerHTML = "Using Figma / HTML5 / CSS3 / JS / Java"
-                    expText24.innerHTML = "Redesign of the intranet (UI/UX)"
-                    expText25.innerHTML = "Realization of the design of the LinkedIn posts"
-                    
-                    realisationTitre.innerHTML = "Achievements"
-                    realisationTitre1.innerHTML = "SCHOOL & U - Connected notebook application"
-                    realisationTitre11.innerHTML = "Realization of a React-Native application to facilitate communication between parents and teachers. The app is available for iOS, Android and Web."
-                    realisationText11.innerHTML = "Identification"
-                    realisationText12.innerHTML = "Messaging: common chat and/or between two parents of the class"
-                    realisationText13.innerHTML = "Blog: posting photos and messages from the teacher about the class"
-                    realisationText14.innerHTML = "Liaison book"
-                    realisationText15.innerHTML = "Editing information and adding a new child"
-                    realisationText16.innerHTML = "Database: Firebase & Firestore"
-                    realisationText17.innerHTML = "Go to GitHub"
-
-                     realisationTitre2.innerHTML = "Feelin'Food mobile - Restaurant takeaway app"
-                    realisationTitre21.innerHTML = "Realization of a React-Native takeaway application for restaurants. Project realized in React-Native on Snack."
-                    realisationText21.innerHTML = "Login page"
-                    realisationText22.innerHTML = "Home page: display of restaurants & categories"
-                    realisationText23.innerHTML = "Redirection to the selected restaurants"
-                    realisationText24.innerHTML = "Basket & Payment validation"
-                    realisationText25.innerHTML = "Go to Snack"
-                
-                    realisationTitre3.innerHTML = "Feelin'Food - website for click & collect restaurants"
-                    realisationTitre31.innerHTML = "Realization of a dynamic site for restaurant wishing to set up take-out sales This project was carried out in: HTML5, CSS3, PHP, mySQL, Vanilla JS."
-                    realisationText31.innerHTML = "Identification"
-                    realisationText32.innerHTML = "Restaurant info - possibility to follow on a map"
-                    realisationText33.innerHTML = "User account"
-                    realisationText34.innerHTML = "Follow-up of suppliers, stocks, technical sheets"
-                    realisationText35.innerHTML = "Click & collect"
-                    realisationText36.innerHTML = "Go to the website" 
-
-                    realisationTitre4.innerHTML = "Vue.js project"
-                    realisationTitre41.innerHTML = "HTML5, CSS3, VANILLA JS, VUE.JS - Project bringing together different Vue.js functionalities"
-                    realisationText41.innerHTML = "Clock (View-Clock2)"
-                    realisationText42.innerHTML = "Digital clock (Date-fns)"
-                    realisationText43.innerHTML = "Creation of a dynamic drag & drop form (FormBuilder)"
-                    realisationText44.innerHTML = "List of different Bitcoins and search bar (Axios)"
-                    realisationText45.innerHTML = "Go on GitHub"
-
-                    realisationTitre5.innerHTML = "VanillaJS Project"
-                    realisationTitre51.innerHTML = "Project grouping different functionalities in JS Vanilla"
-                    realisationText51.innerHTML = "ToDo List"
-                    realisationText52.innerHTML = "Modify the content of the site with the Admin space"
-                    realisationText53.innerHTML = "GitHub User Finder"
-                    realisationText54.innerHTML = "Quiz"
-                    realisationText55.innerHTML = "Weather app"
-                    realisationText56.innerHTML = "MP3 player with 2D wobble bar"
-                    realisationText51.innerHTML = "Day/night theme - custom"
-
-                    realisationTitre6.innerHTML = "Java E-Shop project"
-                    realisationTitre61.innerHTML = "Online Store Application in Java (Terminal & Swing)"
-                    realisationText61.innerHTML = "Orders"
-                    realisationText62.innerHTML = "Product visibility"
-                    realisationText63.innerHTML = "Add to cart"
-                    realisationText64.innerHTML = "Payment"
-                    realisationText65.innerHTML = "Admin"
-                    realisationText66.innerHTML = "Visibility of customer orders"
-                    realisationText67.innerHTML = "Adding products"
-                    realisationText68.innerHTML = "Customer orders"
-
-                    realisationTitre7.innerHTML = "Java platform game project"
-                    realisationTitre71.innerHTML = "Turn-based platform game project"
-                    realisationText71.innerHTML = "Different enemies depending on the rooms"
-                    realisationText72.innerHTML = "Life management"
-                    realisationText73.innerHTML = "Weapon management"
-                    
-                    info1.innerHTML = "Double click on the portal to enter another dimension"
-                    info2.innerHTML = "Directional arrows to move the fox"
-                    info3.innerHTML = "Possibility to change the language (FR / EN) by clicking on '🇬🇧'"
-                    info4.innerHTML = "The scene changes depending on day and night. Ability to swap by pressing the '🌗' button"
-                    info5.innerHTML = "Ability to zoom / move to the sides"
-                    info6.innerHTML = "Possibility to switch to VR (Oculus Quest 2 or others)"
-              }
-            }
-          </script>
-    
-
-        <!-- fin de test -->
-
-        <!-- <div class="dropdown changeLang">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Language Option
-            <span class="caret"></span></button>
-              <li onclick="toggleLanguage('English')"><a href="#">English</a></li>
-              <li onclick="toggleLanguage('Korean')"><a href="#">Korean</a></li>
-          </div> -->
-
-        <!-- button change text test fin -->
-
-        <!-- test infos modale -->
-            <div class="modal masque" data-backdrop="false" id="infosModal">
-                <div>
-                    <div class="message3">
-                        <button type="button" class="close2" data-dismiss="modal" aria-hidden="true">X</button>
-                        <div id="contentPoint3">
-                            <div class="divRealisations">
+        <!-- Modale Aide/Informations -->
+        <div class="modal masque" data-backdrop="false" id="infosModal">
+            <div>
+                <div class="message3">
+                    <button type="button" class="close2" data-dismiss="modal" aria-hidden="true">X</button>
+                    <div id="contentPoint3">
+                        <div class="divRealisations">
                             </br>
                             <h4>Informations</h4>
-                                <ul>
-                                    <li id="info1">Double click sur le portail pour entrer dans une autre dimension </li></br>
-                                    <li id="info2">Flèches directionnelles pour déplacer le renard</li></br>
-                                    <li id="info3">Possibilité de changer la langue ( FR / EN ) en cliquant sur '🇬🇧'</li></br>
-                                    <li id="info4">La scène change en fonction du jour et de la nuit. Possibilité de permuter en appuyant sur le bouton '🌗'</li></br>
-                                    <li id="info5">Possibilité de zoomer / déplacer sur les côtés </li></br>
-                                    <li id="info6">Possibilité de passer en VR ( Oculus Quest 2 ou autres )</li>
-                                </ul>
-                            </div>
+                            <ul>
+                                <li id="info1">Double click sur le portail pour entrer dans une autre dimension </li></br>
+                                <li id="info2">Flèches directionnelles pour déplacer le renard</li></br>
+                                <li id="info3">Possibilité de changer la langue ( FR / EN ) en cliquant sur '🇬🇧'</li></br>
+                                <li id="info4">La scène change en fonction du jour et de la nuit. Possibilité de permuter en
+                                    appuyant sur le bouton '🌗'</li></br>
+                                <li id="info5">Possibilité de zoomer / déplacer sur les côtés </li></br>
+                                <li id="info6">Possibilité de passer en VR ( Oculus Quest 2 ou autres )</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- fin test Informations/Aide modale -->
 
-        <!-- fin test infos modale -->
-
-        <!-- test information modale -->
-
+        <!-- Modale 'En quelques mots' -->
         <div class="modal masque" data-backdrop="false" id="exampleModal">
             <div>
                 <div class="message3">
@@ -492,220 +93,60 @@
                     <div id="contentPoint3">
                         <img class="imageMadere" src="./img/madere.jpg" alt="">
                         <h4 class="modal-title"><img class="photoPaul" style="margin-top: -7em;" src="./img/photoPolo.jpeg" alt="photo portrait Paul Marechal "></h4>
-        
-                            <br>
-                            <h4 style="margin-top: -1em;" id="enQuelquesMots">En quelques mots</h4>
-                            <p id="enQuelquesMotsText1">Après presque 10 ans dans la restauration et avoir mûrement préparé ma reconversion, 
-                                j’ai donc décidé de me tourner vers un métier qui me passionne depuis longtemps à savoir 
-                                les nouvelles technologies et plus particulièrement le developpement web. Ce métier est pour moi 
-                                magnifique car les seules limites d'un bon développeur sont son imagination et sa créativité. 
-                            </p>
-                            <h5 id="enQuelquesMotsTitre2">Étudiant à La Sorbonne | CFA des Sciences</h5>
-                            <p id="enQuelquesMotsText2">
-                                Grâce à ma double formation, à la fois dans la restauration, dans l’informatique et à une somme 
-                                d’expériences professionnelles performantes, j’ai acquis une certaine rigueur, un sens de l’organisation 
-                                et une capacité à m’adapter très facilement. Le travail en équipe et la rapidité d’exécution sont par 
-                                essence des valeurs essentielles dans la restauration, que je souhaite mettre au service du métier de 
-                                développeur web. Je ne souhaite plus être spectateur mais acteur dans ce monde en perpétuel changement 
-                                et renouvellement.
-                            <p>
-                            <!-- <p class="name-first-modal"><i>Paul Maréchal</i></p> -->
-                            <button type="button" class="name-first-modal btn btn-default" data-dismiss="modal"> <i>Paul Maréchal </i></button>
 
+                        <br>
+                        <h4 style="margin-top: -1em;" id="enQuelquesMots">En quelques mots</h4>
+                        <p id="enQuelquesMotsText1">Après presque 10 ans dans la restauration et avoir mûrement préparé ma
+                            reconversion,
+                            j’ai donc décidé de me tourner vers un métier qui me passionne depuis longtemps à savoir
+                            les nouvelles technologies et plus particulièrement le developpement web. Ce métier est pour moi
+                            magnifique car les seules limites d'un bon développeur sont son imagination et sa créativité.
+                        </p>
+                        <h5 id="enQuelquesMotsTitre2">Étudiant à La Sorbonne | CFA des Sciences</h5>
+                        <p id="enQuelquesMotsText2">
+                            Grâce à ma double formation, à la fois dans la restauration, dans l’informatique et à une somme
+                            d’expériences professionnelles performantes, j’ai acquis une certaine rigueur, un sens de
+                            l’organisation
+                            et une capacité à m’adapter très facilement. Le travail en équipe et la rapidité d’exécution
+                            sont par
+                            essence des valeurs essentielles dans la restauration, que je souhaite mettre au service du
+                            métier de
+                            développeur web. Je ne souhaite plus être spectateur mais acteur dans ce monde en perpétuel
+                            changement
+                            et renouvellement.
+                        <p>
+                            <button type="button" class="name-first-modal btn btn-default" data-dismiss="modal"> <i>Paul Maréchal </i></button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- fin de test information modale -->
-  
-        <!-- Information modale -->
-        <!-- <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="headerAPropos modal-header">
-                    <h5 class="modal-title"><img class="photoPaul" src="./img/photoPolo.jpeg" alt=""></h5>
-                    
-                    <button style="color: white;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body-aPropos">
-                    <h4>En quelques mots</h4>
-                    <p>Après presque 10 ans dans la restauration et avoir mûrement préparé ma reconversion, 
-                        j’ai donc décidé de me tourner vers un métier qui me passionne depuis longtemps à savoir 
-                        les nouvelles technologies et plus particulièrement le developpement web. Ce métier est pour moi 
-                        magnifique car les seules limites d'un bon développeur sont son imagination et sa créativité. 
-                    </p>
-                    <h4>Étudiant à La Sorbonne | CFA des Sciences</h4>
-                    <p>
-                        Grâce à ma double formation, à la fois dans la restauration, dans l’informatique et à une somme 
-                        d’expériences professionnelles performantes, j’ai acquis une certaine rigueur, un sens de l’organisation 
-                        et une capacité à m’adapter très facilement. Le travail en équipe et la rapidité d’exécution sont par 
-                        essence des valeurs essentielles dans la restauration, que je souhaite mettre au service du métier de 
-                        développeur web. Je ne souhaite plus être spectateur mais acteur dans ce monde en perpétuel changement 
-                        et renouvellement.
-                    <p>
-                     // <p class="name-first-modal"><i>Paul Maréchal</i></p> 
-                    <button type="button" class="name-first-modal btn btn-default" data-dismiss="modal"> <i>Paul Maréchal</i> </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default name-c" data-dismiss="modal">© Paul Maréchal 2021</button>
-                </div>
-            </div>
-            </div>
-        </div> -->
-
-
+        <!-- fin modale 'En quelques mots' -->
         <div class="point">
 
-
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-                 <script>
-                    $(window).on('load',function(){
-                    $('#informations').modal('show');
-                });
-                function closeAlertBox(){
-                    alertBox = document.getElementById("alertBox");
-                    alertClose = document.getElementById("alertClose");
-                    alertBox.style.visibility = "hidden";
-                    alertClose.style.visibility = "hidden";
-                }
-                window.alert = function(msg){
-                    var id = "alertBox", alertBox, closeId = "alertClose", alertClose;
-                    alertBox = document.createElement("div");
-                    document.body.appendChild(alertBox);
-                    alertBox.id = id;
-                    alertBox.innerHTML = msg;
-                    alertClose = document.createElement("div");
-                    alertClose.id = closeId;
-                    alertClose.innerHTML = "x";
-                    alertBox.appendChild(alertClose);
-                    alertBox.style.visibility = "visible";
-                    alertClose.style.visibility = "visible";
-                    alertClose.onclick = closeAlertBox;
-                };
-
-                // if(window.innerHeight > window.innerWidth){
-                //    alert("Pour aprécier pleinement mon portfolio, merci de tourner votre telephone en mode paysage");
-                //}   
-                </script>
-            
-            
-            <!-- 
-                preimiere modale
-              <div class="modal fade" id="informations" role="dialog">
-                  <div class="modal-dialog">
-              
-                    
-                    <div class="modal-content modal-first">
-                        <div class="modal-header">
-                            <h4 class="modal-title-first"><i class="fa fa-exclamation-circle"></i>&nbsp;Bienvenue sur mon portfolio</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            
-                          <h4>En quelques mots</h4>
-                          <p>Après presque 10 ans dans la restauration et avoir mûrement préparé ma reconversion, 
-                              j’ai donc décidé de me tourner vers un métier qui me passionne depuis longtemps à savoir 
-                              les nouvelles technologies et plus particulièrement le developpement web. Ce métier est pour moi 
-                              magnifique car les seules limites d'un bon développeur sont son imagination et sa créativité. 
-                          </p>
-                          <h4>Étudiant à La Sorbonne | CFA des Sciences</h4>
-                          <p>
-                              Grâce à ma double formation, à la fois dans la restauration, dans l’informatique et à une somme 
-                              d’expériences professionnelles performantes, j’ai acquis une certaine rigueur, un sens de l’organisation 
-                              et une capacité à m’adapter très facilement. Le travail en équipe et la rapidité d’exécution sont par 
-                              essence des valeurs essentielles dans la restauration, que je souhaite mettre au service du métier de 
-                              développeur web. Je ne souhaite plus être spectateur mais acteur dans ce monde en perpétuel changement 
-                              et renouvellement.
-                          <p>
-                          <p>N'hésitez pas à déplacer la souris et à zoomer 😎</p>
-                          <p class="name-first-modal"><i>Paul Maréchal</i></p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default name-c" data-dismiss="modal">© Paul Maréchal 2021</button>
-                        </div>
-                      </div>
-                
-                    </div>
-                </div>
-
-             -->
-
-            <!-- Formations -->
-            <!-- <div class="modal fade" id="point3" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <i>2021-2022</i>
-                            <h4 class="titreLicenceSorbonne">Licence Projet Web et Mobile Sorbonne Université - CFA des Sciences</h4>
-                            <img id="imageSorbonne" src="./img/sorbonne.jpeg" alt="logo sorbonne">
-                            <br>
-                            <p>
-                                Création graphique et animations Web
-                                POO et Architecture Logicielle, conception de bases de données pour le Web Frameworks pour le développement Back Office
-                                Réseaux et Sécurité, Système d’exploitation et Serveur Web
-                                UX design et Ergonomie
-                                Développement Mobile
-                                Gestion de projet Web, Méthodes Agiles
-                            </p>
-                            <br><br>
-                            <b>2020-2021</b> 
-                            <h4 class="titreEsieeEcole">Analyste développeur d’applications informatiques ESIEE Paris Tech | Paris</h4>
-                            <img src="./img/esieeIt.jpeg" alt="logo esiee it" id="imageEsieeIt">
-                            <br>
-                            <p>
-                                Formation ayant pour but d’acquérir les techniques de codage, d’analyse de projet et d’intégration technique de nouvelles technologies numériques. 
-                                Les cours sont dispensés selon des méthodes SCRUM - Agiles autour de projets ( sprint ) en équipe sous la responsabilité d’un coach.
-                            </p>
-                            <br>
-                            <h4 id="compétences">Compétences clés</h4>
-                            <ul>
-                                <li>Webdesign</li>
-                                <li>Création de sites dynamiques pour restaurants</li>
-                                <li>Méthodes Agiles</li>
-                                <li>Planification et gestion de projet</li>
-                                <li>Langage de programmation orienté objet</li>
-                            </ul>
-                            <h4>Soft Skills</h4>
-                            <ul>
-                                <li>Fiable et rigoureux</li>
-                                <li>Réactif et toujours à la pointe des dernières technologies</li>
-                                <li>Enthousiaste et curieux</li>
-                                <li>Sens du relationnel</li>
-                                <li>Créatif et imaginatif</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- test modal formation -->
-
+            <!-- modale 'Formation' -->
             <div class="modal masque" data-backdrop="false" id="point3">
                 <div>
                     <div class="message3">
                         <button type="button" class="close2" data-dismiss="modal" aria-hidden="true">X</button>
                         <div id="contentPoint3">
-                        </br>
+                            </br>
                             <div class="divRealisations">
                                 <div class="experience_annee">2021/22</div></br>
-                            <h4 id="formationTitre1" class="titreLicenceSorbonne">Licence Projet Web et Mobile </br>Sorbonne Université | CFA des Sciences</h4>
-                            <img id="imageSorbonne" src="./img/sorbonne.jpeg" alt="logo sorbonne">
-                            <br>
-                            <p id="formationText1">
-                                Création graphique et animations Web </br>
-                                POO et Architecture Logicielle, conception de bases de données pour le Web Frameworks pour le développement Back Office</br>
-                                Réseaux et Sécurité, Système d’exploitation et Serveur Web</br>
-                                UX design et Ergonomie</br>
-                                Développement Mobile</br>
-                                Gestion de projet Web, Méthodes Agiles</br>
-                            </p>
-                        </div>
+                                <h4 id="formationTitre1" class="titreLicenceSorbonne">Licence Projet Web et Mobile
+                                    </br>Sorbonne Université | CFA des Sciences</h4>
+                                <img id="imageSorbonne" src="./img/sorbonne.jpeg" alt="logo sorbonne">
+                                <br>
+                                <p id="formationText1">
+                                    Création graphique et animations Web </br>
+                                    POO et Architecture Logicielle, conception de bases de données pour le Web Frameworks
+                                    pour le développement Back Office</br>
+                                    Réseaux et Sécurité, Système d’exploitation et Serveur Web</br>
+                                    UX design et Ergonomie</br>
+                                    Développement Mobile</br>
+                                    Gestion de projet Web, Méthodes Agiles</br>
+                                </p>
+                            </div>
                             <br>
                             <div class="divRealisations">
                                 <div class="experience_annee">2021/22</div>
@@ -715,15 +156,17 @@
                                 <img src="./img/esieeIt.jpeg" alt="logo esiee it" id="imageEsieeIt">
                                 <br>
                                 <p id="formationText2">
-                                    Formation ayant pour but d’acquérir les techniques de codage, d’analyse de projet et d’intégration technique de nouvelles technologies numériques. 
-                                    Les cours sont dispensés selon des méthodes SCRUM - Agiles autour de projets ( sprint ) en équipe sous la responsabilité d’un coach.
+                                    Formation ayant pour but d’acquérir les techniques de codage, d’analyse de projet et
+                                    d’intégration technique de nouvelles technologies numériques.
+                                    Les cours sont dispensés selon des méthodes SCRUM - Agiles autour de projets ( sprint )
+                                    en équipe sous la responsabilité d’un coach.
                                 </p>
                             </div>
                             <br>
                             <div class="divRealisations"></br>
                                 <h4 id="competencesTitre">Compétences clés</h4>
                                 <ul>
-                                    <li >Webdesign</li>
+                                    <li>Webdesign</li>
                                     <li id="skills1">Création de sites dynamiques pour restaurants</li>
                                     <li id="skills2">Méthodes Agiles</li>
                                     <li id="skills3">Planification et gestion de projet</li>
@@ -739,73 +182,33 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
+            <!-- fin modal 'Formation' -->
 
-            <!-- fin test modal formation -->
-            
-            <!-- Hobby -->
-            <!-- <div class="modal fade" id="point2" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body hobbies-modal">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4>Hobbies</h4>
-                            <ul>
-                                <li>Globe trotter amateur de découvertes </li>
-                                <ul>
-                                    <li>Voyage culinaire à vélo en Europe ( 12 pays - 8000km )</li>
-                                    <li>Nombreux sentiers de GR et voyages en backpack</li>
-                                </ul>
-                                <li>Passionné par les nouvelles technologies, la musique et la cinématographie</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- test modal hobby -->
+            <!-- modale 'Hobbies' -->
             <div class="modal masque" data-backdrop="false" id="point2">
                 <div>
                     <div class="message">
                         <button type="button" class="close1" data-dismiss="modal" aria-hidden="true">X</button>
                         <h4 id="hobbiesTitre">Hobbies</h4>
+                        <ul>
+                            <li id="hobbiesTitre1">Globe trotter amateur de découvertes </li>
                             <ul>
-                                <li id="hobbiesTitre1">Globe trotter amateur de découvertes </li>
-                                <ul>
-                                    <li id="hobbiesTexte1">Voyage culinaire à vélo en Europe ( 12 pays - 8000km )</li>
-                                    <li id="hobbiesTexte2">Nombreux sentiers de GR et voyages en backpack</li>
-                                </ul>
-                                <li id="passions">Passionné par les nouvelles technologies, la musique et la cinématographie </br></li>
+                                <li id="hobbiesTexte1">Voyage culinaire à vélo en Europe ( 12 pays - 8000km )</li>
+                                <li id="hobbiesTexte2">Nombreux sentiers de GR et voyages en backpack</li>
                             </ul>
+                            <li id="passions">Passionné par les nouvelles technologies, la musique et la cinématographie
+                                </br></li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <!-- fin modale 'hobbies' -->
 
-            <!-- fin test modal hobby -->
-
-            <!-- Contact -->
-            <!-- <div class="modal fade" id="point1" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body contact-modal">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4>Vous pouvez me joindre par : </h4>
-                            <ul>
-                                <li><a href="mailto:paulmarechal75@gmail.com">Email</a></li>
-                                <li><a href="tel:+33648357374">Phone</a></li>
-                                <li><a href="https://paulmarechal.000webhostapp.com">Website</a></li>
-                                <li><img id="linkdein" src="https://img.icons8.com/color/48/000000/linkedin.png"/><a id="linkd" href="https://www.linkedin.com/in/paul-marechal/">LinkedIn</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- TEST CONTACT -->
-
+            <!-- modale 'Contact' -->
             <div class="modal masque" data-backdrop="false" id="point1">
                 <div>
                     <div class="message">
@@ -815,371 +218,199 @@
                             <li><a href="mailto:paulmarechal75@gmail.com">Email</a></li>
                             <li><a href="tel:+33648357374">Phone</a></li>
                             <li><a href="https://paulmarechal.000webhostapp.com">Website</a></li>
-                            <li><img alt="logo linkedin" id="linkdein" src="https://img.icons8.com/color/48/000000/linkedin.png"/><a id="linkd" href="https://www.linkedin.com/in/paul-marechal/">LinkedIn</a></li>
+                            <li><img alt="logo linkedin" id="linkdein" src="https://img.icons8.com/color/48/000000/linkedin.png" /><a id="linkd" href="https://www.linkedin.com/in/paul-marechal/">LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>
-              </div>
+            </div>
+            <!-- fin modale 'Contact' -->
 
-            <!-- FINN TEST CONTACT -->
-
-            <!-- test experience -->
-
+            <!-- Modale 'Experience' -->
             <div class="modal masque" data-backdrop="false" id="point0">
                 <div>
                     <div class="message3">
                         <button type="button" class="close2" data-dismiss="modal" aria-hidden="true">X</button>
                         <div id="contentPoint3">
-                        
-                        <br><br>
-                        <div class="divRealisations">
-                            <div class="experience_annee">2021/22</div><h4 id="expTitre2">Développeur front-end - Aero-Bay</h4> <br> 
-                            <ul>
-                                <li id="expText21">Réalisation de la nouvelle identité visuelle </li>
-                                <li id="expText22">Lancement de nouvelles fonctionnalités ( services ) <li>
-                                <li id="expText23">Utilisation de Figma / HTML5 / CSS3 / JS / Java</li>
-                                <li id="expText24">Refonte de l'intranet (UI/UX)</li>
-                                <li id="expText25">Réalisation du design des posts LinkedIn</li>
-                            </ul>
-
-                            <a id="realisationText36" class="experience_liens" href="https://aero-bay.com/">Aller sur le site</a>
-                        </div>
-                        <br><br>
-                        <div class="divRealisations">
-                            <div class="experience_annee">2021</div><h4 id="expTitre1">Stage développeur full-stack - BBFT</h4> <br> 
-                            <ul>
-                                <li id="expText11">Création d’une plate-forme web de vente de produits de fitness</li>
-                                <li id="expText12">Vision globale des objectifs d’accessibilité, d’attractivité, de référencement, d’ergonomie et de légitimité ainsi qu’un module de visualisation de la salle en 3D</li>
-                                <li id="expText13">Création du site web en PHP / MySQL / JS / Three.js</li>
-                                <li id="expText14">Veille et validation du code pour garantir la compatibilité et la sécurité de la plate-forme de vente</li>
-                            </ul>
-                            <a id="realisationText36" class="experience_liens" href="https://simulation.colorfoot.fr/">Aller sur le site</a>
-                        </div>
-                        <tr></tr>
-                        
-                        <h4 id="realisationTitre">Réalisations</h4>
-                        <div class="divRealisations">
-                            <ul>
-                                <li>
-                                    <h5 id="realisationTitre1">SCHOOL & U - Application de carnet connecté </h5> 
-                                    <h6 id="realisationTitre11">Réalisation d'une application en React-Native pour faciliter la communication des parents et des professeurs. L'application est disponible pour iOS, Android et Web.</h6>
-                                    <ul class="paddingLeger">
-                                        <li id="realisationText11">Identification</li>
-                                        <li id="realisationText12">Messagerie: chat commun et/ou entre deux parents de la classe</li>
-                                        <li id="realisationText13">Blog: affichage des photos et messages de la maitresse concernant la classe</li>
-                                        <li id="realisationText14">Carnet de liaison</li>
-                                        <li id="realisationText15">Modification des informations et ajout d'un nouvel enfant</li>
-                                        <li id="realisationText16">Base de données : Firebase & Firestore</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        
-                            <a  id="realisationText17" class="experience_liens" href="https://github.com/YPariset/School-U">Aller sur GitHub</a>
-                        </div>
-                    <br>
-
-                    <div class="divRealisations">
-                        <ul>
-                            <li><h5 id="realisationTitre2">Feelin'Food mobile - Application de vente à emporter pour restaurant </h5> 
-                                <h6 id="realisationTitre21">
-                                Réalisation d'une application en React-Native de vente à emporter pour restaurants. 
-                                Projet réalisé en React-Native sur Snack. 
-                                </h6>
-                                <br>
-                                <ul class="paddingLeger">
-                                    <li id="realisationText21">Page de connexion</li>
-                                    <li id="realisationText22">Page home : affichage des restaurants & cathégorie</li>
-                                    <li id="realisationText23">Redirection vers le restaurants sélectionné</li>
-                                    <li id="realisationText24">Panier & Validation du paiement</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <a id="realisationText25" class="experience_liens" href="https://snack.expo.io/@paulmarechal/feelinfood-mobile">Aller sur Snack</a>
-                    </div>
-                        <br>
-
-                    <div class="divRealisations">
-                        <ul>
-                            <li><h5 id="realisationTitre3">Feelin'Food - site pour restaurant click & collect </h5> 
-                                <h6 id="realisationTitre31">Réalisation d'un site dynamique pour restaurant souhaitant mettre en place de la vente à emporter Ce projet a été réalisé en: HTML5, CSS3, PHP, mySQL, Vanilla JS.</h6> 
-                                <ul class="paddingLeger">
-                                    <li id="realisationText31">Identification</li>
-                                    <li id="realisationText32">Infos restaurant - possibilité de suivre sur une carte</li>
-                                    <li id="realisationText33">Compte utilisateur</li>
-                                    <li id="realisationText34">Suivi des fournisseurs, stocks, fiches techniques</li>
-                                    <li id="realisationText35">Click & collect</li>
-                                </ul>
-                            </li>  
-                        </ul>
-                        <a id="realisationText36" class="experience_liens" href="https://feelinfoodfrance.000webhostapp.com/index.php?page=home">Aller sur le site</a>
-                    </div>
-                        <br>
-
-                    <div class="divRealisations">   
-                        <ul>
-                            <li><h5 id="realisationTitre4">Projet Vue.js </h5> 
-                                <h6 id="realisationTitre41">HTML5, CSS3, VANILLA JS, VUE.JS - Projet regroupant différentes fonctionnalités Vue.js </h6>
-                                
-                                <ul class="paddingLeger">
-                                    <li id="realisationText41">Horloge (Vue-Clock2)</li>
-                                    <li id="realisationText42">Horloge digitale (Date-fns)</li>
-                                    <li id="realisationText43">Création d'un formulaire dynamique en drag & drop (FormBuilder)</li>
-                                    <li id="realisationText44">Liste des différents Bitcoins et barre de recherche (Axios)</li>
-                                </ul>
-                            </li>  
-                        </ul>
-                        <a id="realisationText45" class="experience_liens" id="hover" href="https://github.com/PaulMarechal/ProjetVueJs">Aller sur GitHub</a>
-                    </div> 
-                        <br>
-
-
-                    <div class="divRealisations">
-                        <ul>
-                            <li><h5 id="realisationTitre5">Projet Vanilla JS </h5> 
-                                <h6 id="realisationTitre51">
-                                    Projet regroupant différentes fonctionnalités en JS Vanilla 
-                                </h6>
-                                <ul class="paddingLeger">
-                                    <li id="realisationText51">ToDo List</li>
-                                    <li id="realisationText52">Modifier le contenu du site avec l'espace Admin</li>
-                                    <li id="realisationText53">Recherche d'utilisateurs GitHub</li>
-                                    <li id="realisationText54">Quizz</li>
-                                    <li id="realisationText55">App Météo</li>
-                                    <li id="realisationText56">Lecteur MP3 avec barre d'oscillation 2D</li>
-                                    <li id="realisationText57">Théme jour/nuit - custom</li>
-                                </ul>
-                            </li>  
-                        </ul>
-                        <a id="realisationText36" class="experience_liens" id="hover" href="https://projetjsvanilla.000webhostapp.com">Aller sur le site</a>
-                    </div>  
-                        <br>
-
-
-                    <div class="divRealisations">
-                        <ul>
-                            <li><h5 id="realisationTitre6">Projet E-Shop Java </h5>
-                                <h6 id="realisationTitre61">
-                                    Application de magasin en ligne en Java (terminal & Swing) 
-                                </h6>
-                                <ul class="paddingLeger">
-                                    <li id="realisationText61">Commandes</li>
-                                    <li id="realisationText62">Visibilité des produits</li>
-                                    <li id="realisationText63">Ajout dans le panier</li>
-                                    <li id="realisationText64">Paiement</li>
-                                        <ul class="paddingLeger">
-                                            <li id="realisationText65">Admin</li>
-                                        </ul>
-                                    <li id="realisationText66">Visibilité des commabdes clients</li>
-                                    <li id="realisationText67">Ajout des produits</li>
-                                    <li id="realisationText68">Commandes clients</li>
-                                </ul>
-                            </li>  
-                        </ul>
-                        <a id="realisationText45" class="experience_liens" id="hover" href="https://github.com/lea78/My-supermarket.git">Aller sur GitHub</a>
-                    </div>  
-                        <br>
-
-                    <div class="divRealisations">
-                        <ul>
-                            <li><h5 id="realisationTitre7">Projet jeu de plates-formes java </h5>
-                                <h6 id="realisationTitre71">
-                                    Projet jeu de plateformes en tour par tour 
-                                </h6>
-                                
-                                <ul class="paddingLeger">
-                                    <li id="realisationText71">Ennemis différents en fonction des salles</li>
-                                    <li id="realisationText72">Gestion de la vie</li>
-                                    <li id="realisationText73">Gestion des armes</li>
-                                </ul>
-                            </li>  
-                        </ul>
-                        <a id="realisationText74" class="experience_liens" id="hover" href="https://github.com/arcreane/javaadventure-Just1bruidx.git"><script src="https://cdn.jsdelivr.net/npm/sketch-js@1.1.3/js/sketch.js"></script>Aller sur GitHub</a>
-                    </div>    
-                </div>    
-            </div>
-        </div>
-    </div>
-
-            <!--  fin de test experience -->
-
-            <!-- Experience -->
-            <!-- <div class="modal fade" id="point0" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <b>2021</b><h4>Stage développeur full-stack - BBFT</h4> <br> 
-                            <ul>
-                                <li>Création d’une plate-forme web de vente de produits de fitness</li>
-                                <li>Vision globale des objectifs d’accessibilité, d’attractivité, de référencement, d’ergonomie et de légitimité ainsi qu’un module de
-                                        visualisation de la salle en 3D</li>
-                                <li>Création du site web en PHP / MySQL / JS / Three.js</li>
-                                <li>Veille et validation du code pour garantir la compatibilité et la sécurité
-                                        de la plate-forme de vente</li>
-                            </ul>
-                            <a class="experience_liens" href="https://simulation.colorfoot.fr/">Aller sur le site</a>
                             <br><br>
-                            <b>2020</b><h4>Directeur de restaurant - Fosca</h4> <br> 
-                            <ul>
-                                <li>Création de la nouvelle carte - fiches techniques / formation de la cuisine</li>
-                                <li>Lancement du site internet du restaurant</li>
-                                <li>Changement de l’image de marque</li>
-                                <li>Réalisation de la nouvelle carte adapté à la vente à emporter</li>
-                                <li>Adaptation de plate-forme de vente à emporter</li>
-                                <li>Réalisation du plan de sortie de crise COVID - signalétique / formation de l'équipe</li>
-                            </ul>
+
+                            <div class="divRealisations">
+                                <div class="experience_annee">2021/22</div>
+                                <h4 id="expTitre2">Développeur front-end - Aero-Bay</h4> <br>
+                                <ul>
+                                    <li id="expText21">Réalisation de la nouvelle identité visuelle </li>
+                                    <li id="expText22">Lancement de nouvelles fonctionnalités ( services )
+                                    <li>
+                                    <li id="expText23">Utilisation de Figma / HTML5 / CSS3 / JS / Java</li>
+                                    <li id="expText24">Refonte de l'intranet (UI/UX)</li>
+                                    <li id="expText25">Réalisation du design des posts LinkedIn</li>
+                                </ul>
+                                <a id="realisationText36" class="experience_liens" href="https://aero-bay.com/">Aller sur le site</a>
+                            </div>
+                            <br><br>
+
+                            <div class="divRealisations">
+                                <div class="experience_annee">2021</div>
+                                <h4 id="expTitre1">Stage développeur full-stack - BBFT</h4> <br>
+                                <ul>
+                                    <li id="expText11">Création d’une plate-forme web de vente de produits de fitness</li>
+                                    <li id="expText12">Vision globale des objectifs d’accessibilité, d’attractivité, de référencement, d’ergonomie et de légitimité ainsi qu’un module de visualisation de la salle en 3D</li>
+                                    <li id="expText13">Création du site web en PHP / MySQL / JS / Three.js</li>
+                                    <li id="expText14">Veille et validation du code pour garantir la compatibilité et la sécurité de la plate-forme de vente</li>
+                                </ul>
+                                <a id="realisationText36" class="experience_liens"
+                                    href="https://simulation.colorfoot.fr/">Aller sur le site</a>
+                            </div>
 
                             <tr></tr>
-                            <br><br>
-                            <h4>Réalisations</h4>
-                            <ul>
-                                <li><h5>SCHOOL & U - Application de carnet connecté </h5> Réalisation d'une application en React-Native pour faciliter la communication des parents et des professeurs. L'application est disponible pour iOS, Android et Web.
-                                    <ul class="paddingLeger">
-                                        <li>Identification</li>
-                                        <li>Messagerie: chat commun et/ou entre deux parents de la classe</li>
-                                        <li>Blog: affichage des photos et messages de la maitresse concernant la classe</li>
-                                        <li>Carnet de liaison</li>
-                                        <li>Modification des informations et ajout d'un nouvel enfant</li>
-                                        <li>Base de données : Firebase & Firestore</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <a class="experience_liens" href="https://github.com/YPariset/School-U">Aller sur GitHub</a>
-                        <br>
-
-                            <ul>
-                                <li><h5>Feelin'Food mobile - Application de vente à emporter pour restaurant </h5> 
-                                    Réalisation d'une application en React-Native de vente à emporter pour restaurants. 
-                                    Projet réalisé en React-Native sur Snack. <br>
-                                    <ul class="paddingLeger">
-                                        <li>Page de connexion</li>
-                                        <li>Page home : affichage des restaurants & cathégorie</li>
-                                        <li>Redirection vers le restaurants sélectionné</li>
-                                        <li>Panier & Validation du paiement</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <a class="experience_liens" href="https://snack.expo.io/@paulmarechal/feelinfood-mobile">Aller sur Snack</a>
+                            <h4 id="realisationTitre">Réalisations</h4>
+                            <div class="divRealisations">
+                                <ul>
+                                    <li>
+                                        <h5 id="realisationTitre1">SCHOOL & U - Application de carnet connecté </h5>
+                                        <h6 id="realisationTitre11">Réalisation d'une application en React-Native pour faciliter la communication des parents et des professeurs. L'application est disponible pour iOS, Android et Web.</h6>
+                                        <ul class="paddingLeger">
+                                            <li id="realisationText11">Identification</li>
+                                            <li id="realisationText12">Messagerie: chat commun et/ou entre deux parents de
+                                                la classe</li>
+                                            <li id="realisationText13">Blog: affichage des photos et messages de la
+                                                maitresse concernant la classe</li>
+                                            <li id="realisationText14">Carnet de liaison</li>
+                                            <li id="realisationText15">Modification des informations et ajout d'un nouvel
+                                                enfant</li>
+                                            <li id="realisationText16">Base de données : Firebase & Firestore</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a id="realisationText17" class="experience_liens"
+                                    href="https://github.com/YPariset/School-U">Aller sur GitHub</a>
+                            </div>
                             <br>
 
-
-                            <ul>
-                                <li><h5>Feelin'Food - site pour restaurant click & collect </h5> Réalisation d'un site dynamique pour restaurant souhaitant mettre en place de la vente à emporter Ce projet a été réalisé en: HTML5, CSS3, PHP, mySQL, Vanilla JS.
-                                    <ul class="paddingLeger">
-                                        <li>Identification</li>
-                                        <li>Infos restaurant - possibilité de suivre sur une carte</li>
-                                        <li>Compte utilisateur</li>
-                                        <li>Suivi des fournisseurs, stocks, fiches techniques</li>
-                                        <li>Click & collect</li>
-                                    </ul>
-                                </li>  
-                            </ul>
-                            <a class="experience_liens" href="https://feelinfoodfrance.000webhostapp.com/index.php?page=home">Aller sur le site</a>
+                            <div class="divRealisations">
+                                <ul>
+                                    <li>
+                                        <h5 id="realisationTitre2">Feelin'Food mobile - Application de vente à emporter pour restaurant </h5>
+                                        <h6 id="realisationTitre21"> Réalisation d'une application en React-Native de vente à emporter pour restaurants. Projet réalisé en React-Native sur Snack.
+                                        </h6>
+                                        <br>
+                                        <ul class="paddingLeger">
+                                            <li id="realisationText21">Page de connexion</li>
+                                            <li id="realisationText22">Page home : affichage des restaurants & cathégorie
+                                            </li>
+                                            <li id="realisationText23">Redirection vers le restaurants sélectionné</li>
+                                            <li id="realisationText24">Panier & Validation du paiement</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a id="realisationText25" class="experience_liens"
+                                    href="https://snack.expo.io/@paulmarechal/feelinfood-mobile">Aller sur Snack</a>
+                            </div>
                             <br>
 
-                            
-                            <ul>
-                                <li><h5>Projet Vue.js </h5> HTML5, CSS3, VANILLA JS, VUE.JS - Projet regroupant différentes fonctionnalités Vue.js 
-                                    <ul class="paddingLeger">
-                                        <li>Horloge (Vue-Clock2)</li>
-                                        <li>Horloge digitale (Date-fns)</li>
-                                        <li>Création d'un formulaire dynamique en drag & drop (FormBuilder)</li>
-                                        <li>Liste des différents Bitcoins et barre de recherche (Axios)</li>
-                                    </ul>
-                                </li>  
-                            </ul>
-                            <a class="experience_liens" id="hover" href="https://github.com/PaulMarechal/ProjetVueJs">Aller sur GitHub</a>
+                            <div class="divRealisations">
+                                <ul>
+                                    <li>
+                                        <h5 id="realisationTitre3">Feelin'Food - site pour restaurant click & collect </h5>
+                                        <h6 id="realisationTitre31">Réalisation d'un site dynamique pour restaurant souhaitant mettre en place de la vente à emporter Ce projet a été réalisé en: HTML5, CSS3, PHP, mySQL, Vanilla JS.</h6>
+                                        <ul class="paddingLeger">
+                                            <li id="realisationText31">Identification</li>
+                                            <li id="realisationText32">Infos restaurant - possibilité de suivre sur une carte</li>
+                                            <li id="realisationText33">Compte utilisateur</li>
+                                            <li id="realisationText34">Suivi des fournisseurs, stocks, fiches techniques
+                                            </li>
+                                            <li id="realisationText35">Click & collect</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a id="realisationText36" class="experience_liens" href="https://feelinfoodfrance.000webhostapp.com/index.php?page=home">Aller sur le site</a>
+                            </div>
                             <br>
 
-
-                            <ul>
-                                <li><h5>Projet Vanilla JS </h5> Projet regroupant différentes fonctionnalités en JS Vanilla 
-                                    <ul class="paddingLeger">
-                                        <li>ToDo List</li>
-                                        <li>Modifier le contenu du site avec l'espace Admin</li>
-                                        <li>Recherche d'utilisateurs GitHub</li>
-                                        <li>Quizz</li>
-                                        <li>App Météo</li>
-                                        <li>Lecteur MP3 avec barre d'oscillation 2D</li>
-                                        <li>Théme jour/nuit - custom</li>
-                                    </ul>
-                                </li>  
-                            </ul>
-                            <a class="experience_liens" id="hover" href="https://projetjsvanilla.000webhostapp.com">Aller sur le site</a>
+                            <div class="divRealisations">
+                                <ul>
+                                    <li>
+                                        <h5 id="realisationTitre4">Projet Vue.js </h5>
+                                        <h6 id="realisationTitre41">HTML5, CSS3, VANILLA JS, VUE.JS - Projet regroupant différentes fonctionnalités Vue.js </h6>
+                                        <ul class="paddingLeger">
+                                            <li id="realisationText41">Horloge (Vue-Clock2)</li>
+                                            <li id="realisationText42">Horloge digitale (Date-fns)</li>
+                                            <li id="realisationText43">Création d'un formulaire dynamique en drag & drop (FormBuilder)</li>
+                                            <li id="realisationText44">Liste des différents Bitcoins et barre de recherche (Axios)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a id="realisationText45" class="experience_liens" id="hover" href="https://github.com/PaulMarechal/ProjetVueJs">Aller sur GitHub</a>
+                            </div>
                             <br>
 
+                            <div class="divRealisations">
+                                <ul>
+                                    <li>
+                                        <h5 id="realisationTitre5">Projet Vanilla JS </h5>
+                                        <h6 id="realisationTitre51">Projet regroupant différentes fonctionnalités en JS Vanilla </h6>
+                                        <ul class="paddingLeger">
+                                            <li id="realisationText51">ToDo List</li>
+                                            <li id="realisationText52">Modifier le contenu du site avec l'espace Admin</li>
+                                            <li id="realisationText53">Recherche d'utilisateurs GitHub</li>
+                                            <li id="realisationText54">Quizz</li>
+                                            <li id="realisationText55">App Météo</li>
+                                            <li id="realisationText56">Lecteur MP3 avec barre d'oscillation 2D</li>
+                                            <li id="realisationText57">Théme jour/nuit - custom</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a id="realisationText36" class="experience_liens" id="hover"
+                                    href="https://projetjsvanilla.000webhostapp.com">Aller sur le site</a>
+                            </div>
+                            <br>
 
-                            <ul>
-                                <li><h5>Projet E-Shop Java </h5>Application de magasin en ligne en Java (terminal & Swing) 
-                                    <ul class="paddingLeger">
-                                        <li>Commandes</li>
-                                        <li>Visibilité des produits</li>
-                                        <li>Ajout dans le panier</li>
-                                        <li>Paiement</li>
+                            <div class="divRealisations">
+                                <ul>
+                                    <li>
+                                        <h5 id="realisationTitre6">Projet E-Shop Java </h5>
+                                        <h6 id="realisationTitre61">Application de magasin en ligne en Java (terminal & Swing) </h6>
+                                        <ul class="paddingLeger">
+                                            <li id="realisationText61">Commandes</li>
+                                            <li id="realisationText62">Visibilité des produits</li>
+                                            <li id="realisationText63">Ajout dans le panier</li>
+                                            <li id="realisationText64">Paiement</li>
                                             <ul class="paddingLeger">
-                                                <li>Admin</li>
+                                                <li id="realisationText65">Admin</li>
                                             </ul>
-                                        <li>Visibilité des commabdes clients</li>
-                                        <li>Ajout des produits</li>
-                                        <li>Commandes clients</li>
-                                    </ul>
-                                </li>  
-                            </ul>
-                            <a class="experience_liens" id="hover" href="https://github.com/lea78/My-supermarket.git">Aller sur GitHub</a>
+                                            <li id="realisationText66">Visibilité des commabdes clients</li>
+                                            <li id="realisationText67">Ajout des produits</li>
+                                            <li id="realisationText68">Commandes clients</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a id="realisationText45" class="experience_liens" id="hover" href="https://github.com/lea78/My-supermarket.git">Aller sur GitHub</a>
+                            </div>
                             <br>
 
-
-                            <ul>
-                                <li><h5>Projet jeu de plates-formes java </h5>Projet jeu de plateformes en tour par tour 
-                                    <ul class="paddingLeger">
-                                        <li>Ennemis différents en fonction des salles</li>
-                                        <li>Gestion de la vie</li>
-                                        <li>Gestion des armes</li>
-                                    </ul>
-                                </li>  
-                            </ul>
-                            <a class="experience_liens" id="hover" href="https://github.com/arcreane/javaadventure-Just1bruidx.git"><script src="https://cdn.jsdelivr.net/npm/sketch-js@1.1.3/js/sketch.js"></script>Aller sur GitHub</a>
+                            <div class="divRealisations">
+                                <ul>
+                                    <li>
+                                        <h5 id="realisationTitre7">Projet jeu de plates-formes java </h5>
+                                        <h6 id="realisationTitre71">Projet jeu de plateformes en tour par tour</h6>
+                                        <ul class="paddingLeger">
+                                            <li id="realisationText71">Ennemis différents en fonction des salles</li>
+                                            <li id="realisationText72">Gestion de la vie</li>
+                                            <li id="realisationText73">Gestion des armes</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a id="realisationText74" class="experience_liens" id="hover" href="https://github.com/arcreane/javaadventure-Just1bruidx.git">
+                                    <script src="https://cdn.jsdelivr.net/npm/sketch-js@1.1.3/js/sketch.js"></script>Aller sur GitHub</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
-            <script src='https://unpkg.com/three-mesh-ui'></script>
-
-            <script>
-                $(document).ready(function() {
-                $('button.btn-view-details-3').on('click', function() {
-                    $('#point3').modal('show');
-                    })
-                })
-                
-                $(document).ready(function() {
-                $('button.btn-view-details-2').on('click', function() {
-                    $('#point0').modal('show');
-                    })
-                })
-                
-                $(document).ready(function() {
-                $('button.btn-view-details-1').on('click', function() {
-                    $('#point2').modal('show');
-                    })
-                })
-                
-                $(document).ready(function() {
-                $('button.btn-view-details-0').on('click', function() {
-                    $('#point1').modal('show');
-                    })
-                })
-
-                $(function () {
-                    $('#modal').modal('toggle');
-                });
-            </script>
-        <button id="formationButton" type="button" class="btn btn-secondary btn-view-details-3 point-3" data-toggle="modal"> Formation</button>
-        <button id="experienceButton" type="button" class="btn btn-secondary btn-view-details-2 point-0" data-toggle="modal"> Experience</button>
-        <button id="hobbiesButton" type="button" class="btn btn-secondary btn-view-details-1 point-2" data-toggle="modal"> Hobbies</button>
-        <button id="contactButton" type="button" class="btn btn-secondary btn-view-details-0 point-1" data-toggle="modal"> Contact</button>  
-             
-        
-
+            </div>
+            <button id="formationButton" type="button" class="btn btn-secondary btn-view-details-3 point-3" data-toggle="modal"> Formation</button>
+            <button id="experienceButton" type="button" class="btn btn-secondary btn-view-details-2 point-0" data-toggle="modal"> Experience</button>
+            <button id="hobbiesButton" type="button" class="btn btn-secondary btn-view-details-1 point-2" data-toggle="modal"> Hobbies</button>
+            <button id="contactButton" type="button" class="btn btn-secondary btn-view-details-0 point-1" data-toggle="modal"> Contact</button>
+            
+            <script src="language.js"></script>
     </body>
 </html>
