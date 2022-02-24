@@ -7,14 +7,15 @@
 * { 
     margin: 0;
     padding: 0;
-    font-family: "SF Pro Display", sans-serif;
+    font-family: sans-serif;
+    font-weight: lighter;
 }
 
 
 
 h4, h5 {
     font-family: 'Open Sans', "SF Pro Display" , sans-serif;
-    font-weight: bolder;
+    font-weight: lighter;
 }
 
 
@@ -30,11 +31,11 @@ html,
 body
 {
     overflow: hidden;
-    margin: 0!important;
 }
 
 p{
     text-align: justify;
+    font-weight: lighter;
 }
 
 .boutonInfo{
@@ -62,7 +63,7 @@ p{
 
 }
 
-.boutonFrancais, .boutonCouleur{
+.boutonFrancais, .boutonCouleur, .boutonAide{
     position: absolute;
     left:1%;
     top: 1%;
@@ -109,8 +110,14 @@ p{
 
 }
 
+.boutonFrancais{
+    left: 5%;
+    padding: 7px 15px 7px 15px;
+    border-radius: 5px;
+}
+
 .boutonCouleur{
-    left: 7%;
+    left: 9%;
     padding: 7px 15px 7px 15px;
     border-radius: 5px;
 }
@@ -241,7 +248,7 @@ a[href^="mailto:paulmarechal75@gmail.com"] {
 } */
 
 a:hover{
-    color:black;
+    color:black!important;
 }
 
 a:visited { color: #070707!important; }
@@ -289,8 +296,12 @@ a:visited { color: #070707!important; }
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.enQuelquesMotsText1{
+    font-size: 15px!important;
+}
+
 .h5, h5{
-    margin-top: 2em!important;
+    margin-top: 1em!important;
 }
 
 a[href^="https://paulmarechal.000webhostapp.com"]::before {
@@ -347,11 +358,18 @@ a[href^="tel"]::before {
     color: #000000;
 }
 
+#realisationTitre{
+    margin: 2em 0 1em 0;
+    font-size: xx-large!important;
+
+}
+
 .photoPaul{
     width: 30%; 
     height: 30%; 
-    margin-left: 38%; 
-    bottom:0%
+    /* margin-left: 38%;  */
+    bottom:0%;
+    margin-top:-4em!important;
 }
 
 /* .headerAPropos{
@@ -378,27 +396,99 @@ i, b{
     font-weight: bold;
 }
 
-.experience_liens{
-    /* background-image: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%); */
+/* .experience_liens{
     -webkit-background-clip: text;
     -webkit-box-decoration-break: clone;
-    /* -webkit-text-fill-color: transparent; */
     font-weight: bold;
     text-emphasis: right;
     margin-left: 65%;
 
-    background: rgba( 255, 255, 255, 0.45 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 1.5px );
     -webkit-backdrop-filter: blur( 1.5px );
     border-radius: 20px;
-    /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
     color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important;
 
+
+    border-radius:50px; 
+    border:10px solid transparent; 
+    background:linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)border-box; 
+    -webkit-mask: 
+     linear-gradient(#fff 0 0) padding-box, 
+     linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; 
+    mask-composite: exclude; 
+} */
+
+/* .experience_liens {
+    position:relative;
+}
+.experience_liens::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    border-radius:50px; 
+    padding:10px; 
+    background:linear-gradient(45deg,red,blue); 
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude; 
+} */
+
+.experience_liens {
+    color: #313149;
+    padding: 10px;
+    display: inline-block;
+    position:relative;
+    z-index:0;
+    margin-left: 70%;
+  }
+
+  .experience_annee{
+    margin-left: -1em;
+    margin-top: -1em;
+    background: 
+     linear-gradient(#fff,rgba( 255, 255, 255)) padding-box, /*this is your grey background*/
+     linear-gradient(90deg, rgba(70,60,249,1) 0%, rgba(13,115,224,1) 51%, rgba(88,227,255,1) 100%) border-box;
+    color: #313149;
+    padding:10px;
+    border: 2px solid transparent;
+    border-radius:15px;
+    display:inline-block;
+}
+  .experience_liens:before {
+    content:"";
+    position:absolute;
+    z-index:-1;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    padding: 5px;
+    border-radius: 15px;
+    background: linear-gradient(to right, #9c20aa, #fb3570);
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+            mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.experience_annee:before{
+    /* background:linear-gradient(90deg, rgba(70,60,249,1) 0%, rgba(13,115,224,1) 51%, rgba(88,227,255,1) 100%); */
 }
 
 a:hover{
-    color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important;
+    /* color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important; */
+    color: #000000;
 }
 
 .titreLicenceSorbonne{
@@ -410,7 +500,7 @@ a:hover{
     border-radius: 50%;
     width: 12%;
     z-index: 2;
-    margin-top: -6em;
+    margin-top: -6.1em;
     margin-bottom: 2em;
 }
 
@@ -426,9 +516,9 @@ a:hover{
     margin-bottom: 2em;
 }
 
-a.experience_liens{
+/* a.experience_liens{
     border-image: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%) 5;
-}
+} */
 
 h5{
     background-image: linear-gradient(90deg, rgb(112, 43, 252) 0%, rgb(242, 59, 255) 100%, rgb(255, 112, 118) 200%, rgb(29, 29, 31) 300%);
@@ -481,7 +571,7 @@ h5{
     margin: -20px;
   }
 
-  /* Affichage de la modale sur mobile - version portrait */
+  /* Affichage de la modale sur mobile - version paysage */
   @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
@@ -493,7 +583,15 @@ h5{
     }
 
     .boutonCouleur{
-        left: 20%;
+        left: 19%;
+    }
+
+    .boutonAide{
+        left: 5%;
+    }
+
+    .boutonFrancais{
+        left: 12%
     }
 
     .message3{
@@ -561,24 +659,29 @@ h5{
         margin-bottom: -3em;
     }
 
-    .experience_liens{
+    /* .experience_liens{
         -webkit-background-clip: text;
         -webkit-box-decoration-break: clone;
         font-weight: bold;
         text-emphasis: right;
         margin-left: 38%;
-        background: rgba( 255, 255, 255, 0.45 );
+        
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         backdrop-filter: blur( 1.5px );
         -webkit-backdrop-filter: blur( 1.5px );
         border-radius: 20px;
         color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important;
-    
+        background:linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)border-box; 
+
+    } */
+
+    .experience_liens{
+        margin-left: 40%;
     }
 
 }
 
-/* Affichage des modales sur mobile - version paysage */
+/* Affichage des modales sur mobile - version portrait */
 
 @media only screen 
     and (min-width: 375px) 
@@ -588,6 +691,18 @@ h5{
         width: 90%;
         height: 57%;
         padding: 0% 2% 2% 2%;
+    }
+
+    .boutonCouleur{
+        left: 33%;
+    }
+
+    .boutonAide{
+        left: 3%;
+    }
+
+    .boutonFrancais{
+        left: 18%
     }
 
     #passions{
@@ -662,20 +777,23 @@ h5{
         margin-bottom: -3em;
     }
 
-    .experience_liens{
+    /* .experience_liens{
         -webkit-background-clip: text;
         -webkit-box-decoration-break: clone;
         font-weight: bold;
         text-emphasis: right;
         margin-left: 38%;
-        background: rgba( 255, 255, 255, 0.45 );
+        /* background: rgba( 255, 255, 255, 0.45 ); 
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         backdrop-filter: blur( 1.5px );
         -webkit-backdrop-filter: blur( 1.5px );
         border-radius: 20px;
         color: linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)!important;
-    
-    }
+        background:linear-gradient(90deg, rgb(237, 24, 106) 0%, rgb(255, 103, 0) 100%, rgb(255, 203, 57) 200%, rgb(29, 29, 31) 300%)border-box; 
+
+    } */
+
+
 
 }
 
@@ -691,7 +809,7 @@ h5{
     flex-direction: column;
     justify-content: space-between;
 
-    background: rgba( 255, 255, 255, 0.65 );
+    background: rgba( 255, 255, 255, 0.35 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 1.5px );
     -webkit-backdrop-filter: blur( 1.5px );
@@ -816,11 +934,33 @@ h5{
     text-align: center; 
     cursor: pointer;
 }
-  
+
+.divRealisations{
+    background: rgba( 255, 255, 255, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2px );
+    -webkit-backdrop-filter: blur( 2px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.divRealisations li{
+    list-style-type: none;
+}
+
+.divRealisations p {
+    text-align: justify;
+    padding-left: 20px;
+}
+
 @supports(padding: max(0px)) {
     .post {
         padding-left: max(12px, env(safe-area-inset-left));
         padding-right: max(12px, env(safe-area-inset-right));
     }
+
+    body {
+        padding: env(safe-area-inset-top, 0px)
+    }
 }
-  
+

@@ -7,3 +7,15 @@
  * Club GreenSock members, the agreement issued with that membership.
  * @author: Jack Doyle, jack@greensock.com
 */
+
+/*! ./darkmode */
+
+/*! no static exports found */
+
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+
+/*!*************************!*\
+  !*** ./src/darkmode.js ***!
+  \*************************/

@@ -436,12 +436,14 @@ const points = [
 const waterGeometry = new THREE.PlaneGeometry(100, 100, 512, 512)
 
 // Color
+let description = document.getElementById("apropos");
 debugObject.depthColor = '#11aced'
 debugObject.surfaceColor = '#00FFFF'
 
 if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     debugObject.depthColor = '#2626a6'  
     debugObject.surfaceColor = '#0077ff'
+    description.style.color = "#ffffff"
 } else {
     debugObject.depthColor = '#11aced'
     debugObject.surfaceColor = '#0077ff'
