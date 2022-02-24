@@ -2,6 +2,34 @@ $(window).on("load", function () {
     $("#informations").modal("show");
 });
 
+$(document).ready(function() {
+                $('button.btn-view-details-3').on('click', function() {
+                $('#point3').modal('show');
+                })
+            })
+                            
+            $(document).ready(function() {
+                $('button.btn-view-details-2').on('click', function() {
+                $('#point0').modal('show');
+                })
+            })
+                            
+            $(document).ready(function() {
+                $('button.btn-view-details-1').on('click', function() {
+                $('#point2').modal('show');
+                })
+            })
+                            
+            $(document).ready(function() {
+                $('button.btn-view-details-0').on('click', function() {
+                $('#point1').modal('show');
+                })
+            })
+            
+            $(function () {
+                $('#modal').modal('toggle');
+            });
+
 function closeAlertBox() {
     alertBox = document.getElementById("alertBox");
     alertClose = document.getElementById("alertClose");
@@ -26,31 +54,4 @@ window.alert = function (msg) {
     alertClose.onclick = closeAlertBox; 
 };
 
-// Bouton ouverture modale 
-$(document).ready(function() {
-    $('button.btn-view-details-3').on('click', function() {
-    $('#point3').modal('show');
-    })
-})
-                
-$(document).ready(function() {
-    $('button.btn-view-details-2').on('click', function() {
-    $('#point0').modal('show');
-    })
-})
-                
-$(document).ready(function() {
-    $('button.btn-view-details-1').on('click', function() {
-    $('#point2').modal('show');
-    })
-})
-                
-$(document).ready(function() {
-    $('button.btn-view-details-0').on('click', function() {
-    $('#point1').modal('show');
-    })
-})
 
-$(function () {
-    $('#modal').modal('toggle');
-});

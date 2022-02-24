@@ -16,6 +16,8 @@ import FontImage from './assets/Roboto-msdf.png'
 import ImageLozere from './img/lozere.jpg'
 import { gsap } from 'gsap'
 
+import language from './language.js'
+import modale from './modale.js'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
 import { XRControllerModelFactory } from 'three/examples/jsm/webxr/XRControllerModelFactory.js';
 import { XRHandModelFactory } from 'three/examples/jsm/webxr/XRHandModelFactory.js';

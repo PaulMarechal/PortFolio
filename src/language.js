@@ -6,11 +6,11 @@ span.addEventListener('click', function() {
 
     if (result) {
         span.textContent = `🇫🇷`;
-        document.getElementById('buttonLangue').setAttribute('onclick', "toggleLanguage('English')");
+        toggleLanguage('English');
 
     } else {
         span.textContent = `🇬🇧`;
-        document.getElementById('buttonLangue').setAttribute('onclick', "toggleLanguage('French')");
+        toggleLanguage('French');
 
     }
 })

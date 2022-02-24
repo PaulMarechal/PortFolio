@@ -368,8 +368,9 @@ a[href^="tel"]::before {
     width: 30%; 
     height: 30%; 
     /* margin-left: 38%;  */
-    bottom:0%;
-    margin-top:-4em!important;
+    /* bottom:0%; */
+    /* margin-top:-4em!important; */
+    margin-bottom: 3em;
 }
 
 /* .headerAPropos{
@@ -809,7 +810,7 @@ h5{
     flex-direction: column;
     justify-content: space-between;
 
-    background: rgba( 255, 255, 255, 0.35 );
+    background: rgba( 255, 255, 255, 0.65 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 1.5px );
     -webkit-backdrop-filter: blur( 1.5px );
