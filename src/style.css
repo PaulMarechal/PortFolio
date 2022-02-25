@@ -171,9 +171,13 @@ p{
 
 .webgl
 {
-    top: 0;
     left: 0;
     outline: none;
+    padding-top: constant(safe-area-inset-top);  
+}
+body {
+    padding-top: constant(safe-area-inset-top);  
+    padding-bottom: constant(safe-area-inset-bottom);
 }
 
 .point
@@ -356,6 +360,7 @@ a[href^="tel"]::before {
     font-style: bold;
     font-size: 30;
     color: #000000;
+    background: #000000
 }
 
 #realisationTitre{
@@ -954,12 +959,22 @@ h5{
     padding-left: 20px;
 }
 
-@supports(padding: max(0px)) {
+/* test couvrir encoche iphone */
+/* @supports(padding: max(0px)) {
     body {
-        padding-top: max(12px, env(safe-area-inset-top));
-        padding-bottom: max(12px, env(safe-area-inset-bottom));
-        padding-left: max(12px, env(safe-area-inset-left));
+        padding-top: max(0px, env(safe-area-inset-top));
+        /* padding-bottom: max(0px, env(safe-area-inset-bottom)); 
+        padding-left: max(0px, env(safe-area-inset-left));
         padding-right: max(12px, env(safe-area-inset-right));
     }
-}
+} */
 
+/* test couvrir encoche iphone */
+/* body {
+    transform: translate3d(0, calc(0px + env(safe-area-inset-top)), 0);
+} */
+
+body{
+    padding :(env(safe-area-inset-top), env(safe-area-inset-right), env(safe-area-inset-bottom),env(safe-area-inset-left));
+    background: #38c3fc;
+}

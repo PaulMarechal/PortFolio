@@ -31,9 +31,6 @@ import Darkmode from 'darkmode-js';
 /**
  * Loaders
 */
-
-// screen.lockOrientation('landscape');
-
 const loadingBarElement = document.querySelector('.loading-bar')
 let sceneReady = false
 const loadingManager = new THREE.LoadingManager(
@@ -74,12 +71,12 @@ dracoLoader.setDecoderPath('draco/')
 const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
 
-
+// Clock 
 var clockMedia = new THREE.Clock();
 
 
 var animOffset       = 0,   // starting frame of animation
-	walking         = false,
+	walking         = false, 
 	duration        = 1000, // milliseconds to complete animation
 	keyframes       = 20,   // total number of animation frames
 	interpolation   = duration / keyframes, // milliseconds per frame
@@ -89,7 +86,7 @@ var animOffset       = 0,   // starting frame of animation
 /**
  * Base
  */
-// Debug
+// Debug GUI
 const debugObject = {}
 // const gui = new GUI({
 //     width: 400
@@ -100,7 +97,6 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
-
 
 /**
 * Textures 
@@ -122,31 +118,12 @@ debugObject.portalColorEnd = '#1ec375'
 // Main cloud 
 const clouds = new THREE.Group()
 scene.add(clouds)
-// const geometry = new THREE.TorusGeometry(2.5, 3, 20, 45)
 const materialCloud = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-// const torus = new THREE.Mesh( geometry, material );
-// torus.rotation.x = 250
-// torus.position.y = -4.5
 const geometryCloud = new THREE.TorusGeometry(0.3, 0.4, 20, 45)
 
 
 // Others small clouds
-for(let i = 0; i < 14; i++)
-{
-    // const geometryCloud = new THREE.TorusGeometry(0.3, 0.4, 20, 45)
-    // const cloudTorus = new THREE.Mesh(geometryCloud, material)
-
-    // const scaleCloud = Math.random()
-    // cloudTorus.scale.set(scaleCloud, scaleCloud, scaleCloud)
-
-    // cloudTorus.position.x = (Math.random() - 0.2) * 20
-    // cloudTorus.position.y = (Math.random() - 0.6) * 20
-    // cloudTorus.position.z = (Math.random() - 0.2) * 20
-
-    // cloudTorus.rotation.x = 250
-
-    // scene.add( cloudTorus );
-
+for(let i = 0; i < 14; i++) {
     const angle = Math.random() * Math.PI * 2
     const radius = 8 + Math.random() * 50
     const x = Math.sin(angle) * radius
@@ -160,7 +137,6 @@ for(let i = 0; i < 14; i++)
 
     cloudTorus.castShadow = true
     clouds.add(cloudTorus)
-
 }
 
 
@@ -176,7 +152,6 @@ cube.position.z = 2.2
 scene.add( cube );
 
 // Cone 
-
 const geometryCone = new THREE.ConeGeometry( 0.2, 0.2, 4);
 const materialCone = new THREE.MeshBasicMaterial( {color: 0xff00ff} );
 const cone = new THREE.Mesh( geometryCone, materialCone );
@@ -186,7 +161,6 @@ cone.position.x = -5.5
 cone.position.z = 2.8
 
 scene.add( cone );
-
 
 // Torus
 const geometryTorus = new THREE.TorusGeometry( 0.1, 0.0148, 30, 6 );
@@ -238,7 +212,6 @@ gltfLoader.load(
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = bakedMaterial
-            // child.position.y = 1
         })
 
         // Get each objets 
@@ -254,17 +227,15 @@ gltfLoader.load(
 /**
  * Fox
 */
-
 let mixer = null
 
 gltfLoader.load(
     '/models/Fox/glTF/Fox.gltf', 
     (gltf) => {
-        // pour charger une animation
+        // To charge others animations
         mixer = new THREE.AnimationMixer(gltf.scene)
         const action = mixer.clipAction(gltf.animations[1])
         const stay = mixer.clipAction(gltf.animations[0])
-        //mixer.clipAction(action).play();
         stay.play()
 
         gltf.scene.scale.set(0.007, 0.007, 0.007) // for the Fox
@@ -272,22 +243,19 @@ gltfLoader.load(
         gltf.scene.position.x = -3.8
         gltf.scene.position.y = -0.15
 
-        // test 
-
         var direction = new THREE.Vector3();
         
         document.onkeydown = function(e) {
             switch (e.keyCode) {
+            
+            // Left arrow
             case 37:
                 action.play()
-                //gltf.scene.position.x += 0.02;
                 camera.position.x += 0.02
-                //gltf.scene.position.z += 0.01;
-                //camera.position.z += 0.01
                 gltf.scene.rotation.y += 0.06;
-                //camera.position.y += 0.02
                 break;
 
+            // Top arrow
             case 38:
                 action.play()
                 gltf.scene.getWorldDirection(direction);
@@ -297,30 +265,20 @@ gltfLoader.load(
                 camera.position.x = gltf.scene.position.x - 2;
                 camera.position.y = gltf.scene.position.y - 2;
                 camera.position.z = gltf.scene.position.z - 1;
-
-                // camera.rotation.x = gltf.scene.rotation.x;
-                // camera.rotation.y = gltf.scene.rotation.y;
-                // camera.rotation.z = gltf.scene.rotation.z;
-
-                //camera.position.z += 0.01
                 break;
 
+            // Right arrow
             case 39:
                 action.play()
-                //gltf.scene.position.x -= 0.02;
                 camera.position.x += 0.02;
-                // gltf.scene.position.z += 0.01;
-                //camera.position.z += 0.01
                 gltf.scene.rotation.y -= 0.06;
-                //camera.rotation.y += 0.02
                 break;
 
+            // Bottom arrow
             case 40:
                 action.play()
-                
                 gltf.scene.getWorldDirection(direction);
                 gltf.scene.position.addScaledVector(direction, -0.02);
-                //camera.position.z -= 0.01
                 break;
             }
             stay.play();
@@ -328,18 +286,23 @@ gltfLoader.load(
 
         document.onkeyup = function(e) {
             switch (e.keyCode) {
+            
+            // Left Arrow
             case 37:
                 action.stop()
                 break;
 
+            //Top arrow
             case 38:
                 action.stop()
                 break;
 
+            // Right arrow
             case 39:
                 action.stop()
                 break;
 
+            // Bottom arrow
             case 40:
                 action.stop()
                 break;
@@ -347,22 +310,14 @@ gltfLoader.load(
             stay.play();
         };
         
-
-        // fin test 
         scene.add(gltf.scene)
 
         
     }
-    // () => {
-    //     console.log('progress')
-    // },
-    // () => {
-    //     console.log('error')
-    // },
 )
 
 /**
- * Elvis
+ * Test ajout personnage ( Elvis )
  */
 // let mixerElvis = null
 
@@ -400,7 +355,6 @@ directionalLight.shadow.camera.far = 15
 directionalLight.shadow.camera.left = - 7
 directionalLight.shadow.camera.top = 7
 directionalLight.shadow.camera.right = 7
-//directionalLight.shadow.camera.bottom = - 7
 directionalLight.position.set(5, 5, 5)
 scene.add(directionalLight)
 
@@ -409,27 +363,24 @@ scene.add(directionalLight)
  * Points of interest
  */
 const raycaster = new THREE.Raycaster()
-const points = [
-    {
+const points = [{
+        // 'Experience' button
         position: new THREE.Vector3(0.30, 1.5, 4.7),
         element: document.querySelector('.point-0')
-    },
-    {
+    }, {
+        // 'Contact' button
         position: new THREE.Vector3(0.5, 1.7, -4.0),
         element: document.querySelector('.point-1')
-    }, 
-    {
+    }, {
+        // 'Hobbies' button
         position: new THREE.Vector3(3.7, 1.7, 0.5), 
         element: document.querySelector('.point-2')
-    }, 
-    {
+    }, {
+        // 'Formation' button
         position: new THREE.Vector3(-4.2, 1.5, 1.4),
         element: document.querySelector('.point-3')
     }, 
-
 ]
-
-
 
 /**
 * Water
@@ -451,11 +402,7 @@ if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     debugObject.surfaceColor = '#0077ff'
 }
 
-// debugObject.depthColor = 'rgb(114 ,212 ,253, .7)'
-// debugObject.surfaceColor = 'rgb(134,218,253, .7)'
-
 // Material
-
 const waterMaterial = new THREE.ShaderMaterial({
     vertexShader: waterVertexShader,
     fragmentShader: waterFragmentShader,
@@ -475,24 +422,21 @@ const waterMaterial = new THREE.ShaderMaterial({
         uDepthColor: { value: new THREE.Color(debugObject.depthColor) },
         uSurfaceColor: { value: new THREE.Color(debugObject.surfaceColor) }, 
         uColorOffset: { value: 0.06 }, 
-        uColorMultiplier: { value: 3.68},
-        
+        uColorMultiplier: { value: 3.68},       
     }
 })
 
+// GUI water 
 // gui.add(waterMaterial.uniforms.uBigWavesElevation, 'value').min(0).max(1).step(0.01).name('uBigWavesElevation')
-
 // gui.add(waterMaterial.uniforms.uBigWavesFrequency.value, 'x').min(0).max(10).step(0.01).name('uBigWavesFrequencyX')
 // gui.add(waterMaterial.uniforms.uBigWavesFrequency.value, 'y').min(0).max(10).step(0.01).name('uBigWavesFrequencyY')
-
 // gui.add(waterMaterial.uniforms.uBigWavesSpeed, 'value').min(0).max(4).step(0.01).name('uBigWavesSpeed')
-
 // gui.add(waterMaterial.uniforms.uSmallWavesElevation, 'value').min(0).max(1).step(0.001).name('uSmallWavesElevation')
 // gui.add(waterMaterial.uniforms.uSmallWavesFrequency, 'value').min(0).max(30).step(0.001).name('uSmallWavesFrequency')
 // gui.add(waterMaterial.uniforms.uSmallWavesSpeed, 'value').min(0).max(4).step(0.001).name('uSmallWavesSpeed')
 // gui.add(waterMaterial.uniforms.uSmallWavesIterations, 'value').min(0).max(5).step(1).name('uSmallWavesIterations')
 
-// Mesh 
+// Mesh water 
 const water = new THREE.Mesh(waterGeometry, waterMaterial)
 water.rotation.x = - Math.PI * 0.5
 water.position.y = -0.7
@@ -508,7 +452,6 @@ const positionArray = new Float32Array(firefliesCount * 3 ) // *3 because XYZ
 const scaleArray = new Float32Array(firefliesCount)
 
 for(let i = 0; i < firefliesCount; i++){
-    // valeur par défaut en bout de ligne : 4
     positionArray[ i * 3 + 0 ] = (Math.random() -0.5 ) * 7
     positionArray[ i * 3 + 1 ] = Math.random() * 1.5
     positionArray[ i * 3 + 2 ] = (Math.random() - 0.5 ) * 7
@@ -534,71 +477,12 @@ const firefliesMaterial = new THREE.ShaderMaterial({
     depthWrite: false
 })
 
+// GUI Fireflies 
 // gui.add(firefliesMaterial.uniforms.uSize, 'value').min(0).max(500).step(1).name('fireflies Size')
 
 // Points 
 const fireflies = new THREE.Points(firefliesGeometry, firefliesMaterial)
 scene.add(fireflies)
-
-// // test Text VR
-// const container = new ThreeMeshUI.Block({
-// 	height: 1.5,
-// 	width: 1
-// });
-
-// container.position.set( 0, 1, -1.8 );
-// container.rotation.x = -0.55;
-// scene.add( container );
-
-// const imageBlock = new ThreeMeshUI.Block({
-// 	height: 1,
-// 	width: 1,
-// 	offset: 0.1 // distance separating the inner block from its parent
-// });
-
-// const textBlock = new ThreeMeshUI.Block({
-// 	height: 0.4,
-// 	width: 0.8,
-// 	margin: 0.05, // like in CSS, horizontal and vertical distance from neighbour
-// 	offset: 0.1 // distance separating the inner block from its parent
-// });
-
-// container.add( imageBlock, textBlock );
-
-// const loader = new THREE.TextureLoader();
-
-// loader.load( Image, (texture)=> {
-
-// 	imageBlock.set({ backgroundTexture: texture });
-
-// });
-
-// container.set({
-// 	fontFamily: FontJson,
-// 	fontTexture: FontImage,
-// });
-
-// const text = new ThreeMeshUI.Text({
-// 	content: 'The spiny bush viper is known for its extremely keeled dorsal scales.'
-// });
-
-// textBlock.add(
-// 	new ThreeMeshUI.Text({
-// 		content: ' Mind your fingers.',
-// 		fontSize: 0.07,
-// 		fontColor: new THREE.Color( 0xefffe8 )
-// 	})
-// );
-// textBlock.add( text );
-// fin test vr 
-
-
-
-
-
-
-
-
 
 /**
 * Overlay
@@ -653,10 +537,9 @@ window.addEventListener('resize', () =>
 })
 
 /**
- * Camera
- */
+* Camera
+*/
 // Base camera
-// Valeurs camera vant changement (45, sizes.width/sizes.height, 1, 50)
 const camera = new THREE.PerspectiveCamera(55, sizes.width / sizes.height, 0.1, 1000)
 camera.position.x = 24
 camera.position.y = 24
@@ -671,12 +554,11 @@ controls.screenSpacePanning = false
 controls.minDistance = 3
 controls.maxDistance = 11
 
-
 controls.maxPolarAngle = (Math.PI / 2) - 0.3;
 
 /**
- * Renderer
- */
+* Renderer
+*/
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     antialias: true
@@ -691,43 +573,22 @@ document.body.appendChild( renderer.domElement );
 camera.position.set( 12, 4, -5);
 controls.update();
 
-// Brouillard 
-// scene.fog = new THREE.FogExp2( '#38c3fc', 0.04 );
-
-// test changement couleur fog
-
-
-
+// Fog color at 'Night' / 'Day'
 if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
-    // meshSun.setColor(0xFFFFFF)
     scene.fog = new THREE.FogExp2( '#191970' , 0.04 ); 
 } else {
-    // meshSun.setColor('#efd807')
     scene.fog = new THREE.FogExp2( '#38c3fc', 0.04 );
 }
 
-// fin test changement couleur 
-
-
-
-// Color of the sky
+// Sky color at 'Night' / 'Day' and bgc 
 debugObject.clearColor = '#38c3fc'
-
-// Change color sky & sun depennding on the current time 
-
-// <input type="button" id="button" value="Change Color" /> 
-// $('#button').click(onClick);
-// onClick = function() {
-//     //line.material.color = new THREE.Color(0xffffff * Math.random());
-//     // line.material.needsUpdate = true;
-//     debugObject.clearColor = '#191970'
-//     debugObject.material.needsUpdate = true;
-// };
 
 if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     debugObject.clearColor = '#191970'  
+    document.body.style.background = '#191970'; 
 } else {
     debugObject.clearColor = '#38c3fc'
+    document.body.style.background = '#38c3fc'; 
 }
 
 renderer.setClearColor(debugObject.clearColor)
@@ -737,19 +598,7 @@ renderer.setClearColor(debugObject.clearColor)
 //         renderer.setClearColor(debugObject.clearColor)
 //     })
 
-// Soleil 
-// const sunGeometry = new THREE.SphereGeometry( 1,32, 16 );
-// const sunMaterial = new THREE.MeshBasicMaterial( { color: '#efd807' } );
-// const sun = new THREE.Mesh( sunGeometry, sunMaterial );
-// sun.radius = 3
-// sun.position.y = 5.5
-// sun.position.x = -15.7
-// sun.position.z = 1.5
-
-// scene.add( sun );
-
-// test click portal 
-
+// Portal circle ( onClick to change all scene color )
 const geometry = new THREE.CircleGeometry( 1.1, 32 );
 const material = new THREE.MeshBasicMaterial( {side: THREE.DoubleSide, transparent: true } );
 const circle = new THREE.Mesh( geometry, material );
@@ -776,9 +625,8 @@ event.preventDefault();
 mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
 mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
 raycaster.setFromCamera( mouse, camera );
-console.log(scene.children);
+// console.log(scene.children);
 var intersects = raycaster.intersectObjects( scene.children );
-// console.log(intersects[1]);
 if ( intersects.length > 0 ) {
     intersects[1].object.callback();
 }}
@@ -795,25 +643,10 @@ function changeByPortal(){
 }
 
 
-// Nouveau test SUN plus realiste 
-
-// const moonColor = '#efd807'
-// var now = new Date();
-// const heureMoon = now.getHours();
-// console.log(heureMoon);
-// if((heureMoon >= 0 && heureMoon <= 6) || (heureMoon >= 22 && heureMoon <=24)){
-//     moonColor = "#ffffff"
-
-// } else {
-//     moonColor = '#ffffff'
-//     connsole.log("il passe ici")
-// }
+// 'Sun' / 'Moon' with SpriteMaterial 
 var geometrySun = new THREE.SphereGeometry( 1, 32, 16 );
 var materialSun = new THREE.MeshBasicMaterial( { color : '#efd807' } );
 var meshSun = new THREE.Mesh( geometrySun, materialSun );
-
-// var now = new Date();
-// const heureSun = now.getHours();
 
 meshSun.setColor = function(color){
     materialSun.color.set( color );
@@ -832,47 +665,44 @@ meshSun.radius = 3
 
 // imageSun.crossOrigin = "Anonymous";
 
-    const sunTexture = new THREE.TextureLoader().load('https://paulmarechal.xyz/CV/glow.png');
-	var spriteMaterial = new THREE.SpriteMaterial({
-		map: sunTexture,
-		useScreenCoordinates: false, 
-		color: 0xFFCC00, 
-        transparent: false, 
-        blending: THREE.AdditiveBlending,
-	});
-	var sprite = new THREE.Sprite( spriteMaterial );
-	sprite.scale.set(2.5, 2.5, 1.0);
-	meshSun.add(sprite); 
-// // fin tets nouveau sun 
+const sunTexture = new THREE.TextureLoader().load('https://paulmarechal.xyz/CV/glow.png');
+var spriteMaterial = new THREE.SpriteMaterial({
+	map: sunTexture,
+	useScreenCoordinates: false, 
+	color: 0xFFCC00, 
+    transparent: false, 
+    blending: THREE.AdditiveBlending,
+});
+var sprite = new THREE.Sprite( spriteMaterial );
+sprite.scale.set(2.5, 2.5, 1.0);
+meshSun.add(sprite); 
 
-// Image tableau noir 
+// Black screen picture
 var loaderTab = new THREE.TextureLoader();
 
 var materialTab = new THREE.MeshLambertMaterial({
   map: loaderTab.load('https://ak.picdn.net/shutterstock/videos/30298276/thumb/12.jpg')
 });
 
-// Create a plane geometry for the image and preserve the image aspect ratio 
+// Plane geometry for the image and preserve the image aspect ratio 
 var geometryTab = new THREE.PlaneGeometry(2.62, 2.62*0.51);
 
-// combine our image geometry and material into a mesh
+// Combine image geometry and material 
 var meshTab = new THREE.Mesh(geometryTab, materialTab);
 
-// set the position of the image mesh in the x,y,z dimensions
+// Position of the image ( x, y, z & rotation)
 meshTab.position.set(0,0,0)
 meshTab.rotation.y = 3.165
-
 
 meshTab.position.x = 0.2
 meshTab.position.z = 6.399
 meshTab.position.y = 0.9
 
-// add the image to the scene
 scene.add(meshTab);
 
-//
-// test VR 
-//
+/** 
+* test VR 
+*/
 document.body.appendChild( VRButton.createButton( renderer ) );
 renderer.xr.enabled = true;
 document.body.appendChild( VRButton.createButton(renderer) );
@@ -907,8 +737,7 @@ scene.add( container );
 const textBlock = new ThreeMeshUI.Block({
 	height: 0.75,
 	width: 1.1,
-	margin: 0.01, // like in CSS, horizontal and vertical distance from neighbour
-	//offset: 0.1 // distance separating the inner block from its parent
+	margin: 0.01, 
 });
 
 container.add(textBlock );
@@ -922,12 +751,13 @@ container.set({
 	fontTexture: FontImage,
 });
 
- const text = new ThreeMeshUI.Text({
+// 'En quelques mots' - text -  VR board
+const text = new ThreeMeshUI.Text({
     content:
       "Apres presque dix ans dans la restauration et avoir murement prepare ma reconversion, j ai donc decide de me tourner vers un metier qui me passionne depuis longtemps a savoir les nouvelles technologies et plus particulierement le developpement web. Ce metier est pour moi magnifique car les seules limites d un bon developpeur sont son imagination et sa creativite.\n\n Je ne souhaite plus etre spectateur mais acteur dans ce monde en perpetuel changement et renouvellement.\n\n Paul Marechal ",
-  });
+});
 
-  textBlock.add(text);
+textBlock.add(text);
 
 text.set({
     fontColor: new THREE.Color(0xefffe8),
@@ -941,7 +771,7 @@ textBlock.set({
     padding: 0.03,
   });
 
-
+// 'En quelques mots' - title -  VR board
 textBlock.add(
 	new ThreeMeshUI.Text({
 		content: ' En quelques mots \n',
@@ -993,8 +823,7 @@ scene.add(videoScreen);
 // floor.receiveShadow = true;
 // scene.add( floor );
 
-// controllers
-
+// VR hand controller 
 let hand1, hand2;
 let controllerHand1, controllerHand2;
 let controllerGrip1, controllerGrip2;
@@ -1037,18 +866,15 @@ line.scale.z = 5;
 controllerHand1.add( line.clone() );
 controllerHand2.add( line.clone() );
 
-// fin test VR
-
-// test 2 
 var backgroundButton = document.querySelector('#change-background');
 const classess = backgroundButton.classList;
 
+// When click on 'Day' / 'Night' button 
 backgroundButton.addEventListener('click', function(){
     const result = classess.toggle("Night");
 
     if (result) {
         backgroundButton.textContent = `🌕`;
-
         // Sky
         scene.background = new THREE.Color( '#191970' );
         // Fog
@@ -1064,7 +890,6 @@ backgroundButton.addEventListener('click', function(){
 
     } else {
         backgroundButton.textContent = `🌙`;
-
         // Sky
         scene.background = new THREE.Color( '#38c3fc' );
         // Fog
@@ -1077,12 +902,8 @@ backgroundButton.addEventListener('click', function(){
         // Water
         waterMaterial.uniforms.uDepthColor.value = new THREE.Color(0x11aced)
         waterMaterial.uniforms.uSurfaceColor.value = new THREE.Color(0x0077ff)
-
     }
-    
 });
-// fin test 
-
 
 /**
  * Animate
@@ -1092,10 +913,10 @@ let previousTime = 0
 
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
-    // // test 
+
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
-    // // Update mixer
+    // Update mixer
     if(mixer !== null){
         mixer.update(deltaTime)
     }
@@ -1117,8 +938,7 @@ const tick = () => {
 
     if(sceneReady){
         // Go through each point
-        for(const point of points)
-        {
+        for(const point of points) {
             const screenPosition = point.position.clone()
             screenPosition.project(camera)
 
@@ -1126,29 +946,24 @@ const tick = () => {
             const translateY = - screenPosition.y * sizes.height * 0.5
             point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`
         }
-
     }
     
     
-    // Rotation elements bibliotheque
-    //cube.rotation.x = 0.4 * elapsedTime
-    //cube.rotation.y = 0.4 * elapsedTime
+    /** 
+    * Rotate library items
+    */
+    cube.rotation.x = 0.4 * elapsedTime
+    cube.rotation.y = 0.4 * elapsedTime
+
+    cone.rotation.y = 0.4 * elapsedTime
+    cone.rotation.x = 0.4 * elapsedTime
     
+    torus.rotation.y = 0.4 * elapsedTime
+    torus.rotation.z = 0.4 * elapsedTime
 
-
-    //cone.rotation.y = 0.4 * elapsedTime
-    //cone.rotation.x = 0.4 * elapsedTime
-    
-
-
-    //torus.rotation.y = 0.4 * elapsedTime
-    //torus.rotation.z = 0.4 * elapsedTime
-
-
-    
-
-
-    // Render
+    /**
+    * Render
+    */
     renderer.render(scene, camera)
 
     // Call tick again on the next frame
@@ -1169,7 +984,7 @@ const tick = () => {
     ThreeMeshUI.update();
     
         renderer.xr.enabled = true;
-        // test rendu avec Oculus 
+        // Test with Oculus 2 headset
         renderer.xr.setFramebufferScaleFactor( 2.0 );
         //  torus.rotation.z += 0.01
         //  cone.rotation.y += 0.01
@@ -1185,43 +1000,5 @@ const tick = () => {
     ThreeMeshUI.update();
 }
 
-
-
-
 tick()
 
-
-// test waves
-// uniform float uTime;
-// uniform vec2 uFrequency;
-// uniform float uSpeed;
-// uniform float uThreshold;
-
-// varying vec2 vUv;
-
-// #pragma glslify: getClassicNoise2d = require('../partials/getClassicNoise2d.glsl')
-
-// void main()
-// {
-//     /**
-//      * Waves
-//      */
-//     vec2 wavesUv = vUv * uFrequency;
-//     wavesUv.y += uTime * uSpeed;
-
-//     float edgeTreshold = 0.5;
-//     float edgeStrength = 1.0 - abs(vUv.y - edgeTreshold) * 2.0;
-//     edgeStrength = pow(edgeStrength, 3.0);
-    
-//     float waveStrength = getClassicNoise2d(wavesUv);
-//     waveStrength += edgeStrength;
-//     waveStrength = step(uThreshold, waveStrength);
-
-//     /**
-//      * Final color
-//      */
-//     gl_FragColor = vec4(1.0, 1.0, 1.0, waveStrength);
-
-//     #include <tonemapping_fragment>
-//     #include <encodings_fragment>
-// }
