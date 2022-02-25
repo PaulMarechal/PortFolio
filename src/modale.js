@@ -3,32 +3,32 @@ $(window).on("load", function () {
 });
 
 $(document).ready(function() {
-                $('button.btn-view-details-3').on('click', function() {
-                $('#point3').modal('show');
-                })
-            })
+    $('button.btn-view-details-3').on('click', function() {
+    $('#point3').modal('show');
+    })
+});
                             
-            $(document).ready(function() {
-                $('button.btn-view-details-2').on('click', function() {
-                $('#point0').modal('show');
-                })
-            })
+$(document).ready(function() {
+    $('button.btn-view-details-2').on('click', function() {
+    $('#point0').modal('show');
+    })
+});
                             
-            $(document).ready(function() {
-                $('button.btn-view-details-1').on('click', function() {
-                $('#point2').modal('show');
-                })
-            })
+$(document).ready(function() {
+    $('button.btn-view-details-1').on('click', function() {
+    $('#point2').modal('show');
+    })
+});
                             
-            $(document).ready(function() {
-                $('button.btn-view-details-0').on('click', function() {
-                $('#point1').modal('show');
-                })
-            })
+$(document).ready(function() {
+    $('button.btn-view-details-0').on('click', function() {
+    $('#point1').modal('show');
+    })
+});
             
-            $(function () {
-                $('#modal').modal('toggle');
-            });
+$(function () {
+    $('#modal').modal('toggle');
+});
 
 function closeAlertBox() {
     alertBox = document.getElementById("alertBox");
@@ -36,6 +36,7 @@ function closeAlertBox() {
     alertBox.style.visibility = "hidden";
     alertClose.style.visibility = "hidden";
 }
+
 window.alert = function (msg) {
     var id = "alertBox",
     alertBox,

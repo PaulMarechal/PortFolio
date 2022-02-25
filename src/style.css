@@ -955,13 +955,11 @@ h5{
 }
 
 @supports(padding: max(0px)) {
-    .post {
+    body {
+        padding-top: max(12px, env(safe-area-inset-top));
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
         padding-left: max(12px, env(safe-area-inset-left));
         padding-right: max(12px, env(safe-area-inset-right));
-    }
-
-    body {
-        padding: env(safe-area-inset-top, 0px)
     }
 }
 
