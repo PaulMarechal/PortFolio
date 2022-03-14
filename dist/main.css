@@ -18,13 +18,13 @@ h4, h5 {
 }
 
 
-* { 
+/* * { 
     -webkit-user-select: none; 
     -webkit-touch-callout: none; 
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none;    
-} 
+}  */
 
 html,
 body
@@ -170,9 +170,13 @@ p{
 
 .webgl
 {
-    top: 0;
     left: 0;
     outline: none;
+    padding-top: constant(safe-area-inset-top);  
+}
+body {
+    padding-top: constant(safe-area-inset-top);  
+    padding-bottom: constant(safe-area-inset-bottom);
 }
 
 .point
@@ -237,6 +241,7 @@ a:link{
 a[href^="https://paulmarechal.000webhostapp.com"], 
 a[href^="tel:+33648357374"], 
 a[href^="https://www.linkedin.com/in/paul-marechal/"],
+a[href^="https://github.com/PaulMarechal"],
 a[href^="mailto:paulmarechal75@gmail.com"] {
     font-weight: normal!important;
 }
@@ -319,10 +324,17 @@ a[href^="tel"]::before {
     margin-left: -1em; 
 }
 
-#linkdein{
+#linkdein, #github{
     width: 20px;
     margin-left: -0.2em; 
 }
+
+#github{
+    width: 20px;
+    margin-left: -0.2em; 
+}
+
+
 
 #linkd{
     margin-left: -0.6em;
@@ -355,6 +367,7 @@ a[href^="tel"]::before {
     font-style: bold;
     font-size: 30;
     color: #000000;
+    background: #000000
 }
 
 #realisationTitre{
@@ -953,17 +966,24 @@ h5{
     padding-left: 20px;
 }
 
-@supports(padding: max(0px)) {
-    .post {
-        padding-left: max(12px, env(safe-area-inset-left));
+/* test couvrir encoche iphone */
+/* @supports(padding: max(0px)) {
+    body {
+        padding-top: max(0px, env(safe-area-inset-top));
+        /* padding-bottom: max(0px, env(safe-area-inset-bottom)); 
+        padding-left: max(0px, env(safe-area-inset-left));
         padding-right: max(12px, env(safe-area-inset-right));
     }
+} */
 
-    body {
-        padding: env(safe-area-inset-top, 0px)
-    }
+/* test couvrir encoche iphone */
+/* body {
+    transform: translate3d(0, calc(0px + env(safe-area-inset-top)), 0);
+} */
+
+body{
+    padding :(env(safe-area-inset-top), env(safe-area-inset-right), env(safe-area-inset-bottom),env(safe-area-inset-left));
+    background: #38c3fc;
 }
-
-
 
 /*# sourceMappingURL=main.css.map*/

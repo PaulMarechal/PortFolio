@@ -1,20 +1,24 @@
+import UpdateManager from '../components/core/UpdateManager.js';
 
+/** Recursively erase THE CHILDREN of the passed object */
 function deepDelete( object3D ) {
 
-	for ( let i = object3D.children.length -1 ; i > -1 ; i-- ) {
-
-		let child = object3D.children[ i ];
+	object3D.children.forEach( ( child ) => {
 
 		if ( child.children.length > 0 ) deepDelete( child );
 
 		object3D.remove( child );
 
+		UpdateManager.disposeOf( child );
+
 		if ( child.material ) child.material.dispose();
 
 		if ( child.geometry ) child.geometry.dispose();
 
-	};
+	} );
 
-};
+	object3D.children = [];
 
-export default deepDelete
+}
+
+export default deepDelete;

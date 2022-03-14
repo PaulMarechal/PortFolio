@@ -19,13 +19,13 @@ h4, h5 {
 }
 
 
-* { 
+/* * { 
     -webkit-user-select: none; 
     -webkit-touch-callout: none; 
     -moz-user-select: none; 
     -ms-user-select: none; 
     user-select: none;    
-} 
+}  */
 
 html,
 body
@@ -242,6 +242,7 @@ a:link{
 a[href^="https://paulmarechal.000webhostapp.com"], 
 a[href^="tel:+33648357374"], 
 a[href^="https://www.linkedin.com/in/paul-marechal/"],
+a[href^="https://github.com/PaulMarechal"],
 a[href^="mailto:paulmarechal75@gmail.com"] {
     font-weight: normal!important;
 }
@@ -324,10 +325,17 @@ a[href^="tel"]::before {
     margin-left: -1em; 
 }
 
-#linkdein{
+#linkdein, #github{
     width: 20px;
     margin-left: -0.2em; 
 }
+
+#github{
+    width: 20px;
+    margin-left: -0.2em; 
+}
+
+
 
 #linkd{
     margin-left: -0.6em;
