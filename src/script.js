@@ -884,15 +884,17 @@ function makePanel() {
 		justifyContent: 'center',
 		alignContent: 'center',
 		contentDirection: 'row-reverse',
+        fontFamily: FontJson,
+		fontTexture: FontImage,
 		fontSize: 0.17,
 		padding: 0.02,
 		borderRadius: 0.11
 	} );
 
-    containerButton.set({
-        fontFamily: FontJson,
-	    fontTexture: FontImage,
-    })
+    // containerButton.set({
+    //     fontFamily: FontJson,
+	//     fontTexture: FontImage,
+    // })
 
 	containerButton.position.set( 0, 0.6, -1.2 );
 	containerButton.rotation.x = -0.55;
@@ -915,6 +917,8 @@ function makePanel() {
 
 	// Options for component.setupState().
 	// It must contain a 'state' parameter, which you will refer to with component.setState( 'name-of-the-state' ).
+
+    // Pbs with display of the front button - it works but dont appear 
 
 	const hoveredStateAttributes = {
 		state: 'hovered',
@@ -943,12 +947,20 @@ function makePanel() {
 
 	// Add text to buttons
 
-	buttonNext.add(
-		new ThreeMeshUI.Text( { content: 'next', } )
-	);
+	// buttonNext.add(
+	// 	new ThreeMeshUI.Text( { content: 'next' } )
+	// );
+
+    buttonNext.add(
+	new ThreeMeshUI.Text({
+		content: 'next',
+		fontSize: 0.07,
+		fontColor: new THREE.Color( 0xefffe8 )
+	    })
+    );
 
 	buttonPrevious.add(
-		new ThreeMeshUI.Text( { content: 'previous', } )
+		new ThreeMeshUI.Text( { content: 'previous'} )
 	);
 
 	// Create states for the buttons.
@@ -1014,16 +1026,16 @@ function loop() {
 	// Don't forget, ThreeMeshUI must be updated manually.
 	// This has been introduced in version 3.0.0 in order
 	// to improve performance
-	ThreeMeshUI.update();
+	// ThreeMeshUI.update();
 
-	controls.update();
+	// controls.update();
 
-	meshContainer.rotation.z += 0.01;
-	meshContainer.rotation.y += 0.01;
+	// meshContainer.rotation.z += 0.01;
+	// meshContainer.rotation.y += 0.01;
 
-	renderer.render( scene, camera );
+	// renderer.render( scene, camera );
 
-	updateButtons();
+	// updateButtons();
 
 }
 
@@ -1135,46 +1147,34 @@ vrControl.controllers[ 0 ].addEventListener( 'selectend', () => {
 } );
 
 ////////////////////
-	// Primitive Meshes
-	////////////////////
+// Primitive Meshes
+////////////////////
+meshContainer = new THREE.Group();
+meshContainer.position.set( 0, 1, -1.9 );
+scene.add( meshContainer );
+//
+const sphereVR1 = new THREE.Mesh(
+	new THREE.IcosahedronBufferGeometry( 0.3, 1 ),
+	new THREE.MeshStandardMaterial( { color: 0x3de364, flatShading: true } )
+);
+const boxVR1 = new THREE.Mesh(
+	new THREE.BoxBufferGeometry( 0.45, 0.45, 0.45 ),
+	new THREE.MeshStandardMaterial( { color: 0x643de3, flatShading: true } )
+);
+const coneVR1 = new THREE.Mesh(
+	new THREE.ConeBufferGeometry( 0.28, 0.5, 10 ),
+	new THREE.MeshStandardMaterial( { color: 0xe33d4e, flatShading: true } )
+);
+//
+sphereVR1.visible = boxVR1.visible = coneVR1.visible = false;
+meshContainer.add( sphereVR1, boxVR1, coneVR1 );
+meshes = [ sphereVR1, boxVR1, coneVR1 ];
+currentMesh = 0;
 
-	meshContainer = new THREE.Group();
-	meshContainer.position.set( 0, 1, -1.9 );
-	scene.add( meshContainer );
-
-	//
-
-	const sphereVR1 = new THREE.Mesh(
-		new THREE.IcosahedronBufferGeometry( 0.3, 1 ),
-		new THREE.MeshStandardMaterial( { color: 0x3de364, flatShading: true } )
-	);
-
-	const boxVR1 = new THREE.Mesh(
-		new THREE.BoxBufferGeometry( 0.45, 0.45, 0.45 ),
-		new THREE.MeshStandardMaterial( { color: 0x643de3, flatShading: true } )
-	);
-
-	const coneVR1 = new THREE.Mesh(
-		new THREE.ConeBufferGeometry( 0.28, 0.5, 10 ),
-		new THREE.MeshStandardMaterial( { color: 0xe33d4e, flatShading: true } )
-	);
-
-	//
-
-	sphereVR1.visible = boxVR1.visible = coneVR1.visible = false;
-
-	meshContainer.add( sphereVR1, boxVR1, coneVR1 );
-
-	meshes = [ sphereVR1, boxVR1, coneVR1 ];
-	currentMesh = 0;
-
-	showMesh( currentMesh );
-
-	//////////
-	// Panel
-	//////////
-
-	makePanel();
+///////////
+// Panel // 
+///////////
+makePanel();
 
 //
 
@@ -1582,6 +1582,7 @@ const tick = () => {
 
         updateButtons();
     } );
+    
 
 
 
