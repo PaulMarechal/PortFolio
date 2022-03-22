@@ -799,6 +799,9 @@ textBlock.set({
   });
 textBlock.add( text );
 
+
+
+
 // fin test VR
 
 // test ButtonVR 
@@ -819,293 +822,366 @@ textBlock.add( text );
 
 
 
-// let vrControl;
-// let meshContainer, meshes, currentMesh;
-// const objsToTest = [];
+let vrControl;
+let meshContainer, meshes, currentMesh;
+const objsToTest = [];
 
-// //const raycaster = new THREE.Raycaster();
+//const raycaster = new THREE.Raycaster();
 
-// // const mouse = new THREE.Vector2();
-// // mouse.x = mouse.y = null;
+// const mouse = new THREE.Vector2();
+// mouse.x = mouse.y = null;
 
-// let selectState = false;
-
-// window.addEventListener( 'pointermove', ( event ) => {
-// 	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-// 	mouse.y = -( event.clientY / window.innerHeight ) * 2 + 1;
-// } );
-
-// window.addEventListener( 'pointerdown', () => {
-// 	selectState = true;
-// } );
+let selectState = false;
+
+window.addEventListener( 'pointermove', ( event ) => {
+	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = -( event.clientY / window.innerHeight ) * 2 + 1;
+} );
+
+window.addEventListener( 'pointerdown', () => {
+	selectState = true;
+} );
 
-// window.addEventListener( 'pointerup', () => {
-// 	selectState = false;
-// } );
+window.addEventListener( 'pointerup', () => {
+	selectState = false;
+} );
 
-// window.addEventListener( 'touchstart', ( event ) => {
-// 	selectState = true;
-// 	mouse.x = ( event.touches[ 0 ].clientX / window.innerWidth ) * 2 - 1;
-// 	mouse.y = -( event.touches[ 0 ].clientY / window.innerHeight ) * 2 + 1;
-// } );
+window.addEventListener( 'touchstart', ( event ) => {
+	selectState = true;
+	mouse.x = ( event.touches[ 0 ].clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = -( event.touches[ 0 ].clientY / window.innerHeight ) * 2 + 1;
+} );
 
-// window.addEventListener( 'touchend', () => {
-// 	selectState = false;
-// 	mouse.x = null;
-// 	mouse.y = null;
-// } );
+window.addEventListener( 'touchend', () => {
+	selectState = false;
+	mouse.x = null;
+	mouse.y = null;
+} );
 
 
-// function showMesh( id ) {
+function showMesh( id ) {
 
-// 	meshes.forEach( ( mesh, i ) => {
+	meshes.forEach( ( mesh, i ) => {
 
-// 		mesh.visible = i === id ? true : false;
-
-// 	} );
+		mesh.visible = i === id ? true : false;
+
+	} );
 
-// }
+}
 
 
-// ///////////////////
-// // UI contruction
-// ///////////////////
+///////////////////
+// UI contruction
+///////////////////
 
-// function makePanel() {
+function makePanel() {
 
-// 	// Container block, in which we put the two buttons.
-// 	// We don't define width and height, it will be set automatically from the children's dimensions
-// 	// Note that we set contentDirection: "row-reverse", in order to orient the buttons horizontally
-
-// 	const containerButton = new ThreeMeshUI.Block( {
-// 		justifyContent: 'center',
-// 		alignContent: 'center',
-// 		contentDirection: 'row-reverse',
-// 		fontSize: 0.17,
-// 		padding: 0.02,
-// 		borderRadius: 0.11
-// 	} );
-
-//     containerButton.set({
-//         fontFamily: FontJson,
-// 	    fontTexture: FontImage,
-//     })
+	// Container block, in which we put the two buttons.
+	// We don't define width and height, it will be set automatically from the children's dimensions
+	// Note that we set contentDirection: "row-reverse", in order to orient the buttons horizontally
+
+	const containerButton = new ThreeMeshUI.Block( {
+		justifyContent: 'center',
+		alignContent: 'center',
+		contentDirection: 'row-reverse',
+		fontSize: 0.17,
+		padding: 0.02,
+		borderRadius: 0.11
+	} );
+
+    containerButton.set({
+        fontFamily: FontJson,
+	    fontTexture: FontImage,
+    })
 
-// 	containerButton.position.set( 0, 0.6, -1.2 );
-// 	containerButton.rotation.x = -0.55;
-// 	scene.add( containerButton );
+	containerButton.position.set( 0, 0.6, -1.2 );
+	containerButton.rotation.x = -0.55;
+	scene.add( containerButton );
 
-// 	// BUTTONS
+	// BUTTONS
 
-// 	// We start by creating objects containing options that we will use with the two buttons,
-// 	// in order to write less code.
+	// We start by creating objects containing options that we will use with the two buttons,
+	// in order to write less code.
 
-// 	const buttonOptions = {
-// 		width: 0.4,
-// 		height: 0.15,
-// 		justifyContent: 'center',
-// 		alignContent: 'center',
-// 		offset: 0.05,
-// 		margin: 0.02,
-// 		borderRadius: 0.075
-// 	};
+	const buttonOptions = {
+		width: 0.4,
+		height: 0.15,
+		justifyContent: 'center',
+		alignContent: 'center',
+		offset: 0.05,
+		margin: 0.02,
+		borderRadius: 0.075
+	};
 
-// 	// Options for component.setupState().
-// 	// It must contain a 'state' parameter, which you will refer to with component.setState( 'name-of-the-state' ).
+	// Options for component.setupState().
+	// It must contain a 'state' parameter, which you will refer to with component.setState( 'name-of-the-state' ).
 
-// 	const hoveredStateAttributes = {
-// 		state: 'hovered',
-// 		attributes: {
-// 			offset: 0.035,
-// 			backgroundColor: new THREE.Color( 0x999999 ),
-// 			backgroundOpacity: 1,
-// 			fontColor: new THREE.Color( 0xffffff )
-// 		},
-// 	};
+	const hoveredStateAttributes = {
+		state: 'hovered',
+		attributes: {
+			offset: 0.035,
+			backgroundColor: new THREE.Color( 0x999999 ),
+			backgroundOpacity: 1,
+			fontColor: new THREE.Color( 0xffffff )
+		},
+	};
 
-// 	const idleStateAttributes = {
-// 		state: 'idle',
-// 		attributes: {
-// 			offset: 0.035,
-// 			backgroundColor: new THREE.Color( 0x666666 ),
-// 			backgroundOpacity: 0.3,
-// 			fontColor: new THREE.Color( 0xffffff )
-// 		},
-// 	};
+	const idleStateAttributes = {
+		state: 'idle',
+		attributes: {
+			offset: 0.035,
+			backgroundColor: new THREE.Color( 0x666666 ),
+			backgroundOpacity: 0.3,
+			fontColor: new THREE.Color( 0xffffff )
+		},
+	};
 
-// 	// Buttons creation, with the options objects passed in parameters.
+	// Buttons creation, with the options objects passed in parameters.
 
-// 	const buttonNext = new ThreeMeshUI.Block( buttonOptions );
-// 	const buttonPrevious = new ThreeMeshUI.Block( buttonOptions );
+	const buttonNext = new ThreeMeshUI.Block( buttonOptions );
+	const buttonPrevious = new ThreeMeshUI.Block( buttonOptions );
 
-// 	// Add text to buttons
+	// Add text to buttons
 
-// 	buttonNext.add(
-// 		new ThreeMeshUI.Text( { content: 'next', } )
-// 	);
+	buttonNext.add(
+		new ThreeMeshUI.Text( { content: 'next', } )
+	);
 
-// 	buttonPrevious.add(
-// 		new ThreeMeshUI.Text( { content: 'previous', } )
-// 	);
+	buttonPrevious.add(
+		new ThreeMeshUI.Text( { content: 'previous', } )
+	);
 
-// 	// Create states for the buttons.
-// 	// In the loop, we will call component.setState( 'state-name' ) when mouse hover or click
+	// Create states for the buttons.
+	// In the loop, we will call component.setState( 'state-name' ) when mouse hover or click
 
-// 	const selectedAttributes = {
-// 		offset: 0.02,
-// 		backgroundColor: new THREE.Color( 0x777777 ),
-// 		fontColor: new THREE.Color( 0x222222 )
-// 	};
+	const selectedAttributes = {
+		offset: 0.02,
+		backgroundColor: new THREE.Color( 0x777777 ),
+		fontColor: new THREE.Color( 0x222222 )
+	};
 
-// 	buttonNext.setupState( {
-// 		state: 'selected',
-// 		attributes: selectedAttributes,
-// 		onSet: () => {
+	buttonNext.setupState( {
+		state: 'selected',
+		attributes: selectedAttributes,
+		onSet: () => {
 
-// 			currentMesh = ( currentMesh + 1 ) % 3;
-// 			showMesh( currentMesh );
+			currentMesh = ( currentMesh + 1 ) % 3;
+			showMesh( currentMesh );
 
-// 		}
-// 	} );
-// 	buttonNext.setupState( hoveredStateAttributes );
-// 	buttonNext.setupState( idleStateAttributes );
+		}
+	} );
+	buttonNext.setupState( hoveredStateAttributes );
+	buttonNext.setupState( idleStateAttributes );
 
-// 	//
+	//
 
-// 	buttonPrevious.setupState( {
-// 		state: 'selected',
-// 		attributes: selectedAttributes,
-// 		onSet: () => {
+	buttonPrevious.setupState( {
+		state: 'selected',
+		attributes: selectedAttributes,
+		onSet: () => {
 
-// 			currentMesh -= 1;
-// 			if ( currentMesh < 0 ) currentMesh = 2;
-// 			showMesh( currentMesh );
+			currentMesh -= 1;
+			if ( currentMesh < 0 ) currentMesh = 2;
+			showMesh( currentMesh );
 
-// 		}
-// 	} );
-// 	buttonPrevious.setupState( hoveredStateAttributes );
-// 	buttonPrevious.setupState( idleStateAttributes );
+		}
+	} );
+	buttonPrevious.setupState( hoveredStateAttributes );
+	buttonPrevious.setupState( idleStateAttributes );
 
-// 	//
+	//
 
-// 	containerButton.add( buttonNext, buttonPrevious );
-// 	objsToTest.push( buttonNext, buttonPrevious );
+	containerButton.add( buttonNext, buttonPrevious );
+	objsToTest.push( buttonNext, buttonPrevious );
 
 
-// }
+}
 
-// // Handle resizing the viewport
+// Handle resizing the viewport
 
-// function onWindowResize() {
+function onWindowResize() {
 
-// 	camera.aspect = window.innerWidth / window.innerHeight;
-// 	camera.updateProjectionMatrix();
-// 	renderer.setSize( window.innerWidth, window.innerHeight );
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize( window.innerWidth, window.innerHeight );
 
-// }
+}
 
-// //
+//
 
-// function loop() {
+function loop() {
 
-// 	// Don't forget, ThreeMeshUI must be updated manually.
-// 	// This has been introduced in version 3.0.0 in order
-// 	// to improve performance
-// 	ThreeMeshUI.update();
+	// Don't forget, ThreeMeshUI must be updated manually.
+	// This has been introduced in version 3.0.0 in order
+	// to improve performance
+	ThreeMeshUI.update();
 
-// 	controls.update();
+	controls.update();
 
-// 	meshContainer.rotation.z += 0.01;
-// 	meshContainer.rotation.y += 0.01;
+	meshContainer.rotation.z += 0.01;
+	meshContainer.rotation.y += 0.01;
 
-// 	renderer.render( scene, camera );
+	renderer.render( scene, camera );
 
-// 	updateButtons();
+	updateButtons();
 
-// }
+}
 
-// // Called in the loop, get intersection with either the mouse or the VR controllers,
-// // then update the buttons states according to result
+// Called in the loop, get intersection with either the mouse or the VR controllers,
+// then update the buttons states according to result
 
-// function updateButtons() {
+function updateButtons() {
 
-// 	// Find closest intersecting object
+	// Find closest intersecting object
 
-// 	let intersect;
+	let intersect;
 
-// 	if ( renderer.xr.isPresenting ) {
+	if ( renderer.xr.isPresenting ) {
 
-// 		vrControl.setFromController( 0, raycaster.ray );
+		vrControl.setFromController( 0, raycaster.ray );
 
-// 		intersect = raycast();
+		intersect = raycast();
 
-// 		// Position the little white dot at the end of the controller pointing ray
-// 		if ( intersect ) vrControl.setPointerAt( 0, intersect.point );
+		// Position the little white dot at the end of the controller pointing ray
+		if ( intersect ) vrControl.setPointerAt( 0, intersect.point );
 
-// 	} else if ( mouse.x !== null && mouse.y !== null ) {
+	} else if ( mouse.x !== null && mouse.y !== null ) {
 
-// 		raycaster.setFromCamera( mouse, camera );
+		raycaster.setFromCamera( mouse, camera );
 
-// 		intersect = raycast();
+		intersect = raycast();
 
-// 	}
+	}
 
-// 	// Update targeted button state (if any)
+	// Update targeted button state (if any)
 
-// 	if ( intersect && intersect.object.isUI ) {
+	if ( intersect && intersect.object.isUI ) {
 
-// 		if ( selectState ) {
+		if ( selectState ) {
 
-// 			// Component.setState internally call component.set with the options you defined in component.setupState
-// 			intersect.object.setState( 'selected' );
+			// Component.setState internally call component.set with the options you defined in component.setupState
+			intersect.object.setState( 'selected' );
 
-// 		} else {
+		} else {
 
-// 			// Component.setState internally call component.set with the options you defined in component.setupState
-// 			intersect.object.setState( 'hovered' );
+			// Component.setState internally call component.set with the options you defined in component.setupState
+			intersect.object.setState( 'hovered' );
 
-// 		}
+		}
 
-// 	}
+	}
 
-// 	// Update non-targeted buttons state
+	// Update non-targeted buttons state
 
-// 	objsToTest.forEach( ( obj ) => {
+	objsToTest.forEach( ( obj ) => {
 
-// 		if ( ( !intersect || obj !== intersect.object ) && obj.isUI ) {
+		if ( ( !intersect || obj !== intersect.object ) && obj.isUI ) {
 
-// 			// Component.setState internally call component.set with the options you defined in component.setupState
-// 			obj.setState( 'idle' );
+			// Component.setState internally call component.set with the options you defined in component.setupState
+			obj.setState( 'idle' );
 
-// 		}
+		}
 
-// 	} );
+	} );
 
-// }
+}
 
-// //
+//
 
-// function raycast() {
+function raycast() {
 
-// 	return objsToTest.reduce( ( closestIntersection, obj ) => {
+	return objsToTest.reduce( ( closestIntersection, obj ) => {
 
-// 		const intersection = raycaster.intersectObject( obj, true );
+		const intersection = raycaster.intersectObject( obj, true );
 
-// 		if ( !intersection[ 0 ] ) return closestIntersection;
+		if ( !intersection[ 0 ] ) return closestIntersection;
 
-// 		if ( !closestIntersection || intersection[ 0 ].distance < closestIntersection.distance ) {
+		if ( !closestIntersection || intersection[ 0 ].distance < closestIntersection.distance ) {
 
-// 			intersection[ 0 ].object = obj;
+			intersection[ 0 ].object = obj;
 
-// 			return intersection[ 0 ];
+			return intersection[ 0 ];
 
-// 		}
+		}
 
-// 		return closestIntersection;
+		return closestIntersection;
 
-// 	}, null );
+	}, null );
 
-// }
+}
+
+
+document.body.appendChild( VRButton.createButton( renderer ) );
+document.body.appendChild( renderer.domElement );
+
+const roomMesh = new THREE.Mesh(
+		new THREE.BoxGeometry( 6, 6, 6, 10, 10, 10 ).translate( 0, 3, 0 ),
+		new THREE.MeshBasicMaterial( { side: THREE.BackSide } )
+	);
+
+
+objsToTest.push( roomMesh );
+
+////////////////
+// Controllers
+////////////////
+vrControl = VRControl( renderer, camera, scene );
+scene.add( vrControl.controllerGrips[ 0 ], vrControl.controllers[ 0 ] );
+vrControl.controllers[ 0 ].addEventListener( 'selectstart', () => {
+	selectState = true;
+} );
+vrControl.controllers[ 0 ].addEventListener( 'selectend', () => {
+	selectState = false;
+} );
+
+////////////////////
+	// Primitive Meshes
+	////////////////////
+
+	meshContainer = new THREE.Group();
+	meshContainer.position.set( 0, 1, -1.9 );
+	scene.add( meshContainer );
+
+	//
+
+	const sphereVR1 = new THREE.Mesh(
+		new THREE.IcosahedronBufferGeometry( 0.3, 1 ),
+		new THREE.MeshStandardMaterial( { color: 0x3de364, flatShading: true } )
+	);
+
+	const boxVR1 = new THREE.Mesh(
+		new THREE.BoxBufferGeometry( 0.45, 0.45, 0.45 ),
+		new THREE.MeshStandardMaterial( { color: 0x643de3, flatShading: true } )
+	);
+
+	const coneVR1 = new THREE.Mesh(
+		new THREE.ConeBufferGeometry( 0.28, 0.5, 10 ),
+		new THREE.MeshStandardMaterial( { color: 0xe33d4e, flatShading: true } )
+	);
+
+	//
+
+	sphereVR1.visible = boxVR1.visible = coneVR1.visible = false;
+
+	meshContainer.add( sphereVR1, boxVR1, coneVR1 );
+
+	meshes = [ sphereVR1, boxVR1, coneVR1 ];
+	currentMesh = 0;
+
+	showMesh( currentMesh );
+
+	//////////
+	// Panel
+	//////////
+
+	makePanel();
+
+//
+
+renderer.setAnimationLoop( loop );
+
+
+
 
 
 
@@ -1495,7 +1571,16 @@ const tick = () => {
         torus.rotation.y = 0.4 * elapsedTime
         torus.rotation.z = 0.4 * elapsedTime
 
+        ThreeMeshUI.update();
+
+	    controls.update();
+
+	    meshContainer.rotation.z += 0.01;
+	    meshContainer.rotation.y += 0.01;
+
 	    renderer.render( scene, camera );
+
+        updateButtons();
     } );
 
 
