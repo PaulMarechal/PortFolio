@@ -21,6 +21,7 @@ import Darkmode from 'darkmode-js'
 import language from './language.js'
 import modale from './modale.js'
 import ButtonVR from 'buttonvr'
+import SnakeImage from "./assets/spiny_bush_viper.jpg"
 import { Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
@@ -28,6 +29,7 @@ import { XRControllerModelFactory } from 'three/examples/jsm/webxr/XRControllerM
 import { XRHandModelFactory } from 'three/examples/jsm/webxr/XRHandModelFactory.js';
 import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.js';
 import StatsVR from "statsvr"
+import expBlockText from './expBlockText.js'
 
 // import FontJSON from '/src/assets/Roboto-msdf.json';
 // import FontImage from '/src/assets/Roboto-msdf.png';
@@ -93,9 +95,9 @@ var animOffset       = 0,   // starting frame of animation
  */
 // Debug GUI
 const debugObject = {}
-// const gui = new GUI({
-//     width: 400
-// })
+const gui = new GUI({
+    width: 400
+})
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -556,7 +558,7 @@ const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 controls.dampingFactor = 0.05
 controls.screenSpacePanning = false
-controls.minDistance = 3
+controls.minDistance = 2
 controls.maxDistance = 11
 
 controls.maxPolarAngle = (Math.PI / 2) - 0.3;
@@ -577,10 +579,10 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 // test VR button
 renderer.xr.enabled = true;
 document.body.appendChild( VRButton.createButton( renderer ) );
+document.body.appendChild( renderer.domElement );
 // fin test vr buttonn
 
 
-document.body.appendChild( renderer.domElement );
 
 
 camera.position.set( 12, 4, -5);
@@ -797,6 +799,7 @@ textBlock.set({
     //justifyContent: "center",
     padding: 0.03,
   });
+
 textBlock.add( text );
 
 
@@ -859,6 +862,8 @@ window.addEventListener( 'touchend', () => {
 } );
 
 
+
+
 function showMesh( id ) {
 
 	meshes.forEach( ( mesh, i ) => {
@@ -879,14 +884,13 @@ function makePanel() {
 	// Container block, in which we put the two buttons.
 	// We don't define width and height, it will be set automatically from the children's dimensions
 	// Note that we set contentDirection: "row-reverse", in order to orient the buttons horizontally
-
 	const containerButton = new ThreeMeshUI.Block( {
 		justifyContent: 'center',
 		alignContent: 'center',
 		contentDirection: 'row-reverse',
         fontFamily: FontJson,
 		fontTexture: FontImage,
-		fontSize: 0.17,
+		fontSize: 0.07,
 		padding: 0.02,
 		borderRadius: 0.11
 	} );
@@ -896,8 +900,16 @@ function makePanel() {
 	//     fontTexture: FontImage,
     // })
 
-	containerButton.position.set( 0, 0.6, -1.2 );
-	containerButton.rotation.x = -0.55;
+	containerButton.position.set( 0, 0.6, 3.5 );
+    gui.add(containerButton.position, 'x').min(-3).max(3).step(0.01).name('Button VR position X')
+    gui.add(containerButton.position, 'y').min(-3).max(3).step(0.01).name('Button VR position Y')
+    gui.add(containerButton.position, 'z').min(-3).max(3).step(0.01).name('Button VR position Z')
+    
+	containerButton.rotation.x = -2.7;
+	containerButton.rotation.z = 3.12;
+    gui.add(containerButton.rotation, 'x').min(-3).max(3).step(0.01).name('Text button VR rotation X')
+    gui.add(containerButton.rotation, 'y').min(-3).max(3).step(0.01).name('Text button VR rotation Y')
+    gui.add(containerButton.rotation, 'z').min(-4).max(4).step(0.01).name('Text button VR rotation Z')
 	scene.add( containerButton );
 
 	// BUTTONS
@@ -912,7 +924,7 @@ function makePanel() {
 		alignContent: 'center',
 		offset: 0.05,
 		margin: 0.02,
-		borderRadius: 0.075
+		borderRadius: 0.075,
 	};
 
 	// Options for component.setupState().
@@ -946,17 +958,8 @@ function makePanel() {
 	const buttonPrevious = new ThreeMeshUI.Block( buttonOptions );
 
 	// Add text to buttons
-
-	// buttonNext.add(
-	// 	new ThreeMeshUI.Text( { content: 'next' } )
-	// );
-
     buttonNext.add(
-	new ThreeMeshUI.Text({
-		content: 'next',
-		fontSize: 0.07,
-		fontColor: new THREE.Color( 0xefffe8 )
-	    })
+	new ThreeMeshUI.Text({ content: 'next' })
     );
 
 	buttonPrevious.add(
@@ -1026,16 +1029,16 @@ function loop() {
 	// Don't forget, ThreeMeshUI must be updated manually.
 	// This has been introduced in version 3.0.0 in order
 	// to improve performance
-	// ThreeMeshUI.update();
+	ThreeMeshUI.update();
 
-	// controls.update();
+	controls.update();
 
-	// meshContainer.rotation.z += 0.01;
-	// meshContainer.rotation.y += 0.01;
+	meshContainer.rotation.z += 0.01;
+	meshContainer.rotation.y += 0.01;
 
-	// renderer.render( scene, camera );
+	renderer.render( scene, camera );
 
-	// updateButtons();
+	updateButtons();
 
 }
 
@@ -1123,14 +1126,17 @@ function raycast() {
 }
 
 
-document.body.appendChild( VRButton.createButton( renderer ) );
-document.body.appendChild( renderer.domElement );
+// document.body.appendChild( VRButton.createButton( renderer ) );
+// document.body.appendChild( renderer.domElement );
+
+
 
 const roomMesh = new THREE.Mesh(
-		new THREE.BoxGeometry( 6, 6, 6, 10, 10, 10 ).translate( 0, 3, 0 ),
+		new THREE.BoxGeometry( 12, 12, 12, 16, 16, 16 ).translate( 0, 3, 0 ),
 		new THREE.MeshBasicMaterial( { side: THREE.BackSide } )
 	);
 
+// roomMesh.position(0.30, 0.5, 4.7),
 
 objsToTest.push( roomMesh );
 
@@ -1138,7 +1144,9 @@ objsToTest.push( roomMesh );
 // Controllers
 ////////////////
 vrControl = VRControl( renderer, camera, scene );
+
 scene.add( vrControl.controllerGrips[ 0 ], vrControl.controllers[ 0 ] );
+
 vrControl.controllers[ 0 ].addEventListener( 'selectstart', () => {
 	selectState = true;
 } );
@@ -1150,13 +1158,20 @@ vrControl.controllers[ 0 ].addEventListener( 'selectend', () => {
 // Primitive Meshes
 ////////////////////
 meshContainer = new THREE.Group();
-meshContainer.position.set( 0, 1, -1.9 );
+meshContainer.position.set( 0.30, 1, 4.7 ); 
 scene.add( meshContainer );
+
+    gui.add(meshContainer.position, 'x').min(-4).max(4).step(0.01).name('Mesh container position X')
+    gui.add(meshContainer.position, 'y').min(-4).max(4).step(0.01).name('Mesh container position Y')
+    gui.add(meshContainer.position, 'z').min(-4).max(4).step(0.01).name('Mesh container position Z')
 //
 const sphereVR1 = new THREE.Mesh(
 	new THREE.IcosahedronBufferGeometry( 0.3, 1 ),
 	new THREE.MeshStandardMaterial( { color: 0x3de364, flatShading: true } )
 );
+
+// const sphereVR1 = makeTextPanel();
+
 const boxVR1 = new THREE.Mesh(
 	new THREE.BoxBufferGeometry( 0.45, 0.45, 0.45 ),
 	new THREE.MeshStandardMaterial( { color: 0x643de3, flatShading: true } )
@@ -1166,10 +1181,10 @@ const coneVR1 = new THREE.Mesh(
 	new THREE.MeshStandardMaterial( { color: 0xe33d4e, flatShading: true } )
 );
 //
-sphereVR1.visible = boxVR1.visible = coneVR1.visible = false;
-meshContainer.add( sphereVR1, boxVR1, coneVR1 );
-meshes = [ sphereVR1, boxVR1, coneVR1 ];
-currentMesh = 0;
+// contentContainer.visible = boxVR1.visible = coneVR1.visible = false;
+// meshContainer.add( contentContainer, boxVR1, coneVR1 );
+// meshes = [ contentContainer, boxVR1, coneVR1 ];
+// currentMesh = 0;
 
 ///////////
 // Panel // 
@@ -1337,6 +1352,237 @@ statsVR.setY(0)
 statsVR.setZ(0)
 // Fin stats VR
 
+
+// Exp block text VR 
+
+// makeTextPanel();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function makeTextPanel() {
+  const containerImg = new ThreeMeshUI.Block({
+    ref: "container",
+    padding: 0.025,
+    fontFamily: FontJson,
+    fontTexture: FontImage,
+    fontColor: new THREE.Color(0xffffff),
+    backgroundOpacity: 0,
+  });
+
+  containerImg.position.set(0, 1.14, 4.5);
+//   containerImg.rotation.x = -0.55;
+  containerImg.rotation.set(0.48, 3.15, 0);
+  scene.add(containerImg);
+
+  //
+
+  const title = new ThreeMeshUI.Block({
+    height: 0.2,
+    width: 1.5,
+    margin: 0.025,
+    justifyContent: "center",
+    fontSize: 0.09,
+  });
+
+  title.add(
+    new ThreeMeshUI.Text({
+      content: "spiny bush viper",
+    })
+  );
+
+  containerImg.add(title);
+
+  //
+
+  const leftSubBlock = new ThreeMeshUI.Block({
+    height: 0.95,
+    width: 1.0,
+    margin: 0.025,
+    padding: 0.025,
+    alignContent: "left",
+    justifyContent: "end",
+  });
+
+  const caption = new ThreeMeshUI.Block({
+    height: 0.07,
+    width: 0.37,
+    alignContent: "center",
+    justifyContent: "center",
+  });
+
+  caption.add(
+    new ThreeMeshUI.Text({
+      content: "Mind your fingers",
+      fontSize: 0.04,
+    })
+  );
+
+  leftSubBlock.add(caption);
+
+  //
+
+  const rightSubBlock = new ThreeMeshUI.Block({
+    margin: 0.025,
+  });
+
+  const subSubBlock1 = new ThreeMeshUI.Block({
+    height: 0.35,
+    width: 0.5,
+    margin: 0.025,
+    padding: 0.02,
+    fontSize: 0.04,
+    justifyContent: "center",
+    backgroundOpacity: 0,
+  }).add(
+    new ThreeMeshUI.Text({
+      content: "Known for its extremely keeled dorsal scales that give it a ",
+    }),
+
+    new ThreeMeshUI.Text({
+      content: "bristly",
+      fontColor: new THREE.Color(0x92e66c),
+    }),
+
+    new ThreeMeshUI.Text({
+      content: " appearance.",
+    })
+  );
+
+  const subSubBlock2 = new ThreeMeshUI.Block({
+    height: 0.53,
+    width: 0.5,
+    margin: 0.01,
+    padding: 0.02,
+    fontSize: 0.025,
+    alignContent: "left",
+    backgroundOpacity: 0,
+  }).add(
+    new ThreeMeshUI.Text({
+      content:
+        "The males of this species grow to maximum total length of 73 cm (29 in): body 58 cm (23 in), tail 15 cm (5.9 in). Females grow to a maximum total length of 58 cm (23 in). The males are surprisingly long and slender compared to the females.\nThe head has a short snout, more so in males than in females.\nThe eyes are large and surrounded by 9–16 circumorbital scales. The orbits (eyes) are separated by 7–9 scales.",
+    })
+  );
+
+  rightSubBlock.add(subSubBlock1, subSubBlock2);
+
+  //
+
+  const contentContainer = new ThreeMeshUI.Block({
+    contentDirection: "row",
+    padding: 0.02,
+    margin: 0.025,
+    backgroundOpacity: 0,
+  });
+
+  contentContainer.add(leftSubBlock, rightSubBlock);
+//   containerImg.position.set(0, 0.6, 3.5)
+  gui.add(containerImg.position, 'x').min(-4).max(4).step(0.01).name('Container avec image position X')
+  gui.add(containerImg.position, 'y').min(-4).max(4).step(0.01).name('Container avec image position Y')
+  gui.add(containerImg.position, 'z').min(-4).max(4).step(0.01).name('Container avec image position Z')
+
+  gui.add(containerImg.rotation, 'x').min(-4).max(4).step(0.01).name('Container avec image rotation X')
+  gui.add(containerImg.rotation, 'y').min(-4).max(4).step(0.01).name('Container avec image rotation Y')
+  gui.add(containerImg.rotation, 'z').min(-4).max(4).step(0.01).name('Container avec image rotation Z')
+
+
+  containerImg.add(contentContainer);
+
+//   containerImg.push( roomMesh )
+
+  //
+
+  new THREE.TextureLoader().load(SnakeImage, (texture) => {
+    leftSubBlock.set({
+      backgroundTexture: texture,
+    });
+  });
+}
+
+
+makeTextPanel();
+
+sphereVR1.visible = boxVR1.visible = coneVR1.visible = false;
+meshContainer.add( sphereVR1, boxVR1, coneVR1 );
+meshes = [ sphereVR1, boxVR1, coneVR1 ];
+currentMesh = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// fin exp block text VR 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // fin test buttonVR
 
 camera.updateProjectionMatrix();
@@ -1461,6 +1707,7 @@ backgroundButton.addEventListener('click', function(){
  * Animate
  */
 const clock = new THREE.Clock()
+
 let previousTime = 0
 
 const tick = () => {
@@ -1575,8 +1822,9 @@ const tick = () => {
 
 	    controls.update();
 
-	    meshContainer.rotation.z += 0.01;
-	    meshContainer.rotation.y += 0.01;
+        // Rotation elements meshContainer (VR) 
+	    // meshContainer.rotation.z += 0.01;
+	    // meshContainer.rotation.y += 0.01;
 
 	    renderer.render( scene, camera );
 
@@ -1687,7 +1935,7 @@ const tick = () => {
 	// renderer.setAnimationLoop( loop );
 
     // // fin test buttonVR
-
+    
     
 
 }
