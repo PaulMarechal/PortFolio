@@ -1369,7 +1369,7 @@ statsVR.setZ(0)
 // Projets VR 
 ///////////////////
 
-// Projet 1 
+// Card VR projet 1 
 const containerImg = new ThreeMeshUI.Block({
   ref: "container",
   padding: 0.025,
@@ -1498,16 +1498,132 @@ const projet1 = new THREE.Mesh(
 scene.add(containerImg)
 containerImg.visible = false
 
-// scene.add(containerImg)
-console.log(projet1);
-console.log(containerImg)
 
+// Card VR projet 2
+const containerImg1 = new ThreeMeshUI.Block({
+  ref: "container",
+  padding: 0.025,
+  fontFamily: FontJson,
+  fontTexture: FontImage,
+  fontColor: new THREE.Color(0xffffff),
+  backgroundOpacity: 0,
+});
+
+containerImg1.rotation.set(0.48, 3.15, 0);
+
+const title1 = new ThreeMeshUI.Block({
+  height: 0.2,
+  width: 1.5,
+  margin: 0.025,
+  justifyContent: "center",
+  fontSize: 0.09,
+});
+
+title1.add(
+  new ThreeMeshUI.Text({
+    content: "Test test test",
+  })
+);
+
+containerImg1.add(title1);
+
+const leftSubBlock1 = new ThreeMeshUI.Block({
+  height: 0.95,
+  width: 1.0,
+  margin: 0.025,
+  padding: 0.025,
+  alignContent: "left",
+  justifyContent: "end",
+});
+
+const caption1 = new ThreeMeshUI.Block({
+  height: 0.07,
+  width: 0.37,
+  alignContent: "center",
+  justifyContent: "center",
+});
+
+caption1.add(
+  new ThreeMeshUI.Text({
+    content: "Mind your fingers",
+    fontSize: 0.04,
+  })
+);
+
+leftSubBlock1.add(caption1);
+
+const rightSubBlock1 = new ThreeMeshUI.Block({
+  margin: 0.025,
+});
+
+const subSubBlock11 = new ThreeMeshUI.Block({
+    height: 0.35,
+    width: 0.5,
+    margin: 0.025,
+    padding: 0.02,
+    fontSize: 0.04,
+    justifyContent: "center",
+    backgroundOpacity: 0,
+}).add(
+    new ThreeMeshUI.Text({
+        content: "Known for its extremely keeled dorsal scales that give it a ",
+    }),
+
+    new ThreeMeshUI.Text({
+        content: "bristly",
+        fontColor: new THREE.Color(0x92e66c),
+    }),
+
+    new ThreeMeshUI.Text({
+        content: " appearance.",
+    })
+);
+
+const subSubBlock21 = new ThreeMeshUI.Block({
+    height: 0.53,
+    width: 0.5,
+    margin: 0.01,
+    padding: 0.02,
+    fontSize: 0.025,
+    alignContent: "left",
+    backgroundOpacity: 0,
+}).add(
+    new ThreeMeshUI.Text({
+        content:
+            "The males of this species grow to maximum total length of 73 cm (29 in): body 58 cm (23 in), tail 15 cm (5.9 in). Females grow to a maximum total length of 58 cm (23 in). The males are surprisingly long and slender compared to the females.\nThe head has a short snout, more so in males than in females.\nThe eyes are large and surrounded by 9–16 circumorbital scales. The orbits (eyes) are separated by 7–9 scales.",
+    })
+);
+
+rightSubBlock1.add(subSubBlock11, subSubBlock21);
+
+const contentContainer1 = new ThreeMeshUI.Block({
+    contentDirection: "row",
+    padding: 0.02,
+    margin: 0.025,
+    backgroundOpacity: 0,
+});
+
+contentContainer1.add(leftSubBlock1, rightSubBlock1);
+
+containerImg1.add(contentContainer1);
+
+new THREE.TextureLoader().load(SnakeImage, (texture) => {
+    leftSubBlock1.set({
+      backgroundTexture: texture,
+    });
+  });
+// }
+
+scene.add(containerImg1)
+containerImg1.visible = false
+
+// Text 3 
 
 // makeTextPanel();
 
-sphereVR1.visible = boxVR1.visible = coneVR1.visible = containerImg.visible = false;
-meshContainer.add( sphereVR1, boxVR1, coneVR1, containerImg);
-meshes = [ sphereVR1, boxVR1, coneVR1, containerImg ];
+sphereVR1.visible = boxVR1.visible = containerImg1.visible = containerImg.visible = false;
+meshContainer.add( sphereVR1, boxVR1, containerImg1, containerImg);
+meshes = [ sphereVR1, boxVR1, containerImg1, containerImg ];
 currentMesh = 0;
 
 
