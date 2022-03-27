@@ -980,7 +980,7 @@ function makePanel() {
 		attributes: selectedAttributes,
 		onSet: () => {
 
-			currentMesh = ( currentMesh + 1 ) % 3;
+			currentMesh = ( currentMesh + 1 ) % 4;
 			showMesh( currentMesh );
 
 		}
@@ -1093,7 +1093,7 @@ function updateButtons() {
 		if ( ( !intersect || obj !== intersect.object ) && obj.isUI ) {
 
 			// Component.setState internally call component.set with the options you defined in component.setupState
-			obj.setState( 'idle' );
+			obj.setState( 'idle' ); 
 
 		}
 
@@ -1169,8 +1169,6 @@ const sphereVR1 = new THREE.Mesh(
 	new THREE.IcosahedronBufferGeometry( 0.3, 1 ),
 	new THREE.MeshStandardMaterial( { color: 0x3de364, flatShading: true } )
 );
-
-// const sphereVR1 = makeTextPanel();
 
 const boxVR1 = new THREE.Mesh(
 	new THREE.BoxBufferGeometry( 0.45, 0.45, 0.45 ),
@@ -1367,76 +1365,68 @@ statsVR.setZ(0)
 
 
 
+///////////////////
+// Projets VR 
+///////////////////
 
+// Projet 1 
+const containerImg = new ThreeMeshUI.Block({
+  ref: "container",
+  padding: 0.025,
+  fontFamily: FontJson,
+  fontTexture: FontImage,
+  fontColor: new THREE.Color(0xffffff),
+  backgroundOpacity: 0,
+});
+// containerImg.position.set(0, 1.14, 4.5);
+containerImg.rotation.set(0.48, 3.15, 0);
 
+const title = new ThreeMeshUI.Block({
+  height: 0.2,
+  width: 1.5,
+  margin: 0.025,
+  justifyContent: "center",
+  fontSize: 0.09,
+});
 
-function makeTextPanel() {
-  const containerImg = new ThreeMeshUI.Block({
-    ref: "container",
-    padding: 0.025,
-    fontFamily: FontJson,
-    fontTexture: FontImage,
-    fontColor: new THREE.Color(0xffffff),
-    backgroundOpacity: 0,
-  });
+title.add(
+  new ThreeMeshUI.Text({
+    content: "spiny bush viper",
+  })
+);
 
-  containerImg.position.set(0, 1.14, 4.5);
-//   containerImg.rotation.x = -0.55;
-  containerImg.rotation.set(0.48, 3.15, 0);
-  scene.add(containerImg);
+containerImg.add(title);
 
-  //
+const leftSubBlock = new ThreeMeshUI.Block({
+  height: 0.95,
+  width: 1.0,
+  margin: 0.025,
+  padding: 0.025,
+  alignContent: "left",
+  justifyContent: "end",
+});
 
-  const title = new ThreeMeshUI.Block({
-    height: 0.2,
-    width: 1.5,
-    margin: 0.025,
-    justifyContent: "center",
-    fontSize: 0.09,
-  });
+const caption = new ThreeMeshUI.Block({
+  height: 0.07,
+  width: 0.37,
+  alignContent: "center",
+  justifyContent: "center",
+});
 
-  title.add(
-    new ThreeMeshUI.Text({
-      content: "spiny bush viper",
-    })
-  );
+caption.add(
+  new ThreeMeshUI.Text({
+    content: "Mind your fingers",
+    fontSize: 0.04,
+  })
+);
 
-  containerImg.add(title);
+leftSubBlock.add(caption);
 
-  //
+const rightSubBlock = new ThreeMeshUI.Block({
+  margin: 0.025,
+});
 
-  const leftSubBlock = new ThreeMeshUI.Block({
-    height: 0.95,
-    width: 1.0,
-    margin: 0.025,
-    padding: 0.025,
-    alignContent: "left",
-    justifyContent: "end",
-  });
-
-  const caption = new ThreeMeshUI.Block({
-    height: 0.07,
-    width: 0.37,
-    alignContent: "center",
-    justifyContent: "center",
-  });
-
-  caption.add(
-    new ThreeMeshUI.Text({
-      content: "Mind your fingers",
-      fontSize: 0.04,
-    })
-  );
-
-  leftSubBlock.add(caption);
-
-  //
-
-  const rightSubBlock = new ThreeMeshUI.Block({
-    margin: 0.025,
-  });
-
-  const subSubBlock1 = new ThreeMeshUI.Block({
+const subSubBlock1 = new ThreeMeshUI.Block({
     height: 0.35,
     width: 0.5,
     margin: 0.025,
@@ -1444,22 +1434,22 @@ function makeTextPanel() {
     fontSize: 0.04,
     justifyContent: "center",
     backgroundOpacity: 0,
-  }).add(
+}).add(
     new ThreeMeshUI.Text({
-      content: "Known for its extremely keeled dorsal scales that give it a ",
+        content: "Known for its extremely keeled dorsal scales that give it a ",
     }),
 
     new ThreeMeshUI.Text({
-      content: "bristly",
-      fontColor: new THREE.Color(0x92e66c),
+        content: "bristly",
+        fontColor: new THREE.Color(0x92e66c),
     }),
 
     new ThreeMeshUI.Text({
-      content: " appearance.",
+        content: " appearance.",
     })
-  );
+);
 
-  const subSubBlock2 = new ThreeMeshUI.Block({
+const subSubBlock2 = new ThreeMeshUI.Block({
     height: 0.53,
     width: 0.5,
     margin: 0.01,
@@ -1467,54 +1457,57 @@ function makeTextPanel() {
     fontSize: 0.025,
     alignContent: "left",
     backgroundOpacity: 0,
-  }).add(
+}).add(
     new ThreeMeshUI.Text({
-      content:
-        "The males of this species grow to maximum total length of 73 cm (29 in): body 58 cm (23 in), tail 15 cm (5.9 in). Females grow to a maximum total length of 58 cm (23 in). The males are surprisingly long and slender compared to the females.\nThe head has a short snout, more so in males than in females.\nThe eyes are large and surrounded by 9–16 circumorbital scales. The orbits (eyes) are separated by 7–9 scales.",
+        content:
+            "The males of this species grow to maximum total length of 73 cm (29 in): body 58 cm (23 in), tail 15 cm (5.9 in). Females grow to a maximum total length of 58 cm (23 in). The males are surprisingly long and slender compared to the females.\nThe head has a short snout, more so in males than in females.\nThe eyes are large and surrounded by 9–16 circumorbital scales. The orbits (eyes) are separated by 7–9 scales.",
     })
-  );
+);
 
-  rightSubBlock.add(subSubBlock1, subSubBlock2);
+rightSubBlock.add(subSubBlock1, subSubBlock2);
 
-  //
-
-  const contentContainer = new ThreeMeshUI.Block({
+const contentContainer = new ThreeMeshUI.Block({
     contentDirection: "row",
     padding: 0.02,
     margin: 0.025,
     backgroundOpacity: 0,
-  });
+});
 
-  contentContainer.add(leftSubBlock, rightSubBlock);
-//   containerImg.position.set(0, 0.6, 3.5)
-  gui.add(containerImg.position, 'x').min(-4).max(4).step(0.01).name('Container avec image position X')
-  gui.add(containerImg.position, 'y').min(-4).max(4).step(0.01).name('Container avec image position Y')
-  gui.add(containerImg.position, 'z').min(-4).max(4).step(0.01).name('Container avec image position Z')
+contentContainer.add(leftSubBlock, rightSubBlock);
+// gui.add(containerImg.position, 'x').min(-4).max(4).step(0.01).name('Container avec image position X')
+// gui.add(containerImg.position, 'y').min(-4).max(4).step(0.01).name('Container avec image position Y')
+// gui.add(containerImg.position, 'z').min(-4).max(4).step(0.01).name('Container avec image position Z')
 
-  gui.add(containerImg.rotation, 'x').min(-4).max(4).step(0.01).name('Container avec image rotation X')
-  gui.add(containerImg.rotation, 'y').min(-4).max(4).step(0.01).name('Container avec image rotation Y')
-  gui.add(containerImg.rotation, 'z').min(-4).max(4).step(0.01).name('Container avec image rotation Z')
+// gui.add(containerImg.rotation, 'x').min(-4).max(4).step(0.01).name('Container avec image rotation X')
+// gui.add(containerImg.rotation, 'y').min(-4).max(4).step(0.01).name('Container avec image rotation Y')
+// gui.add(containerImg.rotation, 'z').min(-4).max(4).step(0.01).name('Container avec image rotation Z')
 
+containerImg.add(contentContainer);
 
-  containerImg.add(contentContainer);
-
-//   containerImg.push( roomMesh )
-
-  //
-
-  new THREE.TextureLoader().load(SnakeImage, (texture) => {
+new THREE.TextureLoader().load(SnakeImage, (texture) => {
     leftSubBlock.set({
       backgroundTexture: texture,
     });
   });
-}
+// }
+
+const projet1 = new THREE.Mesh(
+    containerImg
+)
+
+scene.add(containerImg)
+containerImg.visible = false
+
+// scene.add(containerImg)
+console.log(projet1);
+console.log(containerImg)
 
 
-makeTextPanel();
+// makeTextPanel();
 
-sphereVR1.visible = boxVR1.visible = coneVR1.visible = false;
-meshContainer.add( sphereVR1, boxVR1, coneVR1 );
-meshes = [ sphereVR1, boxVR1, coneVR1 ];
+sphereVR1.visible = boxVR1.visible = coneVR1.visible = containerImg.visible = false;
+meshContainer.add( sphereVR1, boxVR1, coneVR1, containerImg);
+meshes = [ sphereVR1, boxVR1, coneVR1, containerImg ];
 currentMesh = 0;
 
 
