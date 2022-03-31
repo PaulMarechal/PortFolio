@@ -672,23 +672,24 @@ window.addEventListener('click', onDocumentMouseDown, false);
 
 var mouse = new THREE.Vector2();
 function onDocumentMouseDown( event ) {
-mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
-mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
-raycaster.setFromCamera( mouse, camera );
-var intersects = raycaster.intersectObjects( scene.children );
-if ( intersects.length > 0 ) {
-    intersects[1].object.callback();
+    mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+    raycaster.setFromCamera( mouse, camera );
+    var intersects = raycaster.intersectObjects( scene.children );
+    if ( intersects.length > 0 ) {
+        intersects[1].object.callback();
 }}
 
 circle.callback = function() { changeByPortal();}
 circle2.callback = function() { changeByPortal();}
+var cursorPointer = document.getElementsByClassName('cursor');
 
+cursorPointer.darkmode();
 
 function changeByPortal(){
     var selectedObject = scene.getObjectByName("cercle"); 
     const darkmode =  new Darkmode();
     darkmode.toggle();
-    console.log(selectedObject)
 }
 
 

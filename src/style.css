@@ -22,6 +22,7 @@ html,
 body
 {
     overflow: hidden;
+    cursor: none;
 }
 
 p{
@@ -156,6 +157,7 @@ p{
     left: 0;
     outline: none;
     padding-top: constant(safe-area-inset-top);  
+    cursor:none;
 }
 body {
     padding-top: constant(safe-area-inset-top);  
@@ -830,6 +832,7 @@ body{
     top: 0;
     transform: translate(calc(-50% + 15px), -50%);
     z-index: 9999;
+    filter: invert(1)!important;
   }
   
   .cursor2 {
