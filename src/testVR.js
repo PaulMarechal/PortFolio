@@ -225,8 +225,8 @@ function makePanel() {
 		height: 0.15,
 		justifyContent: 'center',
 		alignContent: 'center',
-		offset: 0.05,
-		margin: 0.02,
+		offset: 0.15,
+		margin: 0.2,
 		borderRadius: 0.075
 	};
 
@@ -425,3 +425,6 @@ function raycast() {
 	}, null );
 
 }
+
+
+// fin Intercative buttonVR test 4 

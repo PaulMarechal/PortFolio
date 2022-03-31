@@ -451,6 +451,45 @@ water.rotation.x = - Math.PI * 0.5
 water.position.y = -0.7
 scene.add(water)
 
+///////////////////
+// Custom cursor //
+///////////////////
+var cursor = document.querySelector('.cursor');
+var cursorinner = document.querySelector('.cursor2');
+var a = document.querySelectorAll('a');
+
+document.addEventListener('mousemove', function(e){
+  var x = e.clientX;
+  var y = e.clientY;
+  cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
+});
+
+document.addEventListener('mousemove', function(e){
+  var x = e.clientX;
+  var y = e.clientY;
+  cursorinner.style.left = x + 'px';
+  cursorinner.style.top = y + 'px';
+});
+
+document.addEventListener('mousedown', function(){
+  cursor.classList.add('click');
+  cursorinner.classList.add('cursorinnerhover')
+});
+
+document.addEventListener('mouseup', function(){
+  cursor.classList.remove('click')
+  cursorinner.classList.remove('cursorinnerhover')
+});
+
+a.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    cursor.classList.add('hover');
+  });
+  item.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+  });
+})
+
 /**
  * Fireflies
 */
@@ -516,7 +555,6 @@ const overlayMaterial = new THREE.ShaderMaterial({
     `
 })
 const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial)
-//overlay.receiveShadow = true;
 scene.add(overlay)
 
 /**
@@ -609,11 +647,7 @@ if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
 }
 
 renderer.setClearColor(debugObject.clearColor)
-// gui
-//     .addColor(debugObject, 'clearColor')
-//     .onChange(() => {
-//         renderer.setClearColor(debugObject.clearColor)
-//     })
+// gui.addColor(debugObject, 'clearColor').onChange(() => {renderer.setClearColor(debugObject.clearColor)})
 
 // Portal circle ( onClick to change all scene color )
 const geometry = new THREE.CircleGeometry( 1.1, 32 );
@@ -641,7 +675,6 @@ function onDocumentMouseDown( event ) {
 mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
 mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
 raycaster.setFromCamera( mouse, camera );
-// console.log(scene.children);
 var intersects = raycaster.intersectObjects( scene.children );
 if ( intersects.length > 0 ) {
     intersects[1].object.callback();
@@ -678,8 +711,6 @@ scene.add(meshSun);
 
 meshSun.position.set(-9, 4.55, 1.5);
 meshSun.radius = 3
-
-// imageSun.crossOrigin = "Anonymous";
 
 const sunTexture = new THREE.TextureLoader().load('https://paulmarechal.xyz/CV/glow.png');
 var spriteMaterial = new THREE.SpriteMaterial({
@@ -725,13 +756,6 @@ renderer.setAnimationLoop(function () {
     renderer.render( scene, camera );
 });
 
-// const room = new THREE.LineSegments(
-// 	new BoxLineGeometry( 10, 10, 10, 14, 14, 14 ).translate( 0, 3, 0 ),
-// 	//new THREE.LineBasicMaterial( { color: 0x808080 } )
-// );
-
-// scene.add( room );
-
 // test Text VR
 const container = new ThreeMeshUI.Block({
 	height: 2,
@@ -739,16 +763,8 @@ const container = new ThreeMeshUI.Block({
     backgroundOpacity: 0,
 });
 
-// container.position.set( 1.8, 0.85, -1.3 );
 container.position.set( -1.1, 0.85, -4);
-// container.rotation.x = -0.55;
 scene.add( container );
-
-// const imageBlock = new ThreeMeshUI.Block({
-// 	height: 1,
-// 	width: 1,
-// 	//offset: 0.1 // distance separating the inner block from its parent
-// });
 
 const textBlock = new ThreeMeshUI.Block({
 	height: 0.75,
@@ -757,10 +773,6 @@ const textBlock = new ThreeMeshUI.Block({
 });
 
 container.add(textBlock );
-
-// textureLoader.load( ImageLozere, (texture)=> {
-// 	imageBlock.set({ backgroundTexture: texture });
-// });
 
 container.set({
 	fontFamily: FontJson,
@@ -782,10 +794,8 @@ text.set({
 });
 
 textBlock.set({
-    //alignContent: "right",
-    // justifyContent: "end",
     padding: 0.03,
-  });
+});
 
 // 'En quelques mots' - title -  VR board
 textBlock.add(
@@ -798,43 +808,16 @@ textBlock.add(
 
 textBlock.set({
     alignContent: "center",
-    //justifyContent: "center",
     padding: 0.03,
   });
 
 textBlock.add( text );
 
-
-
-
-// fin test VR
-
-// test ButtonVR 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Control VR 
 
 let vrControl;
 let meshContainer, meshes, currentMesh;
 const objsToTest = [];
-
-//const raycaster = new THREE.Raycaster();
-
-// const mouse = new THREE.Vector2();
-// mouse.x = mouse.y = null;
 
 let selectState = false;
 
@@ -867,13 +850,9 @@ window.addEventListener( 'touchend', () => {
 
 
 function showMesh( id ) {
-
 	meshes.forEach( ( mesh, i ) => {
-
 		mesh.visible = i === id ? true : false;
-
 	} );
-
 }
 
 
@@ -883,9 +862,6 @@ function showMesh( id ) {
 
 function makePanel() {
 
-	// Container block, in which we put the two buttons.
-	// We don't define width and height, it will be set automatically from the children's dimensions
-	// Note that we set contentDirection: "row-reverse", in order to orient the buttons horizontally
 	const containerButton = new ThreeMeshUI.Block( {
 		justifyContent: 'center',
 		alignContent: 'center',
@@ -896,11 +872,6 @@ function makePanel() {
 		padding: 0.02,
 		borderRadius: 0.11
 	} );
-
-    // containerButton.set({
-    //     fontFamily: FontJson,
-	//     fontTexture: FontImage,
-    // })
 
 	containerButton.position.set( 0, 0.6, 3.5 );
     // gui.add(containerButton.position, 'x').min(-3).max(3).step(0.01).name('Button VR position X')
@@ -915,10 +886,6 @@ function makePanel() {
 	scene.add( containerButton );
 
 	// BUTTONS
-
-	// We start by creating objects containing options that we will use with the two buttons,
-	// in order to write less code.
-
 	const buttonOptions = {
 		width: 0.4,
 		height: 0.15,
@@ -928,11 +895,6 @@ function makePanel() {
 		margin: 0.02,
 		borderRadius: 0.075,
 	};
-
-	// Options for component.setupState().
-	// It must contain a 'state' parameter, which you will refer to with component.setState( 'name-of-the-state' ).
-
-    // Pbs with display of the front button - it works but dont appear 
 
 	const hoveredStateAttributes = {
 		state: 'hovered',
@@ -954,12 +916,11 @@ function makePanel() {
 		},
 	};
 
-	// Buttons creation, with the options objects passed in parameters.
-
+	// Buttons creation (options objects passed in parameters)
 	const buttonNext = new ThreeMeshUI.Block( buttonOptions );
 	const buttonPrevious = new ThreeMeshUI.Block( buttonOptions );
 
-	// Add text to buttons
+	// Text button
     buttonNext.add(
 	new ThreeMeshUI.Text({ content: 'next' })
     );
@@ -967,9 +928,6 @@ function makePanel() {
 	buttonPrevious.add(
 		new ThreeMeshUI.Text( { content: 'previous'} )
 	);
-
-	// Create states for the buttons.
-	// In the loop, we will call component.setState( 'state-name' ) when mouse hover or click
 
 	const selectedAttributes = {
 		offset: 0.02,
@@ -990,8 +948,6 @@ function makePanel() {
 	buttonNext.setupState( hoveredStateAttributes );
 	buttonNext.setupState( idleStateAttributes );
 
-	//
-
 	buttonPrevious.setupState( {
 		state: 'selected',
 		attributes: selectedAttributes,
@@ -1006,33 +962,20 @@ function makePanel() {
 	buttonPrevious.setupState( hoveredStateAttributes );
 	buttonPrevious.setupState( idleStateAttributes );
 
-	//
-
 	containerButton.add( buttonNext, buttonPrevious );
 	objsToTest.push( buttonNext, buttonPrevious );
-
-
 }
 
 // Handle resizing the viewport
-
 function onWindowResize() {
-
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize( window.innerWidth, window.innerHeight );
-
 }
-
-//
 
 function loop() {
 
-	// Don't forget, ThreeMeshUI must be updated manually.
-	// This has been introduced in version 3.0.0 in order
-	// to improve performance
 	ThreeMeshUI.update();
-
 	controls.update();
 
 	meshContainer.rotation.z += 0.01;
@@ -1041,69 +984,45 @@ function loop() {
 	renderer.render( scene, camera );
 
 	updateButtons();
-
 }
 
-// Called in the loop, get intersection with either the mouse or the VR controllers,
-// then update the buttons states according to result
-
 function updateButtons() {
-
-	// Find closest intersecting object
 
 	let intersect;
 
 	if ( renderer.xr.isPresenting ) {
 
 		vrControl.setFromController( 0, raycaster.ray );
-
 		intersect = raycast();
-
-		// Position the little white dot at the end of the controller pointing ray
 		if ( intersect ) vrControl.setPointerAt( 0, intersect.point );
-
 	} else if ( mouse.x !== null && mouse.y !== null ) {
 
 		raycaster.setFromCamera( mouse, camera );
-
 		intersect = raycast();
-
 	}
-
-	// Update targeted button state (if any)
 
 	if ( intersect && intersect.object.isUI ) {
 
 		if ( selectState ) {
 
-			// Component.setState internally call component.set with the options you defined in component.setupState
 			intersect.object.setState( 'selected' );
 
 		} else {
 
-			// Component.setState internally call component.set with the options you defined in component.setupState
 			intersect.object.setState( 'hovered' );
 
 		}
-
 	}
-
-	// Update non-targeted buttons state
 
 	objsToTest.forEach( ( obj ) => {
 
 		if ( ( !intersect || obj !== intersect.object ) && obj.isUI ) {
 
-			// Component.setState internally call component.set with the options you defined in component.setupState
 			obj.setState( 'idle' ); 
 
 		}
-
-	} );
-
+	});
 }
-
-//
 
 function raycast() {
 
@@ -1127,18 +1046,10 @@ function raycast() {
 
 }
 
-
-// document.body.appendChild( VRButton.createButton( renderer ) );
-// document.body.appendChild( renderer.domElement );
-
-
-
 const roomMesh = new THREE.Mesh(
 		new THREE.BoxGeometry( 24, 24, 24, 32, 32, 32 ).translate( 0, 3, 0 ),
 		new THREE.MeshBasicMaterial( { side: THREE.BackSide } )
 	);
-
-// roomMesh.position(0.30, 0.5, 4.7),
 
 objsToTest.push( roomMesh );
 
@@ -1157,7 +1068,7 @@ vrControl.controllers[ 0 ].addEventListener( 'selectend', () => {
 } );
 
 ////////////////////
-// Primitive Meshes
+// Primitive Meshes 
 ////////////////////
 meshContainer = new THREE.Group();
 meshContainer.position.set( 0.30, 1, 4.7 ); 
@@ -1166,7 +1077,7 @@ scene.add( meshContainer );
     // gui.add(meshContainer.position, 'x').min(-4).max(4).step(0.01).name('Mesh container position X')
     // gui.add(meshContainer.position, 'y').min(-4).max(4).step(0.01).name('Mesh container position Y')
     // gui.add(meshContainer.position, 'z').min(-4).max(4).step(0.01).name('Mesh container position Z')
-//
+
 const sphereVR1 = new THREE.Mesh(
 	new THREE.IcosahedronBufferGeometry( 0.3, 1 ),
 	new THREE.MeshStandardMaterial( { color: 0x3de364, flatShading: true } )
@@ -1180,34 +1091,19 @@ const coneVR1 = new THREE.Mesh(
 	new THREE.ConeBufferGeometry( 0.28, 0.5, 10 ),
 	new THREE.MeshStandardMaterial( { color: 0xe33d4e, flatShading: true } )
 );
-//
-// contentContainer.visible = boxVR1.visible = coneVR1.visible = false;
-// meshContainer.add( contentContainer, boxVR1, coneVR1 );
-// meshes = [ contentContainer, boxVR1, coneVR1 ];
-// currentMesh = 0;
 
 ///////////
 // Panel // 
 ///////////
 makePanel();
 
-//
-
 renderer.setAnimationLoop( loop );
 
-
-
-
-
-
-
-
-// test buttonVR 2 
+/////////////////////////////////////////
+// Others VR Button ( with eyes click) // 
+/////////////////////////////////////////
 
 const buttonVR = new ButtonVR(scene, camera)
-
-
-
 
 buttonVR.update(renderer)
 
@@ -1217,27 +1113,18 @@ const containerVR = new ThreeMeshUI.Block({
     backgroundOpacity: 0,
 });
 
-// container.position.set( -2, 0.5, -4);
-
 const textBlockVR = new ThreeMeshUI.Block({
 	height: 0.75,
 	width: 1.1,
 	margin: 0.01, 
 });
 
-
-
 buttonVR.addEventListener('pressed', (intersection) => {
-    // console.log('pressed')
 	scene.add( formationTextVR );
 	scene.add( hobbiesTextVR );
-
-    
-
 })
 
 buttonVR.addEventListener('pressedEnd', () => {
-    // console.log('pressedEnd')
 	scene.remove( formationTextVR );
 	scene.remove( hobbiesTextVR );
 })
@@ -1281,8 +1168,6 @@ const hobbiesTextVR = new ThreeMeshUI.Block( {
 
 hobbiesTextVR.position.set( 3.45, 0.85, 1.05);
 hobbiesTextVR.rotation.y = -2.02;
-
-
 
 hobbiesTextVR.add(
 	new ThreeMeshUI.Text( {
@@ -1340,7 +1225,6 @@ const pyramidVR = new THREE.Mesh(
 
 pyramidVR.textVR1 = 'Hobbies'
 
-
 pyramidVR.position.set(3.7, 0.7, 0.5)
 scene.add(pyramidVR)
 buttonVR.buttons.push(pyramidVR)
@@ -1352,24 +1236,9 @@ statsVR.setY(0)
 statsVR.setZ(0)
 // Fin stats VR
 
-
-// Exp block text VR 
-
-// makeTextPanel();
-
-
-
-
-
-
-
-
-
-
-
-///////////////////
-// Projets VR 
-///////////////////
+////////////////
+// Projets VR //
+////////////////
 
 // Card VR projet 1 
 const containerImg = new ThreeMeshUI.Block({
@@ -1380,7 +1249,7 @@ const containerImg = new ThreeMeshUI.Block({
   fontColor: new THREE.Color(0xffffff),
   backgroundOpacity: 0,
 });
-// containerImg.position.set(0, 1.14, 4.5);
+
 containerImg.rotation.set(0.48, 3.15, 0);
 
 const title = new ThreeMeshUI.Block({
@@ -1396,7 +1265,6 @@ title.add(
     content: "Front-end developer apprenticeship - Aero-Bay",
   })
 );
-
 
 containerImg.add(title);
 
@@ -1510,7 +1378,6 @@ const projet1 = new THREE.Mesh(
 
 scene.add(containerImg)
 containerImg.visible = false
-
 
 // Card VR projet 2
 const containerImg1 = new ThreeMeshUI.Block({
@@ -1633,80 +1500,11 @@ containerImg1.visible = false
 
 // Text 3 
 
-// makeTextPanel();
-
 sphereVR1.visible = boxVR1.visible = containerImg1.visible = containerImg.visible = false;
 meshContainer.add( sphereVR1, boxVR1, containerImg1, containerImg);
 meshes = [ sphereVR1, boxVR1, containerImg1, containerImg ];
 currentMesh = 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fin exp block text VR 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fin test buttonVR
+// fin button VR
 
 camera.updateProjectionMatrix();
 
@@ -1724,25 +1522,13 @@ const screen = new THREE.PlaneGeometry(0.71, 0.385);
 const videoScreen = new THREE.Mesh(screen, videoMaterial);
 video.play()
 
-
 videoScreen.position.x = -5.08
 videoScreen.position.y = 0.82
 videoScreen.position.z = 0.77
 
 videoScreen.rotation.y = 0.6
 
-
 scene.add(videoScreen);
-
-
-
-// floor
-// const floorGeometry = new THREE.PlaneGeometry( 4, 4 );
-// const floorMaterial = new THREE.MeshStandardMaterial( { color: 0x222222 } );
-// const floor = new THREE.Mesh( floorGeometry, floorMaterial );
-// floor.rotation.x = - Math.PI / 2;
-// floor.receiveShadow = true;
-// scene.add( floor );
 
 // VR hand controller 
 let hand1, hand2;
@@ -1790,12 +1576,11 @@ controllerHand2.add( line.clone() );
 var backgroundButton = document.querySelector('#change-background');
 const classess = backgroundButton.classList;
 
-// When click on 'Day' / 'Night' button 
 backgroundButton.addEventListener('click', function(){
     const result = classess.toggle("Night");
 
     if (result) {
-        backgroundButton.textContent = `🌕`;
+        backgroundButton.textContent = `\uD83C\uDF15`;
         // Sky
         scene.background = new THREE.Color( '#191970' );
         // Fog
@@ -1810,7 +1595,7 @@ backgroundButton.addEventListener('click', function(){
         waterMaterial.uniforms.uSurfaceColor.value = new THREE.Color(0x0077ff)
 
     } else {
-        backgroundButton.textContent = `🌙`;
+        backgroundButton.textContent = `\uD83C\uDF19`;
         // Sky
         scene.background = new THREE.Color( '#38c3fc' );
         // Fog
@@ -1843,11 +1628,6 @@ const tick = () => {
         mixer.update(deltaTime)
     }
 
-    // if(mixerElvis !== null){
-    //     mixerElvis.update(deltaTime)
-    // }
-    // fin test 
-
     // update materials 
     firefliesMaterial.uniforms.uTime.value = elapsedTime
     portalLightMaterial.uniforms.uTime.value = elapsedTime
@@ -1869,41 +1649,9 @@ const tick = () => {
             point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`
         }
     }
-    
-    
-    /** 
-    * Rotate library items
-    */
-    //cube.rotation.x = 0.4 * elapsedTime
-    //cube.rotation.y = 0.4 * elapsedTime
-
-    //cone.rotation.y = 0.4 * elapsedTime
-    //cone.rotation.x = 0.4 * elapsedTime
-    
-    //torus.rotation.y = 0.4 * elapsedTime
-    //torus.rotation.z = 0.4 * elapsedTime
-
-    /**
-    * Render
-    */
-    //renderer.render(scene, camera)
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
-    
-
-    // // Scene VR
-    // renderer.xr.enabled = true;
-
-    // renderer.setAnimationLoop( function () {
-
-    //     renderer.render( scene, camera );
-    // } );
-    // // fonctionne aussi : 
-    // //renderer.setAnimationLoop(tick)
-
-    // Scene VR
-    //ThreeMeshUI.update();
     
         renderer.xr.enabled = true;
         // Test with Oculus 2 headset
@@ -1952,119 +1700,8 @@ const tick = () => {
 	    renderer.render( scene, camera );
 
         updateButtons();
-    } );
-    
-
-
-
-
-
-
-    // // test ButtonVR
-
-    // // renderer = new THREE.WebGLRenderer( { antialias: true } );
-	// // renderer.setPixelRatio( window.devicePixelRatio );
-	// // renderer.setSize( window.innerWidth, window.innerHeight );
-	// // renderer.outputEncoding = THREE.sRGBEncoding;
-	// // renderer.xr.enabled = true;
-	// document.body.appendChild( VRButton.createButton( renderer ) );
-	// document.body.appendChild( renderer.domElement );
-
-    // // Orbit controls for no-vr
-	// // controls = new OrbitControls( camera, renderer.domElement );
-	// // camera.position.set( 0, 1.6, 0 );
-	// // controls.target = new THREE.Vector3( 0, 1, -1.8 );
-
-    // /////////
-	// // Room
-	// /////////
-
-	// const room = new THREE.LineSegments(
-	// 	new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ).translate( 0, 3, 0 ),
-	// 	new THREE.LineBasicMaterial( { color: 0x808080 } )
-	// );
-
-	// const roomMesh = new THREE.Mesh(
-	// 	new THREE.BoxGeometry( 6, 6, 6, 10, 10, 10 ).translate( 0, 3, 0 ),
-	// 	new THREE.MeshBasicMaterial( { side: THREE.BackSide } )
-	// );
-
-	// scene.add( room );
-	// objsToTest.push( roomMesh );
-
-    // ////////////////
-	// // Controllers
-	// ////////////////
-
-	// vrControl = VRControl( renderer, camera, scene );
-
-	// scene.add( vrControl.controllerGrips[ 0 ], vrControl.controllers[ 0 ] );
-
-	// vrControl.controllers[ 0 ].addEventListener( 'selectstart', () => {
-
-	// 	selectState = true;
-
-	// } );
-	// vrControl.controllers[ 0 ].addEventListener( 'selectend', () => {
-
-	// 	selectState = false;
-
-	// } );
-
-    // ////////////////////
-	// // Primitive Meshes
-	// ////////////////////
-
-	// meshContainer = new THREE.Group();
-	// meshContainer.position.set( 0, 1, -1.9 );
-	// scene.add( meshContainer );
-
-	// //
-
-	// const sphere = new THREE.Mesh(
-	// 	new THREE.IcosahedronBufferGeometry( 0.3, 1 ),
-	// 	new THREE.MeshStandardMaterial( { color: 0x3de364, flatShading: true } )
-	// );
-
-	// const box = new THREE.Mesh(
-	// 	new THREE.BoxBufferGeometry( 0.45, 0.45, 0.45 ),
-	// 	new THREE.MeshStandardMaterial( { color: 0x643de3, flatShading: true } )
-	// );
-
-	// const cone = new THREE.Mesh(
-	// 	new THREE.ConeBufferGeometry( 0.28, 0.5, 10 ),
-	// 	new THREE.MeshStandardMaterial( { color: 0xe33d4e, flatShading: true } )
-	// );
-
-	// //
-
-	// sphere.visible = box.visible = cone.visible = false;
-
-	// meshContainer.add( sphere, box, cone );
-
-	// meshes = [ sphere, box, cone ];
-	// currentMesh = 0;
-
-	// showMesh( currentMesh );
-
-    // //////////
-	// // Panel
-	// //////////
-
-	// makePanel();
-
-	// //
-
-	// renderer.setAnimationLoop( loop );
-
-    // // fin test buttonVR
-    
-    
-
+    } ); 
 }
-
-// window.addEventListener( 'load', tick );
-// window.addEventListener( 'resize', onWindowResize );
 
 tick()
 

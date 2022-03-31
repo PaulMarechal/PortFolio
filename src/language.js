@@ -2,14 +2,14 @@ const span = document.querySelector("#buttonLangue");
 const classes = span.classList;
 
 span.addEventListener('click', function() {
-    const result = classes.toggle("🇫🇷");
+    const result = classes.toggle("\uD83C\uDDEB\uD83C\uDDF7");
 
     if (result) {
-        span.textContent = `🇫🇷`;
+        span.textContent = `\uD83C\uDDEB\uD83C\uDDF7`;
         toggleLanguage('English');
 
     } else {
-        span.textContent = `🇬🇧`;
+        span.textContent = `\uD83C\uDDEC\uD83C\uDDE7`;
         toggleLanguage('French');
 
     }

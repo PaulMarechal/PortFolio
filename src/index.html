@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
-
     <head>
         <meta charset="UTF-8" />
-        <!-- <meta name="viewport" content="initial-scale=1.0, viewport-fit=cover"> -->
         <meta name="viewport" class="hidden-md hidden-lg" content="width=device-width,initial-scale=1,viewport-fit=cover">
         <title>Paul Marechal - Portfolio</title>
         <meta name="googlebot" content="index, follow">
@@ -41,11 +39,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="./language.js"></script>
         <script src="./modale.js"></script> 
-        <!-- <script src='https://unpkg.com/three-mesh-ui'></script>  --> 
 
         <!-- test video dans ordinateur -->
-        <video id="video" playsinline webkit-playsinline muted loop autoplay width="30" height="10"
-            src="https://paulmarechal.xyz/CV/rainingCode.mp4" style="display: none;"></video>
+        <video id="video" playsinline webkit-playsinline muted loop autoplay width="30" height="10"src="https://paulmarechal.xyz/CV/rainingCode.mp4" style="display: none;"></video>
 
         <canvas class="webgl"></canvas>
 
@@ -55,13 +51,13 @@
         <button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal">À propos</button>
 
         <!-- Bouton ouverture modale 'Informations' -->
-        <button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">ℹ️</button>
+        <button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">&#8505;&#65039;</button>
 
         <!-- Bouton changer langue 'Anglais' -->
-        <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">🇬🇧</button>
+        <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">&#127468;&#127463;</button>
 
         <!-- Bouton changer lumiere 'Day/Night' -->
-        <button id="change-background" class="btn boutonCouleur"> 🌗 </button>
+        <button id="change-background" class="btn boutonCouleur">&#127763;</button>
 
         <!-- Modale Aide/Informations -->
         <div class="modal masque" data-backdrop="false" id="infosModal">
@@ -77,7 +73,7 @@
                                 <li id="info2">Flèches directionnelles pour déplacer le renard</li></br>
                                 <li id="info3">Possibilité de changer la langue ( FR / EN ) en cliquant sur '🇬🇧'</li></br>
                                 <li id="info4">La scène change en fonction du jour et de la nuit. Possibilité de permuter en
-                                    appuyant sur le bouton '🌗'</li></br>
+                                    appuyant sur le bouton '&#127763;'</li></br>
                                 <li id="info5">Possibilité de zoomer / déplacer sur les côtés </li></br>
                                 <li id="info6">Possibilité de passer en VR ( Oculus Quest 2 ou autres )</li>
                             </ul>
@@ -410,12 +406,16 @@
                     </div>
                 </div>
             </div>
-
+        
         <button id="formationButton" type="button" class="btn btn-secondary btn-view-details-3 point-3" data-toggle="modal"> Formations</button>
         <button id="experienceButton" type="button" class="btn btn-secondary btn-view-details-2 point-0" data-toggle="modal"> Experiences</button>
         <button id="hobbiesButton" type="button" class="btn btn-secondary btn-view-details-1 point-2" data-toggle="modal"> Hobbies</button>
         <button id="contactButton" type="button" class="btn btn-secondary btn-view-details-0 point-1" data-toggle="modal"> Contact</button> 
+        
         <script src="./language.js"></script>
+
+        <div class="cursor"></div>
+        <div class="cursor2"></div>
 
     </body>
 </html>
