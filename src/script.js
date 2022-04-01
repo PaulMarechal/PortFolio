@@ -1185,11 +1185,11 @@ formationTextVR.add(
 		fontSize: 0.08
 	} ),
 	new ThreeMeshUI.Text( {
-		content: 'Bachelor’s Degree Web and Mobile </br>Sorbonne University | CFA of Sciences',
+		content: 'Bachelors Degree Web and Mobile \nSorbonne University | CFA of Sciences',
 		fontSize: 0.07
 	} ),
     new ThreeMeshUI.Text( {
-		content: 'Graphic design and web animations</br> POO and Software Architecture, design of databases for Web Frameworks for Back Office development</br> Networks and Security, Operating System and Web Server</br> UX design and Ergonomics </br>Mobile Development Web project management, Agile Methods\n',
+		content: 'Graphic design and web animations\n POO and Software Architecture, design of databases for Web Frameworks for Back Office development\n Networks and Security, Operating System and Web Server\n UX design and Ergonomics \nMobile Development Web project management, Agile Methods\n',
 		fontSize: 0.055
 	} ), 
     new ThreeMeshUI.Text( {
@@ -1536,7 +1536,7 @@ contentContainer1.add(leftSubBlock1, rightSubBlock1);
 
 containerImg1.add(contentContainer1);
 
-new THREE.TextureLoader().load(FeelingFood, (texture) => {
+new THREE.TextureLoader().load(ColorFoot, (texture) => {
     leftSubBlock1.set({
       backgroundTexture: texture,
     });
@@ -1546,14 +1546,268 @@ new THREE.TextureLoader().load(FeelingFood, (texture) => {
 scene.add(containerImg1)
 containerImg1.visible = false
 
+// School & U - VR Card 
+const containerImg2 = new ThreeMeshUI.Block({
+  ref: "container",
+  padding: 0.025,
+  fontFamily: FontJson,
+  fontTexture: FontImage,
+  fontColor: new THREE.Color(0xffffff),
+  backgroundOpacity: 0,
+});
+
+containerImg2.rotation.set(0.48, 3.15, 0);
+
+const title2 = new ThreeMeshUI.Block({
+  height: 0.2,
+  width: 1.5,
+  margin: 0.025,
+  justifyContent: "center",
+  fontSize: 0.09,
+});
+
+title2.add(
+  new ThreeMeshUI.Text({
+    content: "SCHOOL & U - Connected notebook application",
+  })
+);
+
+containerImg2.add(title2);
+
+const leftSubBlock2 = new ThreeMeshUI.Block({
+  height: 0.95,
+  width: 1.0,
+  margin: 0.025,
+  padding: 0.025,
+  alignContent: "left",
+  justifyContent: "end",
+});
+
+const caption2 = new ThreeMeshUI.Block({
+  height: 0.07,
+  width: 0.37,
+  alignContent: "center",
+  justifyContent: "center",
+});
+
+caption2.add(
+  new ThreeMeshUI.Text({
+    content: "2021",
+    fontSize: 0.04,
+  })
+);
+
+leftSubBlock2.add(caption2);
+
+const rightSubBlock2 = new ThreeMeshUI.Block({
+  margin: 0.025,
+});
+
+const subSubBlock12 = new ThreeMeshUI.Block({
+    height: 0.35,
+    width: 0.5,
+    margin: 0.025,
+    padding: 0.02,
+    fontSize: 0.04,
+    justifyContent: "center",
+    backgroundOpacity: 0,
+}).add(
+    new ThreeMeshUI.Text({
+        content: "Realization of a React-Native application to facilitate communication between parents and teachers. The app is available for iOS, Android and Web.\n ",
+    }),    
+);
+
+const subSubBlock22 = new ThreeMeshUI.Block({
+    height: 0.53,
+    width: 0.5,
+    margin: 0.01,
+    padding: 0.02,
+    fontSize: 0.025,
+    alignContent: "left",
+    backgroundOpacity: 0,
+}).add(
+    new ThreeMeshUI.Text({
+        content:
+            "- Identification\n",
+    }),
+
+    new ThreeMeshUI.Text({
+        content: 
+            "- Messaging: common chat and/or between two parents of the class\n",
+    }),
+
+    new ThreeMeshUI.Text({
+        content: 
+            "- Blog: posting photos and messages from the teacher about the class"
+    }),
+
+    new ThreeMeshUI.Text({
+        content: 
+            "- Liaison book"
+    }),
+
+    new ThreeMeshUI.Text({
+        content: 
+            "- Editing information and adding a new child"
+    }),
+
+    new ThreeMeshUI.Text({
+        content: 
+            "- Database: Firebase & Firestore"
+    }),
+);
+
+rightSubBlock2.add(subSubBlock12, subSubBlock22);
+
+const contentContainer2 = new ThreeMeshUI.Block({
+    contentDirection: "row",
+    padding: 0.02,
+    margin: 0.025,
+    backgroundOpacity: 0,
+});
+
+contentContainer2.add(leftSubBlock2, rightSubBlock2);
+
+containerImg2.add(contentContainer2);
+
+new THREE.TextureLoader().load(School, (texture) => {
+    leftSubBlock2.set({
+      backgroundTexture: texture,
+    });
+  });
+// }
+
+scene.add(containerImg2)
+containerImg2.visible = false
+
+// Feelin'Food - VR Card 
+const containerImg3 = new ThreeMeshUI.Block({
+  ref: "container",
+  padding: 0.025,
+  fontFamily: FontJson,
+  fontTexture: FontImage,
+  fontColor: new THREE.Color(0xffffff),
+  backgroundOpacity: 0,
+});
+
+containerImg3.rotation.set(0.48, 3.15, 0);
+
+const title3 = new ThreeMeshUI.Block({
+  height: 0.2,
+  width: 1.5,
+  margin: 0.025,
+  justifyContent: "center",
+  fontSize: 0.09,
+});
+
+title3.add(
+  new ThreeMeshUI.Text({
+    content: "Feelin'Food - website for click & collect restaurants",
+  })
+);
+
+containerImg3.add(title3);
+
+const leftSubBlock3 = new ThreeMeshUI.Block({
+  height: 0.95,
+  width: 1.0,
+  margin: 0.025,
+  padding: 0.025,
+  alignContent: "left",
+  justifyContent: "end",
+});
+
+const caption3 = new ThreeMeshUI.Block({
+  height: 0.07,
+  width: 0.37,
+  alignContent: "center",
+  justifyContent: "center",
+});
+
+caption3.add(
+  new ThreeMeshUI.Text({
+    content: "2021",
+    fontSize: 0.04,
+  })
+);
+
+leftSubBlock3.add(caption3);
+
+const rightSubBlock3 = new ThreeMeshUI.Block({
+  margin: 0.025,
+});
+
+const subSubBlock13 = new ThreeMeshUI.Block({
+    height: 0.35,
+    width: 0.5,
+    margin: 0.025,
+    padding: 0.02,
+    fontSize: 0.04,
+    justifyContent: "center",
+    backgroundOpacity: 0,
+}).add(
+    new ThreeMeshUI.Text({
+        content: "Realization of a dynamic site for restaurant wishing to set up take-out sales This project was carried out in: HTML5, CSS3, PHP, mySQL, Vanilla JS.\n ",
+    }),    
+);
+
+const subSubBlock23 = new ThreeMeshUI.Block({
+    height: 0.53,
+    width: 0.5,
+    margin: 0.01,
+    padding: 0.02,
+    fontSize: 0.025,
+    alignContent: "left",
+    backgroundOpacity: 0,
+}).add(
+    new ThreeMeshUI.Text({
+        content:
+            "- Identification\n",
+    }),
+
+    new ThreeMeshUI.Text({
+        content: 
+            "- User account\n",
+    }),
+
+    new ThreeMeshUI.Text({
+        content: 
+            "- Follow-up of suppliers, stocks, technical sheets\n"
+    }),
+
+    new ThreeMeshUI.Text({
+        content: 
+            "- Click & collect\n"
+    })
+);
+
+rightSubBlock3.add(subSubBlock13, subSubBlock23);
+
+const contentContainer3 = new ThreeMeshUI.Block({
+    contentDirection: "row",
+    padding: 0.02,
+    margin: 0.025,
+    backgroundOpacity: 0,
+});
+
+contentContainer3.add(leftSubBlock3, rightSubBlock3);
+
+containerImg3.add(contentContainer3);
+
+new THREE.TextureLoader().load(FeelingFood, (texture) => {
+    leftSubBlock3.set({
+      backgroundTexture: texture,
+    });
+  });
+// }
+
+scene.add(containerImg3)
+containerImg3.visible = false
 
 
-
-
-
-boxVR1.visible = containerImg1.visible = containerImg.visible = false;
-meshContainer.add( boxVR1, containerImg1, containerImg);
-meshes = [ boxVR1, containerImg1, containerImg ];
+containerImg3.visible = containerImg2.visible = containerImg1.visible = containerImg.visible = false;
+meshContainer.add(containerImg3, containerImg2, containerImg1, containerImg);
+meshes = [containerImg3, containerImg2, containerImg1, containerImg ];
 currentMesh = 0;
 // fin button VR
 
