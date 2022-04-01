@@ -16,6 +16,8 @@ import waterFragmentShader from './shaders/water/fragment.glsl'
 import FontJson from './assets/Roboto-msdf.json'
 import FontImage from './assets/Roboto-msdf.png'
 import ImageLozere from './img/lozere.jpg'
+import School from './assets/school.jpg'
+import FeelingFood from './assets/feelinFood.jpg'
 import { gsap } from 'gsap'
 import Darkmode from 'darkmode-js'
 import language from './language.js'
@@ -151,7 +153,36 @@ for(let i = 0; i < 14; i++) {
 
 // Bibliotheque geometry objects
 const geometryCube = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
-const materialCube = new THREE.MeshBasicMaterial( {color: '#FFFF00', opacity: 0.5 });
+const materialCube = new THREE.ShaderMaterial({
+  uniforms: {
+    color1: {
+      value: new THREE.Color("red")
+    },
+    color2: {
+      value: new THREE.Color("purple")
+    }
+  },
+  vertexShader: `
+    varying vec2 vUv;
+
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform vec3 color1;
+    uniform vec3 color2;
+  
+    varying vec2 vUv;
+    
+    void main() {
+      
+      gl_FragColor = vec4(mix(color1, color2, vUv.y), 1.0);
+    }
+  `,
+//   wireframe: true
+});
 const cube = new THREE.Mesh( geometryCube, materialCube );
 
 cube.position.y = 0.6
@@ -253,6 +284,9 @@ gltfLoader.load(
         gltf.scene.position.y = -0.15
 
         var direction = new THREE.Vector3();
+
+        var playerDirection = 0;//angles 0 - 2pi
+        var angularSpeed = 0.01;
         
         document.onkeydown = function(e) {
             switch (e.keyCode) {
@@ -260,7 +294,7 @@ gltfLoader.load(
             // Left arrow
             case 37:
                 action.play()
-                camera.position.x += 0.02
+                // camera.position.x += 0.02;
                 gltf.scene.rotation.y += 0.06;
                 break;
 
@@ -279,8 +313,12 @@ gltfLoader.load(
             // Right arrow
             case 39:
                 action.play()
-                camera.position.x += 0.02;
-                gltf.scene.rotation.y -= 0.06;
+                // camera.position.x += 0.02;
+                // gltf.scene.rotation.y -= 0.06;
+                gltf.scene.rotation.y -=0.06
+                // playerDirection += angularSpeed;
+
+
                 break;
 
             // Bottom arrow
@@ -682,9 +720,6 @@ function onDocumentMouseDown( event ) {
 
 circle.callback = function() { changeByPortal();}
 circle2.callback = function() { changeByPortal();}
-var cursorPointer = document.getElementsByClassName('cursor');
-
-cursorPointer.darkmode();
 
 function changeByPortal(){
     var selectedObject = scene.getObjectByName("cercle"); 
@@ -1147,12 +1182,24 @@ formationTextVR.rotation.y = 2;
 formationTextVR.add(
 	new ThreeMeshUI.Text( {
 		content: 'Formations \n',
-		fontSize: 0.055
+		fontSize: 0.08
 	} ),
 	new ThreeMeshUI.Text( {
-		content: '  Test hello world blablabla blablabla blablabla ',
-		fontSize: 0.08
-	} )
+		content: 'Bachelor’s Degree Web and Mobile </br>Sorbonne University | CFA of Sciences',
+		fontSize: 0.07
+	} ),
+    new ThreeMeshUI.Text( {
+		content: 'Graphic design and web animations</br> POO and Software Architecture, design of databases for Web Frameworks for Back Office development</br> Networks and Security, Operating System and Web Server</br> UX design and Ergonomics </br>Mobile Development Web project management, Agile Methods\n',
+		fontSize: 0.055
+	} ), 
+    new ThreeMeshUI.Text( {
+		content: 'IT application developer analyst ESIEE Paris Tech | Paris\n',
+		fontSize: 0.07
+	} ),
+    new ThreeMeshUI.Text( {
+		content: 'Training aimed at acquiring coding techniques, project analysis and technical integration of new digital technologies. The courses are given according to SCRUM - Agile methods around projects (sprint) in teams under the responsibility of a coach.\n',
+		fontSize: 0.07
+	} ),
 );
 // fin text VR Formation
 
@@ -1176,7 +1223,7 @@ hobbiesTextVR.add(
 		fontSize: 0.08
 	} ),
 	new ThreeMeshUI.Text( {
-		content: ' Test hello world blablabla blablabla blablabla ',
+		content: 'Globe trotter lover of discoveries.\n - Culinary bike trip in Europe (12 countries - 8000km)\n- Many GR trails and backpack trips\nPassionate about new technologies, music and cinematography ',
 		fontSize: 0.055
 	} )
 );
@@ -1489,7 +1536,7 @@ contentContainer1.add(leftSubBlock1, rightSubBlock1);
 
 containerImg1.add(contentContainer1);
 
-new THREE.TextureLoader().load(ColorFoot, (texture) => {
+new THREE.TextureLoader().load(FeelingFood, (texture) => {
     leftSubBlock1.set({
       backgroundTexture: texture,
     });
@@ -1499,11 +1546,14 @@ new THREE.TextureLoader().load(ColorFoot, (texture) => {
 scene.add(containerImg1)
 containerImg1.visible = false
 
-// Text 3 
 
-sphereVR1.visible = boxVR1.visible = containerImg1.visible = containerImg.visible = false;
-meshContainer.add( sphereVR1, boxVR1, containerImg1, containerImg);
-meshes = [ sphereVR1, boxVR1, containerImg1, containerImg ];
+
+
+
+
+boxVR1.visible = containerImg1.visible = containerImg.visible = false;
+meshContainer.add( boxVR1, containerImg1, containerImg);
+meshes = [ boxVR1, containerImg1, containerImg ];
 currentMesh = 0;
 // fin button VR
 
