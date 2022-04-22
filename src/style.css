@@ -38,7 +38,7 @@ p{
 
 .boutonInfo{
     position: absolute;
-    right:1em;
+    right:2em;
     top: -0.1em;
     border-color: black;
     border-top-width: 5px;
@@ -192,6 +192,8 @@ body {
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.48 )!important;
     color: #000000!important;
+    position: absolute; 
+    margin-left:92.56%;
 }
 
 .boutonInfo{
