@@ -99,9 +99,9 @@ var animOffset       = 0,   // starting frame of animation
  */
 // Debug GUI
 const debugObject = {}
-// const gui = new GUI({
-//     width: 400
-// })
+const gui = new GUI({
+    width: 400
+})
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -305,7 +305,7 @@ gltfLoader.load(
 
                 gltf.scene.position.addScaledVector(direction, 0.02);
 
-                camera.position.x = gltf.scene.position.x - 2;
+                camera.position.x = gltf.scene.position.x - 3;
                 camera.position.y = gltf.scene.position.y - 2;
                 camera.position.z = gltf.scene.position.z - 1;
                 break;
@@ -667,14 +667,17 @@ camera.position.set( 12, 4, -5);
 controls.update();
 
 // Fog color at 'Night' / 'Day'
+
 if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     scene.fog = new THREE.FogExp2( '#191970' , 0.04 ); 
 } else {
     scene.fog = new THREE.FogExp2( '#38c3fc', 0.04 );
 }
 
+
 // Sky color at 'Night' / 'Day' and bgc 
 debugObject.clearColor = '#38c3fc'
+
 
 if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     debugObject.clearColor = '#191970'  
@@ -684,27 +687,40 @@ if((hour >= 0 && hour <= 6) || (hour >= 22 && hour <=24)){
     document.body.style.background = '#38c3fc'; 
 }
 
+
 renderer.setClearColor(debugObject.clearColor)
 // gui.addColor(debugObject, 'clearColor').onChange(() => {renderer.setClearColor(debugObject.clearColor)})
 
 // Portal circle ( onClick to change all scene color )
 const geometry = new THREE.CircleGeometry( 1.1, 32 );
 const material = new THREE.MeshBasicMaterial( {side: THREE.DoubleSide, transparent: true } );
+
 const circle = new THREE.Mesh( geometry, material );
 const circle2 = new THREE.Mesh( geometry, material );
 circle.name = "cercle";
 circle.position.x = 1.0;
 circle.position.y = 1.2;
-circle.position.z = -5.7;
+circle.position.z = -5.86;
 circle.rotation.y = -0.15;
 scene.add( circle ); 
 
-circle2.position.x = 1;
-circle2.position.y = 1.2;
-circle2.position.z = -5.7;
-circle2.rotation.y = 2.9;
+circle2.position.x = 1.11;
+circle2.position.y = 1.11;
+circle2.position.z = -5.99;
+circle2.rotation.y = 2.97;
 scene.add(circle2);
 material.opacity = 0;
+
+// gui.add(circle2.position, 'z').min(-10).max(10).step(0.01).name('circle 2 z')
+// gui.add(circle2.rotation, 'y').min(-5).max(5).step(0.01).name('circle 2 rot y')
+// gui.add(circle2.position, 'y').min(-5).max(5).step(0.01).name('circle 2 y')
+// gui.add(circle2.position, 'x').min(-5).max(5).step(0.01).name('circle 2 x')
+
+// gui.add(circle.position, 'x').min(-5).max(5).step(0.01).name('circle x')
+// gui.add(circle.position, 'y').min(-5).max(5).step(0.01).name('circle y')
+// gui.add(circle.position, 'z').min(-10).max(10).step(0.01).name('circle z')
+// gui.add(circle.rotation, 'y').min(-5).max(5).step(0.01).name('circle rot y')
+
 
 window.addEventListener('click', onDocumentMouseDown, false);
 
@@ -902,11 +918,12 @@ function makePanel() {
 		justifyContent: 'center',
 		alignContent: 'center',
 		contentDirection: 'row-reverse',
-        fontFamily: FontJson,
+    fontFamily: FontJson,
 		fontTexture: FontImage,
 		fontSize: 0.07,
 		padding: 0.02,
-		borderRadius: 0.11
+		borderRadius: 0.11,
+    wireframe: true
 	} );
 
 	containerButton.position.set( 0, 0.6, 3.5 );
@@ -1081,12 +1098,21 @@ function raycast() {
 	}, null );
 
 }
+  // const room = new THREE.LineSegments(
+  //   new BoxLineGeometry(18, 18, 18, 24, 24, 24).translate(0, 3, 0),
+  //   new THREE.LineBasicMaterial({ color: 0x808080 })
+  // );
+
+  // scene.add(room);
 
 const roomMesh = new THREE.Mesh(
-		new THREE.BoxGeometry( 24, 24, 24, 32, 32, 32 ).translate( 0, 3, 0 ),
-		new THREE.MeshBasicMaterial( { side: THREE.BackSide } )
+		new THREE.BoxGeometry( 18, 18, 18, 24, 24, 24 ).translate( 0, 3, 0 ),
+		// new THREE.MeshBasicMaterial( { side: THREE.BackSide } )
+    // new THREE.LineBasicMaterial({ color: 0x0000ff })
+        new THREE.LineBasicMaterial({ color: 0x808080 })
+    
+    
 	);
-
 objsToTest.push( roomMesh );
 
 ////////////////
@@ -1110,23 +1136,10 @@ meshContainer = new THREE.Group();
 meshContainer.position.set( 0.30, 1, 4.7 ); 
 scene.add( meshContainer );
 
-    // gui.add(meshContainer.position, 'x').min(-4).max(4).step(0.01).name('Mesh container position X')
-    // gui.add(meshContainer.position, 'y').min(-4).max(4).step(0.01).name('Mesh container position Y')
-    // gui.add(meshContainer.position, 'z').min(-4).max(4).step(0.01).name('Mesh container position Z')
+// gui.add(meshContainer.position, 'x').min(-4).max(4).step(0.01).name('Mesh container position X')
+// gui.add(meshContainer.position, 'y').min(-4).max(4).step(0.01).name('Mesh container position Y')
+// gui.add(meshContainer.position, 'z').min(-4).max(4).step(0.01).name('Mesh container position Z')
 
-const sphereVR1 = new THREE.Mesh(
-	new THREE.IcosahedronBufferGeometry( 0.3, 1 ),
-	new THREE.MeshStandardMaterial( { color: 0x3de364, flatShading: true } )
-);
-
-const boxVR1 = new THREE.Mesh(
-	new THREE.BoxBufferGeometry( 0.45, 0.45, 0.45 ),
-	new THREE.MeshStandardMaterial( { color: 0x643de3, flatShading: true } )
-);
-const coneVR1 = new THREE.Mesh(
-	new THREE.ConeBufferGeometry( 0.28, 0.5, 10 ),
-	new THREE.MeshStandardMaterial( { color: 0xe33d4e, flatShading: true } )
-);
 
 ///////////
 // Panel // 
@@ -1146,7 +1159,7 @@ buttonVR.update(renderer)
 const containerVR = new ThreeMeshUI.Block({
 	height: 2,
 	width: 1, 
-    backgroundOpacity: 0,
+  backgroundOpacity: 0,
 });
 
 const textBlockVR = new ThreeMeshUI.Block({
@@ -1167,8 +1180,8 @@ buttonVR.addEventListener('pressedEnd', () => {
 
 // text VR Formation
 const formationTextVR = new ThreeMeshUI.Block( {
-	width: 1.2,
-	height: 0.5,
+	width: 3.2,
+	height: 5.5,
 	padding: 0.05,
 	justifyContent: 'center',
 	alignContent: 'left',
@@ -1247,20 +1260,19 @@ boxVR.position.set(-4.2, 0.5, 1.4)
 scene.add(boxVR)
 buttonVR.buttons.push(boxVR)
 
-// Expérience
-const sphereVR = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(1.5, 8, 8),
-    new THREE.MeshBasicMaterial({
-        transparent: true, 
-        visible: false,
-    })
-)
+// Expérience button VR ( click with eyes )
+// const sphereVR = new THREE.Mesh(
+//     new THREE.SphereBufferGeometry(1.5, 8, 8),
+//     new THREE.MeshBasicMaterial({
+//         transparent: false, 
+//         visible: true,
+//     })
+// )
+// sphereVR.name = 'Expériences'
 
-sphereVR.name = 'Expériences'
-
-sphereVR.position.set(0.30, 0.5, 4.7)
-scene.add(sphereVR)
-buttonVR.buttons.push(sphereVR)
+// sphereVR.position.set(0.30, 0.5, 4.7)
+// scene.add(sphereVR)
+// buttonVR.buttons.push(sphereVR)
 
 // Hobbies
 const pyramidVR = new THREE.Mesh(
@@ -1681,7 +1693,7 @@ scene.add(containerImg2)
 containerImg2.visible = false
 
 // Feelin'Food - VR Card 
-const containerImg3 = new ThreeMeshUI.Block({
+const feelinFoodContainerImg = new ThreeMeshUI.Block({
   ref: "container",
   padding: 0.025,
   fontFamily: FontJson,
@@ -1690,9 +1702,9 @@ const containerImg3 = new ThreeMeshUI.Block({
   backgroundOpacity: 0,
 });
 
-containerImg3.rotation.set(0.48, 3.15, 0);
+feelinFoodContainerImg.rotation.set(0.48, 3.15, 0);
 
-const title3 = new ThreeMeshUI.Block({
+const feelinnFoodTitle = new ThreeMeshUI.Block({
   height: 0.2,
   width: 1.5,
   margin: 0.025,
@@ -1700,15 +1712,15 @@ const title3 = new ThreeMeshUI.Block({
   fontSize: 0.09,
 });
 
-title3.add(
+feelinnFoodTitle.add(
   new ThreeMeshUI.Text({
     content: "Feelin'Food - website for click & collect restaurants",
   })
 );
 
-containerImg3.add(title3);
+feelinFoodContainerImg.add(feelinnFoodTitle);
 
-const leftSubBlock3 = new ThreeMeshUI.Block({
+const feelinfoodLeftSubBlock = new ThreeMeshUI.Block({
   height: 0.95,
   width: 1.0,
   margin: 0.025,
@@ -1717,27 +1729,27 @@ const leftSubBlock3 = new ThreeMeshUI.Block({
   justifyContent: "end",
 });
 
-const caption3 = new ThreeMeshUI.Block({
+const feelinFoodAnnee = new ThreeMeshUI.Block({
   height: 0.07,
   width: 0.37,
   alignContent: "center",
   justifyContent: "center",
 });
 
-caption3.add(
+feelinFoodAnnee.add(
   new ThreeMeshUI.Text({
     content: "2021",
     fontSize: 0.04,
   })
 );
 
-leftSubBlock3.add(caption3);
+feelinfoodLeftSubBlock.add(feelinFoodAnnee);
 
-const rightSubBlock3 = new ThreeMeshUI.Block({
+const feelinnFoodRightSubBlock = new ThreeMeshUI.Block({
   margin: 0.025,
 });
 
-const subSubBlock13 = new ThreeMeshUI.Block({
+const feelinFoodSubSubBlock1 = new ThreeMeshUI.Block({
     height: 0.35,
     width: 0.5,
     margin: 0.025,
@@ -1751,7 +1763,7 @@ const subSubBlock13 = new ThreeMeshUI.Block({
     }),    
 );
 
-const subSubBlock23 = new ThreeMeshUI.Block({
+const feelinFoodSubSubBlock2 = new ThreeMeshUI.Block({
     height: 0.53,
     width: 0.5,
     margin: 0.01,
@@ -1781,7 +1793,7 @@ const subSubBlock23 = new ThreeMeshUI.Block({
     })
 );
 
-rightSubBlock3.add(subSubBlock13, subSubBlock23);
+feelinnFoodRightSubBlock.add(feelinFoodSubSubBlock1, feelinFoodSubSubBlock2);
 
 const contentContainer3 = new ThreeMeshUI.Block({
     contentDirection: "row",
@@ -1790,24 +1802,24 @@ const contentContainer3 = new ThreeMeshUI.Block({
     backgroundOpacity: 0,
 });
 
-contentContainer3.add(leftSubBlock3, rightSubBlock3);
+contentContainer3.add(feelinfoodLeftSubBlock, feelinnFoodRightSubBlock);
 
-containerImg3.add(contentContainer3);
+feelinFoodContainerImg.add(contentContainer3);
 
 new THREE.TextureLoader().load(FeelingFood, (texture) => {
-    leftSubBlock3.set({
+    feelinfoodLeftSubBlock.set({
       backgroundTexture: texture,
     });
   });
 // }
 
-scene.add(containerImg3)
-containerImg3.visible = false
+scene.add(feelinFoodContainerImg)
+feelinFoodContainerImg.visible = false
 
 
-containerImg3.visible = containerImg2.visible = containerImg1.visible = containerImg.visible = false;
-meshContainer.add(containerImg3, containerImg2, containerImg1, containerImg);
-meshes = [containerImg3, containerImg2, containerImg1, containerImg ];
+feelinFoodContainerImg.visible = containerImg2.visible = containerImg1.visible = containerImg.visible = false;
+meshContainer.add(feelinFoodContainerImg, containerImg2, containerImg1, containerImg);
+meshes = [feelinFoodContainerImg, containerImg2, containerImg1, containerImg ];
 currentMesh = 0;
 // fin button VR
 
@@ -1885,6 +1897,7 @@ backgroundButton.addEventListener('click', function(){
     const result = classess.toggle("Night");
 
     if (result) {
+      setTimeout(function(){
         backgroundButton.textContent = `\uD83C\uDF15`;
         // Sky
         scene.background = new THREE.Color( '#191970' );
@@ -1898,8 +1911,10 @@ backgroundButton.addEventListener('click', function(){
         // Water
         waterMaterial.uniforms.uDepthColor.value = new THREE.Color(0x2626a6)
         waterMaterial.uniforms.uSurfaceColor.value = new THREE.Color(0x0077ff)
+      },300);
 
     } else {
+      setTimeout(function(){
         backgroundButton.textContent = `\uD83C\uDF19`;
         // Sky
         scene.background = new THREE.Color( '#38c3fc' );
@@ -1913,6 +1928,7 @@ backgroundButton.addEventListener('click', function(){
         // Water
         waterMaterial.uniforms.uDepthColor.value = new THREE.Color(0x11aced)
         waterMaterial.uniforms.uSurfaceColor.value = new THREE.Color(0x0077ff)
+      },300);
     }
 });
 

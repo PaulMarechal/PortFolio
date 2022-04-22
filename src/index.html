@@ -40,6 +40,20 @@
         <script src="./language.js"></script>
         <script src="./modale.js"></script> 
 
+        <!-- test header -->
+        <!-- <header>
+            <nav class="o-container">
+                <ul class="navHeader">
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Connexion</a><a href="#">Inscription</a></li>                
+                </ul>
+            </nav>
+        </header> -->
+                        <!-- <ul class="nav">
+                            <li><button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">&#8505;&#65039;</button><button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">&#127468;&#127463;</button><button id="change-background" class="btn boutonCouleur">&#127763;</button></li>
+                            <li><button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal">À propos</button></li>                
+                        </ul> -->
+        <!-- fin test header -->
         <!-- test video dans ordinateur -->
         <video id="video" playsinline webkit-playsinline muted loop autoplay width="30" height="10"src="https://paulmarechal.xyz/CV/rainingCode.mp4" style="display: none;"></video>
 
@@ -47,17 +61,31 @@
 
         <div class="loading-bar"></div>
 
+
         <!-- Bouton ouverture modale 'A propos' -->
-        <button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal">À propos</button>
+        <header>
+            <nav class="o-container">
+                <ul class="navHeader" style="position: absolute; border-radius: 0px 60px 60px 0px;">
+                    <button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">&#8505;&#65039;</button>
+                    <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">&#127468;&#127463;</button>
+                    <button id="change-background" class="btn boutonCouleur">&#127763;</button>
+                </ul>
+                <ul class="navHeader" style="position: absolute; margin-left:92.56%; border-radius: 60px 0px 0px 60px; width: 7em; ">
+                    <button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal" style="border-radius: 60px;">À propos</button>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- <button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal">À propos</button> -->
 
         <!-- Bouton ouverture modale 'Informations' -->
-        <button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">&#8505;&#65039;</button>
+        <!-- <button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">&#8505;&#65039;</button> -->
 
         <!-- Bouton changer langue 'Anglais' -->
-        <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">&#127468;&#127463;</button>
+        <!-- <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">&#127468;&#127463;</button> -->
 
         <!-- Bouton changer lumiere 'Day/Night' -->
-        <button id="change-background" class="btn boutonCouleur">&#127763;</button>
+        <!-- <button id="change-background" class="btn boutonCouleur">&#127763;</button> -->
 
         <!-- Modale Aide/Informations -->
         <div class="modal masque" data-backdrop="false" id="infosModal">
@@ -416,6 +444,7 @@
 
         <div class="cursor"></div>
         <div class="cursor2"></div>
+        
 
     </body>
 </html>
