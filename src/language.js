@@ -397,7 +397,7 @@ function toggleLanguage(language) {
     info2.innerHTML = "Directional arrows to move the fox";
     info3.innerHTML = "Possibility to change the language (FR / EN) by clicking on '🇬🇧'";
     info4.innerHTML = "The scene changes depending on day and night. Ability to swap by pressing the '🌗' button";
-    info5.innerHTML = "Ability to zoom / move to the sides";
+    info5.innerHTML = "Ability to zoom / move to the sides (hold down right click and move )";
     info6.innerHTML = "Possibility to switch to VR (Oculus Quest 2 or others)";
   }
 }

@@ -228,7 +228,7 @@ a:link{
     font-weight: bold;
 }
 
-a[href^="https://paulmarechal.000webhostapp.com"], 
+a[href^="https://paulmarechal.xyz/new_cv"], 
 a[href^="tel:+33648357374"], 
 a[href^="https://www.linkedin.com/in/paul-marechal/"],
 a[href^="https://github.com/PaulMarechal"],
@@ -290,7 +290,7 @@ a:visited { color: #070707!important; }
     margin-top: 1em!important;
 }
 
-a[href^="https://paulmarechal.000webhostapp.com"]::before {
+a[href^="https://paulmarechal.xyz/new_cv"]::before {
     content: "🔗 ";
     margin-left: -1em; 
 }
@@ -608,7 +608,7 @@ and (-webkit-device-pixel-ratio : 3) {
     }
 
     .boutonCouleur{
-        left: 33%;
+        left: 56%;
     }
 
     .boutonAide{
@@ -616,7 +616,7 @@ and (-webkit-device-pixel-ratio : 3) {
     }
 
     .boutonFrancais{
-        left: 18%
+        left: 30%
     }
 
     #passions{
@@ -688,6 +688,15 @@ and (-webkit-device-pixel-ratio : 3) {
 
     .photoPaul{
         margin-bottom: -3em;
+    }
+
+    .navHeader {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 11.1em;
     }
 }
 
@@ -896,6 +905,8 @@ body{
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 0px 0px 5px 5px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    position: absolute; 
+    border-radius: 0px 60px 60px 0px;
 }
 
 /* .arrow-up {

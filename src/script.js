@@ -34,7 +34,8 @@ import { XRHandModelFactory } from 'three/examples/jsm/webxr/XRHandModelFactory.
 import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.js';
 import StatsVR from "statsvr"
 import expBlockText from './expBlockText.js'
-
+import * as computerVideo from './helpers/computerVideo.js'
+ 
 // import FontJSON from '/src/assets/Roboto-msdf.json';
 // import FontImage from '/src/assets/Roboto-msdf.png';
 // const ThreeMeshUI = require('three-mesh-ui');
@@ -812,14 +813,14 @@ renderer.setAnimationLoop(function () {
 const container = new ThreeMeshUI.Block({
 	height: 2,
 	width: 1, 
-    backgroundOpacity: 0,
+  backgroundOpacity: 0,
 });
 
 container.position.set( -1.1, 0.85, -4);
 scene.add( container );
 
 const textBlock = new ThreeMeshUI.Block({
-	height: 0.75,
+	height: 0.8,
 	width: 1.1,
 	margin: 0.01, 
 });
@@ -1180,8 +1181,8 @@ buttonVR.addEventListener('pressedEnd', () => {
 
 // text VR Formation
 const formationTextVR = new ThreeMeshUI.Block( {
-	width: 3.2,
-	height: 5.5,
+	width: 2.0,
+	height: 1.4,
 	padding: 0.05,
 	justifyContent: 'center',
 	alignContent: 'left',
@@ -1194,24 +1195,24 @@ formationTextVR.rotation.y = 2;
 
 formationTextVR.add(
 	new ThreeMeshUI.Text( {
-		content: 'Formations \n',
+		content: 'Formations',
 		fontSize: 0.08
 	} ),
 	new ThreeMeshUI.Text( {
-		content: 'Bachelors Degree Web and Mobile \nSorbonne University | CFA of Sciences',
+		content: '\nBachelors Degree Web and Mobile \nSorbonne University | CFA of Sciences',
 		fontSize: 0.07
 	} ),
     new ThreeMeshUI.Text( {
-		content: 'Graphic design and web animations\n POO and Software Architecture, design of databases for Web Frameworks for Back Office development\n Networks and Security, Operating System and Web Server\n UX design and Ergonomics \nMobile Development Web project management, Agile Methods\n',
-		fontSize: 0.055
+		content: '\nGraphic design and web animations\n POO and Software Architecture, design of databases for Web Frameworks for Back Office development\n Networks and Security, Operating System and Web Server\n UX design and Ergonomics \nMobile Development Web project management, Agile Methods\n',
+		fontSize: 0.05
 	} ), 
     new ThreeMeshUI.Text( {
-		content: 'IT application developer analyst ESIEE Paris Tech | Paris\n',
+		content: '\nIT application developer analyst ESIEE Paris Tech | Paris\n',
 		fontSize: 0.07
 	} ),
     new ThreeMeshUI.Text( {
 		content: 'Training aimed at acquiring coding techniques, project analysis and technical integration of new digital technologies. The courses are given according to SCRUM - Agile methods around projects (sprint) in teams under the responsibility of a coach.\n',
-		fontSize: 0.07
+		fontSize: 0.05
 	} ),
 );
 // fin text VR Formation
@@ -1219,7 +1220,7 @@ formationTextVR.add(
 // text VR Hobbies
 const hobbiesTextVR = new ThreeMeshUI.Block( {
 	width: 1.2,
-	height: 0.5,
+	height: 0.8,
 	padding: 0.05,
 	justifyContent: 'center',
 	alignContent: 'left',
@@ -1314,7 +1315,7 @@ containerImg.rotation.set(0.48, 3.15, 0);
 
 const title = new ThreeMeshUI.Block({
   height: 0.2,
-  width: 1.5,
+  width: 1.9,
   margin: 0.025,
   justifyContent: "center",
   fontSize: 0.09,
@@ -1359,10 +1360,10 @@ const rightSubBlock = new ThreeMeshUI.Block({
 
 const subSubBlock1 = new ThreeMeshUI.Block({
     height: 0.35,
-    width: 0.5,
+    width: 0.9,
     margin: 0.025,
     padding: 0.02,
-    fontSize: 0.04,
+    fontSize: 0.05,
     justifyContent: "center",
     backgroundOpacity: 0,
 }).add(
@@ -1373,34 +1374,34 @@ const subSubBlock1 = new ThreeMeshUI.Block({
 
 const subSubBlock2 = new ThreeMeshUI.Block({
     height: 0.53,
-    width: 0.5,
+    width: 0.9,
     margin: 0.01,
     padding: 0.02,
-    fontSize: 0.025,
+    fontSize: 0.04,
     alignContent: "left",
     backgroundOpacity: 0,
 }).add(
-        new ThreeMeshUI.Text({
-        content: 
-            "- Realization of the new visual identity. \n",
+    new ThreeMeshUI.Text({
+      content: 
+        "- Realization of the new visual identity. \n",
     }),
 
     new ThreeMeshUI.Text({
-        content:
-            "- Using Figma / HTML5 / CSS3 / JS / Java \n",
+      content:
+        "- Using Figma / HTML5 / CSS3 / JS / Java \n",
     }),
     new ThreeMeshUI.Text({
-        content:
-            "- Redesign of the intranet (UI/UX) \n",
+      content:
+        "- Redesign of the intranet (UI/UX) \n",
     }),
     new ThreeMeshUI.Text({
-        content:
-            "- Realization of the design of the LinkedIn posts \n",
+      content:
+        "- Realization of the design of the LinkedIn posts \n",
     }),
 
     new ThreeMeshUI.Text({
-        content: 
-            "- Launch of new functionalities (services) \n",
+      content: 
+        "- Launch of new functionalities (services) \n",
     })
     
 );
@@ -1453,7 +1454,7 @@ containerImg1.rotation.set(0.48, 3.15, 0);
 
 const title1 = new ThreeMeshUI.Block({
   height: 0.2,
-  width: 1.5,
+  width: 1.9,
   margin: 0.025,
   justifyContent: "center",
   fontSize: 0.09,
@@ -1498,10 +1499,10 @@ const rightSubBlock1 = new ThreeMeshUI.Block({
 
 const subSubBlock11 = new ThreeMeshUI.Block({
     height: 0.35,
-    width: 0.5,
+    width: 0.9,
     margin: 0.025,
     padding: 0.02,
-    fontSize: 0.04,
+    fontSize: 0.05,
     justifyContent: "center",
     backgroundOpacity: 0,
 }).add(
@@ -1512,10 +1513,10 @@ const subSubBlock11 = new ThreeMeshUI.Block({
 
 const subSubBlock21 = new ThreeMeshUI.Block({
     height: 0.53,
-    width: 0.5,
+    width: 0.9,
     margin: 0.01,
     padding: 0.02,
-    fontSize: 0.025,
+    fontSize: 0.04,
     alignContent: "left",
     backgroundOpacity: 0,
 }).add(
@@ -1572,7 +1573,7 @@ containerImg2.rotation.set(0.48, 3.15, 0);
 
 const title2 = new ThreeMeshUI.Block({
   height: 0.2,
-  width: 1.5,
+  width: 1.9,
   margin: 0.025,
   justifyContent: "center",
   fontSize: 0.09,
@@ -1617,10 +1618,10 @@ const rightSubBlock2 = new ThreeMeshUI.Block({
 
 const subSubBlock12 = new ThreeMeshUI.Block({
     height: 0.35,
-    width: 0.5,
+    width: 0.9,
     margin: 0.025,
     padding: 0.02,
-    fontSize: 0.04,
+    fontSize: 0.05,
     justifyContent: "center",
     backgroundOpacity: 0,
 }).add(
@@ -1631,10 +1632,10 @@ const subSubBlock12 = new ThreeMeshUI.Block({
 
 const subSubBlock22 = new ThreeMeshUI.Block({
     height: 0.53,
-    width: 0.5,
+    width: 0.9,
     margin: 0.01,
     padding: 0.02,
-    fontSize: 0.025,
+    fontSize: 0.04,
     alignContent: "left",
     backgroundOpacity: 0,
 }).add(
@@ -1706,7 +1707,7 @@ feelinFoodContainerImg.rotation.set(0.48, 3.15, 0);
 
 const feelinnFoodTitle = new ThreeMeshUI.Block({
   height: 0.2,
-  width: 1.5,
+  width: 1.9,
   margin: 0.025,
   justifyContent: "center",
   fontSize: 0.09,
@@ -1751,10 +1752,10 @@ const feelinnFoodRightSubBlock = new ThreeMeshUI.Block({
 
 const feelinFoodSubSubBlock1 = new ThreeMeshUI.Block({
     height: 0.35,
-    width: 0.5,
+    width: 0.9,
     margin: 0.025,
     padding: 0.02,
-    fontSize: 0.04,
+    fontSize: 0.05,
     justifyContent: "center",
     backgroundOpacity: 0,
 }).add(
@@ -1765,10 +1766,10 @@ const feelinFoodSubSubBlock1 = new ThreeMeshUI.Block({
 
 const feelinFoodSubSubBlock2 = new ThreeMeshUI.Block({
     height: 0.53,
-    width: 0.5,
+    width: 0.9,
     margin: 0.01,
     padding: 0.02,
-    fontSize: 0.025,
+    fontSize: 0.04,
     alignContent: "left",
     backgroundOpacity: 0,
 }).add(
@@ -1823,29 +1824,30 @@ meshes = [feelinFoodContainerImg, containerImg2, containerImg1, containerImg ];
 currentMesh = 0;
 // fin button VR
 
+
 camera.updateProjectionMatrix();
 
 /**
  * video ecran ordinateur 
  */
-//video element:
-const video = document.getElementById('video');
+// //video element:
+// const video = document.getElementById('video');
 
-//video texture:
-const videoTexture = new THREE.VideoTexture(video);
-const videoMaterial =  new THREE.MeshBasicMaterial( {map: videoTexture, side: THREE.FrontSide, toneMapped: false} );
-//Create screen
-const screen = new THREE.PlaneGeometry(0.71, 0.385);
-const videoScreen = new THREE.Mesh(screen, videoMaterial);
-video.play()
+// //video texture:
+// const videoTexture = new THREE.VideoTexture(video);
+// const videoMaterial =  new THREE.MeshBasicMaterial( {map: videoTexture, side: THREE.FrontSide, toneMapped: false} );
+// //Create screen
+// const screen = new THREE.PlaneGeometry(0.71, 0.385);
+// const videoScreen = new THREE.Mesh(screen, videoMaterial);
+// video.play()
 
-videoScreen.position.x = -5.08
-videoScreen.position.y = 0.82
-videoScreen.position.z = 0.77
+// videoScreen.position.x = -5.08
+// videoScreen.position.y = 0.82
+// videoScreen.position.z = 0.77
 
-videoScreen.rotation.y = 0.6
+// videoScreen.rotation.y = 0.6
 
-scene.add(videoScreen);
+scene.add(computerVideo.video());
 
 // VR hand controller 
 let hand1, hand2;

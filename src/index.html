@@ -40,20 +40,6 @@
         <script src="./language.js"></script>
         <script src="./modale.js"></script> 
 
-        <!-- test header -->
-        <!-- <header>
-            <nav class="o-container">
-                <ul class="navHeader">
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Connexion</a><a href="#">Inscription</a></li>                
-                </ul>
-            </nav>
-        </header> -->
-                        <!-- <ul class="nav">
-                            <li><button id="apropos" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">&#8505;&#65039;</button><button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">&#127468;&#127463;</button><button id="change-background" class="btn boutonCouleur">&#127763;</button></li>
-                            <li><button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal">À propos</button></li>                
-                        </ul> -->
-        <!-- fin test header -->
         <!-- test video dans ordinateur -->
         <video id="video" playsinline webkit-playsinline muted loop autoplay width="30" height="10"src="https://paulmarechal.xyz/CV/rainingCode.mp4" style="display: none;"></video>
 
@@ -66,11 +52,36 @@
         <header>
 
                 <ul class="navHeader" style="position: absolute; border-radius: 0px 60px 60px 0px;">
-                    <button id="" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">&#8505;&#65039;</button>
-                    <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">&#127468;&#127463;</button>
-                    <button id="change-background" class="btn boutonCouleur">&#127763;</button>
+                    <!-- <button id="" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">&#8505;&#65039;</button> -->
+                    <button id="" type="button" class="btn boutonAide" data-toggle="modal" data-target="#infosModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f6f6f6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="12" cy="12" r="9" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                            <polyline points="11 12 12 12 12 16 13 16" />
+                        </svg>
+                    </button>
+                    <!-- <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">&#127468;&#127463;</button> -->
+                    <button id="buttonLangue" type="button" class="btn boutonFrancais" data-toggle="modal" onclick="toggleLanguage('English')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f6f6f6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 5h7" />
+                            <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+                            <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+                            <path d="M12 20l4 -9l4 9" />
+                            <path d="M19.1 18h-6.2" />
+                        </svg>
+                    </button>
+                    <!-- <button id="change-background" class="btn boutonCouleur">&#127763;</button> -->
+                    <button id="change-background" class="btn boutonCouleur">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f6f6f6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="12" cy="12" r="4" />
+                            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                        </svg>
+                    </button>
                 </ul>
-                <ul class="navHeader" style="margin-left:88.9%; border-radius: 60px 0px 0px 60px; width: 10em; ">
+                <ul class="navHeader" style="margin-left:65.9%; border-radius: 60px 0px 0px 60px; width: 10em; ">
                     <button id="apropos" type="button" class="btn boutonInfo" data-toggle="modal" data-target="#exampleModal" style="border-radius: 60px;">À propos</button>
                 </ul>
 
@@ -98,11 +109,28 @@
                             <h4>Informations</h4>
                             <ul>
                                 <li id="info1">Double click sur le portail pour entrer dans une autre dimension </li></br>
-                                <li id="info2">Flèches directionnelles pour déplacer le renard</li></br>
-                                <li id="info3">Possibilité de changer la langue ( FR / EN ) en cliquant sur '🇬🇧'</li></br>
+                                <li id="info2">Flèches directionnelles (↑ ↓ → ←) pour déplacer le renard</li></br>
+                                <li id="info3">Possibilité de changer la langue ( FR / EN ) en cliquant sur '
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1F1F1F" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M4 5h7" />
+                                        <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+                                        <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+                                        <path d="M12 20l4 -9l4 9" />
+                                        <path d="M19.1 18h-6.2" />
+                                    </svg>'
+                                </li></br>
                                 <li id="info4">La scène change en fonction du jour et de la nuit. Possibilité de permuter en
-                                    appuyant sur le bouton '&#127763;'</li></br>
-                                <li id="info5">Possibilité de zoomer / déplacer sur les côtés </li></br>
+                                    appuyant sur le bouton 
+                                    '
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1F1F1F" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <circle cx="12" cy="12" r="4" />
+                                        <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                                    </svg>
+                                    '
+                                </li></br>
+                                <li id="info5">Possibilité de zoomer / déplacer sur les côtés ( maintenair le click droit enfoncé et se déplacer)</li></br>
                                 <li id="info6">Possibilité de passer en VR ( Oculus Quest 2 ou autres )</li>
                             </ul>
                         </div>
@@ -244,7 +272,7 @@
                         <ul>
                             <li><a href="mailto:paulmarechal75@gmail.com">Email</a></li>
                             <li><a href="tel:+33648357374">Phone</a></li>
-                            <li><a href="https://paulmarechal.000webhostapp.com">Website</a></li>
+                            <li><a href="https://paulmarechal.xyz/new_cv">Website</a></li>
                             <li><img alt="logo linkedin" id="linkdein" src="https://img.icons8.com/color/48/000000/linkedin.png" /><a id="linkd" href="https://www.linkedin.com/in/paul-marechal/">LinkedIn</a></li>
                             <li><img alt="logo github" id="github" src="https://img.icons8.com/material-outlined/48/000000/github.png" /><a id="github" href="https://github.com/PaulMarechal">GitHub</a></li>
                         </ul>
